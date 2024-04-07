@@ -19,7 +19,11 @@
   
 }
 
+.bg-register{
+  background-image: url('/assets/bgreg.jpg');
+  background-size: cover;
+}
 .bg-login{
-  background-image: url('/assets/bg.jpeg');
+  background-image: url('/assets/bglogin.jpg');
   background-size: cover;
 }

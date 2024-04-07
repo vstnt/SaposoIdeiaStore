@@ -2,10 +2,12 @@ import Navbar from "../../layout/components/Navbar";
 
 export default function Home() {
     return (
-      <div className="w-full h-screen bg-yellow-800">
+      <>
         <Navbar/>
-        Home
-      </div>
+        <div className="w-full h-screen bg-gradient-to-r from-slate-400 to-violet-950">
+        </div>
+      </>
+      
     )
   }
   

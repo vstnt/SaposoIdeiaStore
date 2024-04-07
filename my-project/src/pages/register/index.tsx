@@ -1,3 +1,4 @@
+import Navbar from "../../layout/components/Navbar";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -7,43 +8,49 @@ export default function Register() {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-gradient-to-r from-cyan-700 to-purple-500">
-      <div className="w-8/12 h-4/6 rounded-lg overflow-hidden flex  items-center justify-center">
-        <div className="w-1/3 h-full bg-purple-800 flex flex-col items-center justify-center">
-          <div className="bg-purple-800 px-4 w-full rounded-lg shadow-lg h-full">
-            <div className="font-semibold text-xl mt-10 p-2 text-center w-full text-purple-100 mb-2 ">
-              <div className="w-full flex items-center justify-center ">
-                <img
-                  className="w-[60px] rounded-full bg-yellow-500 p-1 border-4 border-purple-100"
-                  src="/assets/mojodojo.png"
-                />
+    <>
+      <Navbar/>
+      <div className="min-h-[550px] min-w-[600px] pt-20 w-full h-screen flex items-center justify-center bg-gradient-to-r from-slate-400 to-violet-950">
+        <div id='conteiner inteiro' className="min-h-[420px] min-w-[560px] w-8/12 h-5/6 rounded-lg overflow-hidden flex items-center justify-center">
+          <div id='área do formulário' className="min-w-[250px] w-1/3 h-full bg-purple-800 flex flex-col items-center justify-center">
+            <div className="flex flex-col justify-center bg-violet-200 px-4 w-full rounded-md shadow-lg h-full">
+              <div id='img e texto' className="mb-10 font-semibold text-xl p-2 text-center w-full text-slate-800">
+                <div className="w-full flex items-center justify-center ">
+                  <img
+                    className="w-[60px] mb-2 rounded-full bg-violet-500 p-1 border-4 border-slate-700"
+                    src="/assets/newUser.png"
+                  />
+                </div>
+                Registro
+                <div className="text-sm text-slate-500">
+                  Crie sua nova conta
+                </div>
               </div>
-              Registro
-            </div>
-            <div className="flex items-center justify-center flex flex-col gap-4">
-              <input
-                placeholder="Email"
-                className="w-full text-sm bg-white border-1 rounded-full w-10/12 pl-4 p-2 shadow-md mx-auto text-black"
-              />
-              <input
-                placeholder="Senha"
-                className="w-full text-sm bg-white border-1 rounded-full w-10/12 pl-4 p-2 shadow-md mx-auto text-black"
-              />
-              <button className="text-sm bg-blue-900 w-full p-2 shadow-md text-white rounded-full">
-                Sign in
-              </button>
-              <button
-                className="animate-bounce w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-sm rounded-full p-2 mt-2"
+              <div id='inputs' className=" flex flex-col items-center justify-center gap-4">
+                <input
+                  placeholder="Email"
+                  className="placeholder-gray-500 shadow-slate-500 mb-5 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto text-black"
+                />
+                <input
+                  placeholder="Senha" type="password"
+                  className="placeholder-gray-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md shadow-slate-500 mx-auto text-black"
+                />
+                <input
+                  placeholder="Repita sua senha" type="password"
+                  className="placeholder-gray-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md shadow-slate-500 mx-auto text-black"
+                />
+                <button className="mt-3 text-sm bg-indigo-950 w-6/12 p-2 shadow-md text-white rounded-xl"
                 onClick={() => redirect("/")}
-              >
-                MojoDojoCasaHouse
-              </button>
-              <button onClick={() => redirect("/products")}>Produtos</button>
+                >
+                  Sign up
+                </button>
+
+              </div>
             </div>
           </div>
+          <div id='bg img do conteiner' className="bg-purple-600 w-2/3 h-full relative bg-register"></div>
         </div>
-        <div className="bg-purple-600 w-2/3 h-full relative bg-login"></div>
       </div>
-    </div>
+    </>
   );
 }
