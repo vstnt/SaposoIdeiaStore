@@ -1,8 +1,32 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  const [lastScrolY, setLastScrollY] = useState(window.scrollY);
+  const [headerVisible,  setHeaderVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrolY) {
+        setHeaderVisible(true);
+      } else if (currentScrollY > lastScrolY) {
+        setHeaderVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    };
+  })
+
   return (
-    <div style={{ zIndex: '999', position: 'fixed',  fontSize:'17px', minHeight: '90px', maxHeight: '110px' }} className=" flex text-neutral-900 font-mono justify-between border-b border-indigo-500 w-full h-[6.5vw] p-2 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400">
+    <div style={{ transition: 'opacity 0.3s', zIndex: '999', minHeight: '90px', maxHeight: '110px' }} className={` ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} text-[17px] fixed flex text-neutral-900 font-mono justify-between border-b border-indigo-500 w-full h-[6.5vw] p-2 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400 `}>
       <div id='menudaesquerda' className="flex items-end gap-5">
         <div id='imgsaposo'>
           <Link to={'/'}><img className=" shadow-md shadow-black hover:shadow-md hover:shadow-slate-400 transition-shadow duration-500 w-[6rem] min-h-24 min-w-20 rounded-xl pt-4" src='/assets/saposo.png'></img></Link>
@@ -20,4 +44,4 @@ export default function Navbar() {
       </div>
     </div>
     )
-  }
+}
