@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/Auth/AuthContext";
 
 export default function Navbar() {
   const [lastScrolY, setLastScrollY] = useState(window.scrollY);
   const [headerVisible,  setHeaderVisible] = useState(true);
+  const navigate = useNavigate();
+
+  const auth = useContext(AuthContext)
+
+  const handleLogout = async () => {
+    await auth.signout();
+    window.location.href;
+    navigate('/');
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,10 +49,19 @@ export default function Navbar() {
       <div id='saposoideiastore' className="flex items-center mt-auto rounded px-2 pb-0.5 mr-16 text-gray-700 bg-zinc-300/50 transition-colors duration-300 hover:bg-zinc-100/70 " style={{ fontSize: '3vw', height: '63%' }}>
         <Link to={'/'} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
       </div>
-      <div id='menudadireita' className="flex flex-col justify-end gap-6 items-end mb-3 leading-3">
-        <div><Link to={'/login'} className="px-7 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300">Login</Link></div>
+      {!auth.user &&    
+        <div id='menudadireita' className="flex flex-col justify-end gap-6 items-end mb-3 leading-3">
+          <div><Link to={'/login'} className="px-7 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300">Login</Link></div>
           <div><Link to={'/register'} className="px-3 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300 tracking-tight">crie sua conta</Link></div>
-      </div>
+        </div>
+      }
+      {auth.user &&
+        <div id='menudadireita' className="flex flex-col justify-end gap-6 items-end mb-3 leading-3">
+          <div>Logado como {auth.user.name}, <button onClick={handleLogout} className="px-7 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300">Sair.</button></div>
+          <div><Link to={'/userpreferences'} className="px-3 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300 tracking-tight">Minha conta</Link></div>
+        </div>
+      }
+
     </div>
     )
 }

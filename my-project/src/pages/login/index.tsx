@@ -1,11 +1,28 @@
+import { useContext, useState } from "react";
 import Navbar from "../../layout/components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  function redirect(link: string) {
-    navigate(link);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const auth = useContext(AuthContext)
+
+  const handleLogin = async () => {
+    if(email && password) {
+      const isLogged = await auth.signin(email, password);
+      if(isLogged) {
+        navigate('/');
+      }
+      else {
+        alert("Erro de Login.")
+      }
+    }
   }
+
 
   return (
     <>
@@ -32,14 +49,20 @@ export default function Login() {
                 <input
                   placeholder="Email"
                   className="placeholder-gray-500 shadow-slate-500 mb-2 text-sm bg-white border-1 rounded-full w-2/3 pl-4 p-2 shadow-md mx-auto text-black"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                 />
                 <input
-                  placeholder="Senha" type="password"
+                  placeholder="Senha" 
+                  type="password"
                   className="placeholder-gray-500 text-sm bg-white border-1 rounded-full w-2/3 pl-4 p-2 shadow-md shadow-slate-500 mx-auto text-black"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
-                <button className="mt-4 text-sm bg-indigo-950 w-1/3 p-2 shadow-md text-white rounded-xl"
-                onClick={() => redirect("/")}
-                >
+                <button 
+                  className="mt-4 text-sm bg-indigo-950 w-1/3 p-2 shadow-md text-white rounded-xl"
+                  onClick={handleLogin}
+                  >
                   Entrar
                 </button>
 

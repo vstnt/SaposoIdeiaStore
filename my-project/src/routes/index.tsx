@@ -3,6 +3,12 @@ import Login from "../pages/login";
 import Products from "../pages/products";
 import Register from "../pages/register";
 import ProductDetails from "../pages/productDetails";
+import UserPreferences from "../pages/userPreferences";
+import { RequireAuth } from "../context/Auth/RequireAuth";
+import { RequireNotAuth } from "../context/Auth/RequireNotAuth";
+
+
+
 
 export const routes = [
     {
@@ -11,7 +17,7 @@ export const routes = [
     },
     {
         link:'/register', 
-        component:<Register/>
+        component:<RequireNotAuth><Register/></RequireNotAuth>
     },
     {
         link:'/products', 
@@ -19,10 +25,14 @@ export const routes = [
     },
     {
         link:'/login', 
-        component:<Login/>
+        component:<RequireNotAuth><Login/></RequireNotAuth>
     },
     {
         link: '/product/:id',
         component:<ProductDetails/>
     },
+    {
+        link: '/userpreferences',
+        component:<RequireAuth><UserPreferences /></RequireAuth>
+    }
 ]

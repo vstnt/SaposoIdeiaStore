@@ -1,7 +1,9 @@
 import Navbar from "../../layout/components/Navbar";
 import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
 
+
 export default function Home() {
+
 
     return (
       <>
@@ -12,7 +14,7 @@ export default function Home() {
             <div className=""><ProductDisplay productId={2} /></div>
             <div className=""><ProductDisplay productId={3} /></div>
             <div className=""><ProductDisplay productId={4} /></div>
-        </div>
+          </div>
         </div>
       </>
       
