@@ -13,7 +13,8 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     const [initialized, setInitialized] = useState(false);
 
     useEffect(() => {
-        if (!initialized) {
+        if (!initialized) { // adicionei essa condição por indicação do GPT. Tava dando um problema de loop de renderização
+            // infinita. Ficava chamando constantemente o RequireAuth. Não entendi bem o pq e nem exatamente pq isso resolveu...
             const validateToken = async () => {
                 const storageData = localStorage.getItem('authToken');
                 if(storageData) {
