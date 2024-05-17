@@ -1,2 +1,2 @@
-# E-commerce-de-produtos-de-tecnologia
-Nesse projeto vou tentar criar um sistema para web com uma loja de produtos de tecnologia.
+# SaposoIdeiaStore
+Nesse projeto vou tentar criar um sistema para web com uma loja de ideias e coisas aleatórias. Talvez brincar de tentar fazer isso virar um rede social...
