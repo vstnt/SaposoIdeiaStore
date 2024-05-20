@@ -40,52 +40,89 @@ export default function Navbar() {
   })
 
   return ( 
-    <div style={{ position:"fixed", transition: 'opacity 0.3s' }} className={` ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} z-[999] fixed min-h-[90px] max-h-[110px] w-full h-[6.5vw] p-2 text-[17px] flex border-b text-neutral-900 font-mono border-indigo-500 ${ theme === 'dark' ? 'bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400' : 'bg-gradient-to-r from-white to-emerald-100'} `}>
+    <div id='Cabeçalho' 
+    style={{ transition: 'opacity 0.3s' }} 
+    className={`transition-all duration-500 z-[999] fixed flex items-start border-b min-h-[90px] max-h-[110px] w-full h-[6.5vw] text-[16px]  text-neutral-900 font-mono 
+    ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
+    ${ theme === 'dark' ? 'border-indigo-500 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400' : 'bg-gradient-to-b from-gray-200 from-30% to-gray-300 border-b-2 border-gray-500'} `}>
       
-      <div id='menudaesquerda' className="basis-1/3 pl-5  flex items-end gap-5">
+      <div id='Menudaesquerda' className="h-full basis-1/3 flex items-start gap-5">
+        
         <div id='imgsaposo'>
-          <Link to={'/'}><img className={` ${theme === 'dark' ? 'shadow-black hover:shadow-slate-400 hover:shadow-sm' : ' shadow-violet-900 hover:shadow-green-700'} shadow-md   transition-shadow duration-200 w-[6rem] min-h-24 min-w-20 rounded-xl pt-4 `} src='/assets/saposo.png'></img></Link>
+          <Link to={'/'}>
+            <img 
+            className={`ml-6 shadow transition-shadow duration-200 w-[5rem] min-h-12 min-w-12 rounded-b-xl
+            ${theme === 'dark' ? 'shadow-black hover:shadow-green-200 ' : ' shadow-violet-900 hover:shadow-green-700'}`
+            } 
+            src='/assets/saposo.png'></img>
+          </Link>
         </div>
-        <div className="mb-1">
-          <Link to={'/products'} className={` px-2 pb-1 pt-0.5 tracking-tight rounded border-t ${theme === 'dark' ? 'text-neutral-300 border-stone-100/30 hover:bg-zinc-400/40' : 'border-stone-900 hover:bg-zinc-500/60'}    transition-colors duration-300 `}>nossos produtos</Link>
+        
+        <div id='botão buscar produtos' className="italic text-xl mb-2 self-end ">
+          <Link to={'/products'} 
+          className={` px-2 pb-1 pt-0.5 tracking-tight rounded    border-t
+          ${theme === 'dark' ? 'border-neutral-300/80 text-neutral-300/80 hover:text-black hover:border-black hover:bg-zinc-100/50 hover:shadow-black hover:shadow' : 'border-stone-900 hover:bg-zinc-500/60'}   transition-all duration-300
+          `}>
+          buscar produtos
+          </Link>
         </div>
+
       </div>
       
-      
-      <div id='saposoideiastore' className={` basis-1/3 flex items-center justify-center mt-auto rounded px-2 pb-0.5 mb-[5px] text-[3vw] h-[63%] ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/70' : 'text-emerald-100 bg-zinc-900/70  hover:bg-zinc-800'}  transition-colors duration-300`}>
+      <div id='SaposoIdeiaStore' 
+      className={` basis-1/3 flex items-center justify-center mt-auto rounded px-2 pb-0.5 mb-2 text-[3vw] h-[63%] transition-colors duration-300
+      ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80' : 'text-emerald-100 bg-zinc-900/70  hover:bg-zinc-800'} `}>
         <Link to={'/'} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
       </div>
 
-      {!auth.user &&
-        <div id='menudadireita' className="basis-1/3 flex gap-7 justify-end items-start">
-          <div className="flex flex-col justify-end gap-6 items-end mb-3 mt-5 leading-3">
-            <div><Link to={'/login'} className={` px-7 pb-0.5 pt-1 rounded border-t ${theme === 'dark' ? 'border-stone-900 hover:bg-zinc-100/50' : 'border-stone-900 hover:bg-zinc-500/60'} border-stone-900 hover:bg-zinc-100/50 transition-colors duration-300 `}>Login</Link></div>
-            <div><Link to={'/register'} className={` px-3 pb-0.5 pt-1 rounded border-t ${theme === 'dark' ? 'border-stone-900 hover:bg-zinc-100/50' : 'border-stone-900 hover:bg-zinc-500/60'} border-stone-900 hover:bg-zinc-100/50 transition-colors duration-300 tracking-tight `}>crie sua conta</Link></div>
-          </div>
-          <button id='alternador tema' onClick={toggleTheme} className={`  -mt-2 w-11 text-[10px] flex flex-col items-center ${theme === 'dark' ? 'bg-[#c7e9db] text-black shadow shadow-black' : 'bg-violet-600 text-emerald-100 border border-black shadow shadow-black'}  rounded-b `}>
-              <div>tema</div>
-              <div className="-mt-[6px]">
-                {theme === 'light' ? <div className="tracking-[0.2em]">roxo</div> : 'claro'}
+      <div id='Menudadireita' 
+      className="basis-1/3 h-full flex justify-end items-start  ">
+
+        {!auth.user && <div id="2)botões - login; crie sua conta" // CASO usuário não logado
+        className="flex gap-2 self-end justify-items-end mb-1 -mr-8 "> 
+            <div><Link to={'/login'} className={` px-7 pb-0.5 pt-1 rounded border-t ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' : 'border-stone-900 hover:bg-zinc-500/60'}   transition-all duration-500 `}>
+              login</Link></div>
+            <div><Link to={'/register'} className={` px-3 pb-0.5 pt-1 rounded border-t ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' : 'border-stone-900 hover:bg-zinc-500/60'}  transition-all duration-500 tracking-tight `}>
+              crie sua conta</Link></div>
+        </div>
+        }
+
+        {auth.user && // CASO usuário logado
+          <div id="Menu da direita, primeira parte"
+          className="h-full grid gap-1 justify-items-end mr-2  ">
+              
+            <div id="parte superior. Oi, Usuário" 
+            className='bg-gray-400 border border-gray-300 flex items-center px-2 rounded h-fit text-xs mr-56 mt-4'>Oi, {auth.user.name}</div>
+            
+            <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-2 justify-end -mr-10">
+              
+              <div id="minha conta"><Link to={'/userpreferences'} 
+              className={`px-2 pb-0.5 pt-1 rounded border-t  
+              ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' : 'border-stone-900 hover:bg-zinc-500/60'}   transition-all duration-500  `}>
+                  Minha Conta</Link>
               </div>
-              {theme === 'dark' ? <img src='/assets/themeicon.png' className='w-[26px] -mt-1'></img> : <img src='/assets/themeicon2.png' className='-mt-1 w-[26px]'></img>}
-          </button>
-        </div>
-      }
-      {auth.user &&
-        <div id='menudadireita' className="basis-1/3 flex gap-7 justify-end items-start">
-        <div className="flex flex-col justify-end gap-6 items-end mb-3 mt-5 leading-3">
-        <div>Logado como {auth.user.name}, <button onClick={handleLogout} className="px-7 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300">Sair.</button></div>
-          <div><Link to={'/userpreferences'} className="px-3 pb-0.5 pt-1 rounded border-t border-stone-300/60 hover:bg-zinc-100/50 transition-colors duration-300 tracking-tight">Minha conta</Link></div>
-        </div>
-        <button id='alternador tema' onClick={toggleTheme} className={`  -mt-2 w-11 text-[10px] flex flex-col items-center ${theme === 'dark' ? 'bg-[#c7e9db] text-black shadow shadow-black' : 'bg-violet-600 text-emerald-100 border border-black shadow shadow-black'}  rounded-b `}>
-            <div>tema</div>
-            <div className="-mt-[6px]">
-              {theme === 'light' ? <div className="tracking-[0.2em]">roxo</div> : 'claro'}
+              
+              <div id="sair" onClick={handleLogout}><Link to={''} 
+              className={`px-2 pb-0.5 pt-1 rounded border-t  
+              ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' : 'border-stone-900 hover:bg-zinc-500/60'}   transition-all duration-500 `}>Sair</Link>   
+              </div>
+              
             </div>
-            {theme === 'dark' ? <img src='/assets/themeicon.png' className='w-[26px] -mt-1'></img> : <img src='/assets/themeicon2.png' className='-mt-1 w-[26px]'></img>}
-        </button>
+
+          </div>
+        }
+
+        <button id="1-alternador tema" 
+        onClick={toggleTheme} 
+        className={`flex items-center rounded-bl transition-all duration-500 
+        ${theme === 'dark' ? 'bg-[#c7e9db]  text-black shadow shadow-black hover:shadow-lime-100' : 'bg-violet-800 text-emerald-100 border border-black shadow shadow-black hover:shadow-green-300'}`}>
+            <div id="imagem" className="w-[26px] mr-1 ml-2 my-1">
+              {theme === 'dark' ? <img src='/assets/themeicon.png'></img> : <img src='/assets/themeicon2.png'></img>}
+            </div>
+            </button>
+        
+
       </div>
-      }
     </div>
     )
 }
