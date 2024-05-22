@@ -1,0 +1,53 @@
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(58, 58, 58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  font-size: 35px;
+  
+}
+
+.dark-theme {
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(253, 253, 253);
+  }
+  
+  .light-theme {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(58, 58, 58);
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
+
+.dark-theme .swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.89);
+}
+
+.dark-theme .swiper-pagination-bullet-active {
+  background-color: rgba(255, 255, 255, 0.829);
+}
+
+.light-theme .swiper-pagination-bullet {
+  background-color: rgba(0, 0, 0, 0.603);
+}
+
+.light-theme .swiper-pagination-bullet-active {
+  background-color: rgba(0, 0, 0, 0.521);
+}
+

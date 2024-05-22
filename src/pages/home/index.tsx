@@ -9,15 +9,18 @@ import CarouselComponent from "../../layout/ProductsDisplay/NewestProducts";
 
 export default function Home() {
   const { theme } = useTheme();
-
+ 
 
   return (
     <>
       <Navbar/>
-      <div id='background' className={` min-h-[550px] min-w-[600px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b ${theme === 'dark' ? ' to-bgdarkblue/70 from-bgdarkpurple' : 'from-gray-200 via-emerald-100 to-gray-400'}  `}>
+      <div id='background' 
+      className={` min-h-[550px] min-w-[600px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
+      ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% ' 
+      : 'from-gray-200 via-emerald-100 to-gray-400'}  `}>
         
-        <div id="grande caixa que contém a grade" className="mt-36  gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
-          
+        <div id="grande caixa que contém a grade" className="mt-48  gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
+
           <div id="novidades" className="col-span-3 w-full h-40 "><CarouselComponent/></div>
 
           <div id="conteiner boas vindas" className="flex flex-col justify-center w-full h-full col-span-2 row-span-5 rounded">
@@ -26,8 +29,8 @@ export default function Home() {
             </div>
           </div>          
           
-          <div id="lista mais vendidos" className={` ${theme === 'dark' ? 'bg-black/50 text-[#c5c0c0]' : 'bg-white/30 text-black'} flex font-mono text-xl justify-center border border-zinc-800 row-span-5 w-full h-full rounded`}><div className="mt-5">lista mais vendidos</div>
-            <div id="lista produtos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mt-36 w-fit h-fit">
+          <div id="lista mais vendidos" className={` ${theme === 'dark' ? 'bg-black/50 text-[#c5c0c0]' : 'bg-white/30 text-black'} flex font-mono text-xl justify-center border border-zinc-800 row-span-5 w-full h-full rounded`}><div className="mt-5"></div>
+            <div id="lista produtos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
               <div className=""><ProductDisplay productId={1} /></div>
               <div className=""><ProductDisplay productId={2} /></div>
               <div className=""><ProductDisplay productId={3} /></div>
