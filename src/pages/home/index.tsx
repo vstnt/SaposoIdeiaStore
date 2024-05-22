@@ -1,8 +1,9 @@
 import Navbar from "../../layout/components/Navbar";
-import ConteinerProduto from "../../layout/components/ConteinersProdutos";
+//import ConteinerProduto from "../../layout/components/ConteinersProdutos";
 import Footer from "../../layout/components/Footer";
 import { useTheme } from "../../context/useTheme";
 import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
+import CarouselComponent from "../../layout/ProductsDisplay/NewestProducts";
 
 
 
@@ -15,9 +16,9 @@ export default function Home() {
       <Navbar/>
       <div id='background' className={` min-h-[550px] min-w-[600px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b ${theme === 'dark' ? ' to-bgdarkblue/70 from-bgdarkpurple' : 'from-gray-200 via-emerald-100 to-gray-400'}  `}>
         
-        <div id="grande caixa que contém a grade" className="mt-32  gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
+        <div id="grande caixa que contém a grade" className="mt-36  gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
           
-          <div id="novidades" className="col-span-3 w-full h-40 "><ConteinerProduto/></div>
+          <div id="novidades" className="col-span-3 w-full h-40 "><CarouselComponent/></div>
 
           <div id="conteiner boas vindas" className="flex flex-col justify-center w-full h-full col-span-2 row-span-5 rounded">
             <div className="text-7xl text-black p-4">

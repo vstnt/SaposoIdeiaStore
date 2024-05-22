@@ -3,14 +3,7 @@ import { useParams } from "react-router-dom";
 // import { getProducts } from "../../services/localStorageServices";
 import { useEffect, useState } from "react";
 import axiosClient from "../../api/axiosClient";
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  imageUrl: string;
-}
+import { Product } from "../../types/Product";
 
 const ProductDetails = () => {
   const { id } = useParams<{id: string}>();
