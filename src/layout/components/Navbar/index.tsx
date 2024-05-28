@@ -83,16 +83,16 @@ export default function Navbar() {
       className="basis-1/3 h-full flex justify-end items-start  ">
 
         {!auth.user && <div id="2)botões - login; crie sua conta" // CASO usuário não logado
-        className="flex gap-2 self-end justify-items-end mb-2 -mr-8 "> 
+        className="flex gap-3 self-end justify-items-end mb-2 -mr-8 "> 
             
             <div><Link to={'/login'} 
-            className={` px-7 pb-0.5 pt-1 rounded-sm border-t border-x transition-all duration-500 
+            className={` px-6 pb-0.5 pt-1 rounded-sm border-t  transition-all duration-500 
             ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
             : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
               login</Link></div>
             
             <div><Link to={'/register'} 
-            className={` px-4 pb-0.5 pt-1 rounded-sm border-t border-x transition-all duration-500 tracking-tight
+            className={` px-4 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500 tracking-tight
             ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
             : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
               crie sua conta</Link></div>
@@ -110,7 +110,7 @@ export default function Navbar() {
               : 'border-gray-800'} `}>
               Oi, {auth.user.name}</div>
             
-            <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-2 justify-end -mr-10">
+            <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
               
               <div id="minha conta"><Link to={'/userpreferences'} 
               className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  

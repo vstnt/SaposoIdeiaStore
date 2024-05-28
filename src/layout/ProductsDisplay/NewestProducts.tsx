@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { Product } from "../../types/Product";
 import axiosClient from '../../api/axiosClient';
 import { Link } from "react-router-dom";
@@ -14,8 +14,7 @@ import { Swiper as SwiperInstance } from 'swiper/types';
 import '../../styles/swiper.css';
 
 
-
-const CarouselComponent: React.FC = () => {
+export default function NewestProducts () {
   const [products, setProducts] = useState<Product[]>([]);
   const { theme } = useTheme()
   const swiperRef = useRef<SwiperInstance | null>(null); // Referência para o Swiper com tipagem correta
@@ -26,7 +25,15 @@ const CarouselComponent: React.FC = () => {
     .catch(error => console.error('Error fetching products:', error));
   }, []);
 
-  const handleVisibilityChange = useCallback(() => {
+  const truncateDescription = (description: string, maxWords: number) => {
+    const words = description.split(' ');
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(' ') + ' [...]';
+    }
+    return description;
+  };
+
+  const handleVisibilityChange = useCallback(() => { // daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que monta o componente
     if (swiperRef.current) {
       if (document.visibilityState === 'visible') {
         swiperRef.current.slideToLoop(0, 0); // Força o swiper a voltar para o início
@@ -63,27 +70,27 @@ const CarouselComponent: React.FC = () => {
     <div id='caixa completa relative, pra poder faazer as caixas transbordando a caixa' 
     className='relative w-full h-full'>
       <div id='caixa completa' 
-      className={` bg-black border border-zinc-800  p-1 overflow-hidden rounded-md font-mono text-[17px] w-full h-full
-      ${theme === 'dark' ? 'bg-black/50 text-neutral-200' 
-      : 'bg-white/30 text-black'}`}>
+      className={` bg-black border  p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
+      ${theme === 'dark' ? 'bg-black/30 border-slate-400 text-neutral-200' 
+      : 'bg-white/30 text-black border-zinc-800'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-          className={`absolute z-50 bottom-0 right-0 -m-2 -mr-5 mt-3 h-7 ml-1 flex items-center rounded px-4 py-4 text-[2.3vw] transition-colors duration-300 
+          className={`absolute z-50 bottom-0 right-0 -m-2 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-4 py-4 text-[2.3vw] transition-colors duration-300 
           ${theme === 'dark' ? ' bg-zinc-900/50 border border-emerald-100' 
           : 'bg-zinc-100 text-stone-900 border border-black'} `}>
               <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div>
             
         </div>
 
-        <Link id='link lista completa' to={'/products'} 
-        className={`absolute z-50 top-0 right-0 justify-self-end px-3 pr-8 pt-6 pb-2 -mt-5 -mr-6 rounded border-b-2 border-l border-stone-400 transition-colors duration-300 tracking-tight hover:underline
+        <Link id='botão lista completa' to={'/products'} 
+        className={`absolute z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border-b-2 border-l border-stone-400 transition-colors duration-300 tracking-tight hover:underline
             ${theme === 'dark' ? '' 
             : ''} `}>
           lista completa</Link>
 
           <Swiper
             onSwiper={setSwiperRef} // Atribui a referência do Swiper usando callback ref
-            spaceBetween={50}
+            spaceBetween={10}
             centeredSlides={true}
             autoplay={{
               delay: 2500,
@@ -108,7 +115,7 @@ const CarouselComponent: React.FC = () => {
                       <img id='imagem produto' className='object-contain max-h-full rounded-lg col-span-1 row-span-3 justify-self-center -ml-16 flex items-center' src={product.imageUrl} alt={product.name} />
                       <div id='nome, descrição' className='col-span-1 row-span-2' >
                         <div className='text-5xl'>{product.name}</div>
-                        <p>{product.description}</p>
+                        <p>{truncateDescription(product.description, 16)}</p>
                       </div>
                       <div id='price' className='text-2xl mt-2'>{product.price}</div>
                       <div id='ver mais' className='col-start-2 flex items-end'>
@@ -126,6 +133,4 @@ const CarouselComponent: React.FC = () => {
     </div>
     
   );
-};
-
-export default CarouselComponent;
+}
