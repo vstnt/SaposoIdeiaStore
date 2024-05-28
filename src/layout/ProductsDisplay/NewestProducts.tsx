@@ -13,7 +13,6 @@ import { Swiper as SwiperInstance } from 'swiper/types';
 
 import '../../styles/swiper.css';
 
-
 export default function NewestProducts () {
   const [products, setProducts] = useState<Product[]>([]);
   const { theme } = useTheme()
@@ -67,25 +66,25 @@ export default function NewestProducts () {
 
   
   return (
-    <div id='caixa completa relative, pra poder faazer as caixas transbordando a caixa' 
+    <div id='caixa completa relative, pra poder fazer as caixas transbordando a caixa' 
     className='relative w-full h-full'>
       <div id='caixa completa' 
-      className={` bg-black border  p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
+      className={` bg-black border shadow-md p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
       ${theme === 'dark' ? 'bg-black/30 border-slate-400 text-neutral-200' 
-      : 'bg-white/30 text-black border-zinc-800'}`}>
+      : 'bg-slate-100/90 text-black border-zinc-500'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-          className={`absolute z-50 bottom-0 right-0 -m-2 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-4 py-4 text-[2.3vw] transition-colors duration-300 
-          ${theme === 'dark' ? ' bg-zinc-900/50 border border-emerald-100' 
-          : 'bg-zinc-100 text-stone-900 border border-black'} `}>
+          className={`absolute shadow z-50 bottom-0 right-0 -m-2 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-[2.3vw] transition-colors duration-300 
+          ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
+          : 'bg-zinc-100 text-stone-900 border border-zinc-700'} `}>
               <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div>
             
         </div>
 
         <Link id='botão lista completa' to={'/products'} 
-        className={`absolute z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border-b-2 border-l border-stone-400 transition-colors duration-300 tracking-tight hover:underline
+        className={` absolute shadow z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border border-stone-400 transition-colors duration-300 tracking-tight hover:underline
             ${theme === 'dark' ? '' 
-            : ''} `}>
+            : 'bg-neutral-100'} `}>
           lista completa</Link>
 
           <Swiper
@@ -93,7 +92,7 @@ export default function NewestProducts () {
             spaceBetween={10}
             centeredSlides={true}
             autoplay={{
-              delay: 2500,
+              delay: 10000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -114,12 +113,12 @@ export default function NewestProducts () {
                       
                       <img id='imagem produto' className='object-contain max-h-full rounded-lg col-span-1 row-span-3 justify-self-center -ml-16 flex items-center' src={product.imageUrl} alt={product.name} />
                       <div id='nome, descrição' className='col-span-1 row-span-2' >
-                        <div className='text-5xl'>{product.name}</div>
-                        <p>{truncateDescription(product.description, 16)}</p>
+                        <div className='text-[2.5rem]'>{product.name}</div>
+                        <p className='leading-none '>{truncateDescription(product.description, 16)}</p>
                       </div>
                       <div id='price' className='text-2xl mt-2'>{product.price}</div>
-                      <div id='ver mais' className='col-start-2 flex items-end'>
-                        <div className='underline'><Link to={`/product/${product.id}`}>ver mais</Link></div>
+                      <div id='botao ver mais' className='col-start-2 flex items-end hover:underline mb-7 text-[15px]'>
+                        <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
 
                     </div>

@@ -138,7 +138,9 @@ export default function Navbar() {
         : 'bg-violet-800/70 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
             <div id="imagem" 
             className="w-[23px] mr-1 ml-2 my-1">
-            {theme === 'dark' ? <img src='/assets/themeicon.png'></img> : <img src='/assets/themeicon2.png'></img>}
+            {theme === 'dark' ? 
+              <img src='/assets/themeicon.png'></img> 
+              : <img src='/assets/themeicon2.png'></img>}
             </div>
         </button>
         
