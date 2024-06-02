@@ -70,7 +70,7 @@ export default function NewestProducts () {
     className='relative w-full h-full'>
       <div id='caixa completa' 
       className={` bg-black border shadow-md p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
-      ${theme === 'dark' ? 'bg-black/30 border-slate-400 text-neutral-200' 
+      ${theme === 'dark' ? 'bg-black/30 border-slate-400/30 text-neutral-200' 
       : 'bg-slate-100/90 text-black border-zinc-500'}`}>
 
         <div id='novidades.novelties.nouvelles' 
@@ -82,7 +82,7 @@ export default function NewestProducts () {
         </div>
 
         <Link id='botão lista completa' to={'/products'} 
-        className={` absolute shadow z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border border-stone-400 transition-colors duration-300 tracking-tight hover:underline
+        className={` absolute shadow z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border border-stone-400/60 transition-colors duration-300 tracking-tight hover:underline
             ${theme === 'dark' ? '' 
             : 'bg-neutral-100'} `}>
           lista completa</Link>
@@ -113,7 +113,9 @@ export default function NewestProducts () {
                       
                       <img id='imagem produto' className='object-contain max-h-full rounded-lg col-span-1 row-span-3 justify-self-center -ml-16 flex items-center' src={product.imageUrl} alt={product.name} />
                       <div id='nome, descrição' className='col-span-1 row-span-2' >
-                        <div className='text-[2.5rem]'>{product.name}</div>
+                        <div className={`text-[2.3rem] italic
+                        ${theme === 'dark' ? 'text-neutral-300' 
+                        : 'text-black'}`}>{product.name}</div>
                         <p className='leading-none '>{truncateDescription(product.description, 16)}</p>
                       </div>
                       <div id='price' className='text-2xl mt-2'>{product.price}</div>

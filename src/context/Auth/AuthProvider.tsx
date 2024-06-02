@@ -5,16 +5,21 @@ import { AuthContext } from "./AuthContext";
 
 
 
-
+// esse provider envolve as páginas renderizadas (veja em navigation)
 export const AuthProvider = ({ children } : { children: JSX.Element }) => {
-    const [user, setUser] = useState<User | null>(null);
     const api = useApi();
+    const [user, setUser] = useState<User | null>(null);
+    const setToken = (token: string) => {
+        localStorage.setItem('authToken', token);
+    }
 
-    const [initialized, setInitialized] = useState(false);
 
-    useEffect(() => {
+        const [initialized, setInitialized] = useState(false);
+    useEffect(() => {  // esse useEffect serve para checar se há um token no localStorage, valida-lo e manter a sessão desse usuário
         if (!initialized) { // adicionei essa condição por indicação do GPT. Tava dando um problema de loop de renderização
-            // infinita. Ficava chamando constantemente o RequireAuth. Não entendi bem o pq e nem exatamente pq isso resolveu...
+            // infinita. Ficava chamando constantemente o RequireAuth. Não entendi bem o pq e nem exatamente pq isso resolveu... 
+            //Agora voltei a ver isso, não lembrava, mas acho que tudo que tem esse "initialized" foi a solução do gpt. 
+            // Lembrando que o problema surgiu na implementação instruida pelo video que assisti (aquele que a dé tinha mandado, e não por criação do gpt)
             const validateToken = async () => {
                 const storageData = localStorage.getItem('authToken');
                 if(storageData) {
@@ -31,15 +36,12 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
 
 
     const signin = async (email: string, password: string) => {
-        console.log("signin chamado")
+        
         const data = await api.signin(email, password);
-        console.log("valor de data criado com api.signin")
 
         if(data.user && data.token) {
-            console.log("data.user e data.token existem")
             setUser(data.user);
             setToken(data.token);
-            console.log("setUser e setToken aplicados")
             return true
         }
         return false;
@@ -52,9 +54,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
         await api.logout();
     }
 
-    const setToken = (token: string) => {
-        localStorage.setItem('authToken', token);
-    }
+
 
     return (
         <AuthContext.Provider value={{user, signin, signout }}>

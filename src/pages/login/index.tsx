@@ -26,6 +26,9 @@ export default function Login() {
         alert("Erro de Login.")
       }
     }
+    else{
+      alert("Insira um nome de usuário e uma senha.")
+    }
   }
 
 
@@ -51,6 +54,7 @@ export default function Login() {
                 </div>
               </div>
               <div id='inputs' className=" flex flex-col items-center justify-center gap-4">
+                
                 <input
                   placeholder="Email"
                   className="placeholder-gray-500 shadow-slate-500 mb-2 text-sm bg-white border-1 rounded-full w-2/3 pl-4 p-2 shadow-md mx-auto text-black"
