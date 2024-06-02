@@ -7,7 +7,7 @@ import axiosClient from "../api/axiosClient";
 export const useApi = () => ({
     validateToken: async (token: string) => {
         return {
-            user: { id: 3, name: 'Ricardo', email: 'ric@gmail.com' },
+            user: { id: 3, name: 'teste', email: 'ric@gmail.com' },
         }
         const response = await axiosClient.post('api/validate', { token });
         return response.data;
