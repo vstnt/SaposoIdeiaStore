@@ -10,11 +10,10 @@ import { useTheme } from "../../context/useTheme";
 export default function Login() {
   const navigate = useNavigate();
   const { theme } = useTheme()
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const auth = useContext(AuthContext)
+
 
   const handleLogin = async () => {
     if(email && password) {
@@ -22,14 +21,13 @@ export default function Login() {
       if(isLogged) {
         navigate('/');
       }
-      else {
-        alert("Erro de Login.")
+      else {alert("Login falhou. Por favor, cheque suas credenciais e tente novamente.")
       }
     }
-    else{
-      alert("Insira um nome de usuário e uma senha.")
+    else{alert("Insira um nome de usuário e uma senha.")
     }
   }
+
 
 
   return (
@@ -41,6 +39,7 @@ export default function Login() {
           </div>
           <div id='área do formulário' className="min-w-[250px] w-1/2 h-full bg-purple-800 flex flex-col items-center justify-center">
             <div className="flex flex-col justify-center bg-violet-200 px-4 w-full rounded-md h-full">
+              
               <div id='img e texto' className="mb-10 font-semibold text-3xl p-2 text-center w-full text-slate-800">
                 <div className="w-full flex items-center justify-center ">
                   <img
@@ -53,8 +52,9 @@ export default function Login() {
                   Entre na sua conta
                 </div>
               </div>
-              <div id='inputs' className=" flex flex-col items-center justify-center gap-4">
-                
+              
+              <div id='formulário'
+              className=" flex flex-col items-center justify-center gap-4">
                 <input
                   placeholder="Email"
                   className="placeholder-gray-500 shadow-slate-500 mb-2 text-sm bg-white border-1 rounded-full w-2/3 pl-4 p-2 shadow-md mx-auto text-black"
@@ -69,12 +69,12 @@ export default function Login() {
                   onChange={e => setPassword(e.target.value)}
                 />
                 <button 
-                  className={` mt-4 text-sm ${theme === 'dark' ? 'bg-indigo-950 text-white' : 'bg-indigo-300 border-2 border-gray-500 text-black'} w-1/3 p-2 shadow-md rounded-xl `}
-                  onClick={handleLogin}>
+                  onClick={handleLogin}
+                  className={` mt-4 text-sm ${theme === 'dark' ? 'bg-indigo-950 text-white' : 'bg-indigo-300 border-2 border-gray-500 text-black'} w-1/3 p-2 shadow-md rounded-xl `}>
                   Entrar
                 </button>
-
               </div>
+
             </div>
           </div>          
         </div>

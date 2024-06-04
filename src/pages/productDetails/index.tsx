@@ -16,7 +16,6 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await axiosClient.get(`/api/products/${productId}`)
-        console.log('Product data', response.data);
         setProduct(response.data)
       } catch (error) {
         console.error('Falha em recuperar produto', error)

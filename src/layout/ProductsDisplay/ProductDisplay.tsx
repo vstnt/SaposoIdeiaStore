@@ -56,7 +56,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
       </div>
       <div className="basis-2/6 flex flex-col items-end justify-between text-xs">
         
-        <p id="preço" className="mt-2 mr-3 font-semibold flex"><div className="w-20">R$ {product.price}</div></p>
+        <div id="preço" className="mt-2 mr-3 font-semibold flex"><div className="w-20">R$ {product.price}</div></div>
         
         <button id="botão ver mais" onClick={() => redirect()} 
         className={` rounded px-1 py-1 shadow-lg hover:underline

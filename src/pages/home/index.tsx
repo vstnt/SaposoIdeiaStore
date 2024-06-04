@@ -44,7 +44,7 @@ export default function Home() {
           <div className="relative">
             <div id="caixa mais vendidos" 
             className={` flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
-            ${theme === 'dark' ? 'bg-black/30  border-slate-400' 
+            ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
             : 'bg-white/30 border-zinc-500'} `}>
               
               <div id="caixinha mais vendidos superior" 

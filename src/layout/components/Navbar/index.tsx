@@ -44,7 +44,7 @@ export default function Navbar() {
     style={{ transition: 'opacity 0.3s' }} 
     className={`transition-all duration-500 z-[999] fixed flex items-start border-b min-h-[90px] max-h-[110px] w-full h-[6.5vw] text-[16px]  text-neutral-900 font-mono 
     ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
-    ${ theme === 'dark' ? 'border-indigo-500 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400' 
+    ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400' 
     : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
       
       <div id='Menudaesquerda' className="h-full basis-1/3 flex items-start gap-5">
@@ -80,7 +80,7 @@ export default function Navbar() {
       </div>
 
       <div id='Menudadireita' 
-      className="basis-1/3 h-full flex justify-end items-start  ">
+      className="basis-1/3 h-full flex justify-end items-start relative">
 
         {!auth.user && <div id="2)botões - login; crie sua conta" // CASO usuário não logado
         className="flex gap-3 self-end justify-items-end mb-2 -mr-8 "> 
@@ -102,10 +102,10 @@ export default function Navbar() {
 
         {auth.user && // CASO usuário logado
           <div id="Menu da direita, primeira parte"
-          className="h-full grid gap-1 justify-items-end mr-2  ">
+          className="h-full grid gap-1 justify-items-end mr-2">
               
             <div id="parte superior. Oi, Usuário" 
-            className={`bg-gray-400 border  flex items-center px-3 rounded h-fit text-xs mr-56 mt-3
+            className={`bg-gray-400 border  flex items-center px-3 rounded h-fit text-xs mt-3 absolute left-10
             ${theme === 'dark' ? 'border-gray-300' 
               : 'border-gray-800'} `}>
               Oi, {auth.user.name}</div>
