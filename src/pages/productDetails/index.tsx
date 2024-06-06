@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosClient from "../../api/axiosClient";
 import { Product } from "../../types/Product";
+import AddToCartButton from "../Cart/AddToCartButton";
+import Footer from "../../layout/components/Footer";
 
 const ProductDetails = () => {
   const { id } = useParams<{id: string}>();
@@ -32,6 +34,7 @@ const ProductDetails = () => {
     <>
       <Navbar/>
       <p className="pt-32">Produto não encontrado</p>
+      <Footer/>
     </>
     )
   }
@@ -41,12 +44,13 @@ const ProductDetails = () => {
       <>
         <Navbar/>
         <p className="pt-32">Produto não encontrado</p>
+        <Footer/>
       </>
       )
   }
 
-  console.log('Rendering product', product);
   
+
   return (
     <>
       <Navbar/>
@@ -63,12 +67,16 @@ const ProductDetails = () => {
             <h2 className="text-[60px] mb-12  justify-self-center mr-24">{product.name}</h2>
             <p className="text-white italic px-2">{product.description}</p>
             <p className="justify-self-end mt-12 mr-4">R$ {product.price}</p>    
-            <div className="shadow-lg mt-2 mb-2 mr-1 justify-self-end"><button className="shadow-inner shadow-green-400 text-sm text-green-900 italic bg-indigo-300 hover:bg-indigo-100 hover:shadow-white duration-300 rounded px-3">add carrinho</button></div>      
+            <div className="shadow-lg mt-2 mb-2 mr-1 justify-self-end">
+              <button className="shadow-inner shadow-green-400 text-sm text-green-900 italic bg-indigo-300 hover:bg-indigo-100 hover:shadow-white duration-300 rounded px-3">add carrinho</button>
+              <AddToCartButton product_id={product.id} />
+            </div>      
           </div>
           
           
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

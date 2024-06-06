@@ -1,7 +1,7 @@
 import Navbar from "../../layout/components/Navbar";
 //import ConteinerProduto from "../../layout/components/ConteinersProdutos";
 import Footer from "../../layout/components/Footer";
-import { useTheme } from "../../context/useTheme";
+import { useTheme } from "../../context/Theme/useTheme";
 import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
 import NewestProducts from "../../layout/ProductsDisplay/NewestProducts";
 import { useState, useEffect } from "react";

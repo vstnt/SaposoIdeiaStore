@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/Auth/AuthContext";
-import { useTheme } from "../../../context/useTheme";
+import { useTheme } from "../../../context/Theme/useTheme";
 
 
 export default function Navbar() {
@@ -112,11 +112,13 @@ export default function Navbar() {
             
             <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
               
-              <div id="minha conta"><Link to={'/userpreferences'} 
-              className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
-              ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-              : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'} `}>
-                Minha Conta</Link>
+              <div id="minha conta">
+                <Link to={'/userpreferences'} 
+                className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
+                ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
+                : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'} `}>
+                Minha Conta
+                </Link>
               </div>
               
               <div id="sair" onClick={handleLogout}><Link to={''} 

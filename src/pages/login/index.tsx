@@ -3,7 +3,7 @@ import Navbar from "../../layout/components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import Footer from "../../layout/components/Footer";
-import { useTheme } from "../../context/useTheme";
+import { useTheme } from "../../context/Theme/useTheme";
 
 
 

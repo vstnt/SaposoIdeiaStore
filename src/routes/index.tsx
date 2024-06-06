@@ -1,11 +1,12 @@
+import { RequireAuth } from "../context/Auth/RequireAuth";
+import { RequireNotAuth } from "../context/Auth/RequireNotAuth";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Products from "../pages/products";
 import Register from "../pages/register";
 import ProductDetails from "../pages/productDetails";
 import UserPreferences from "../pages/userPreferences";
-import { RequireAuth } from "../context/Auth/RequireAuth";
-import { RequireNotAuth } from "../context/Auth/RequireNotAuth";
+import Cart from "../pages/Cart/Cart";
 
 
 
@@ -33,6 +34,10 @@ export const routes = [
     },
     {
         link: '/userpreferences',
-        component:<RequireAuth><UserPreferences /></RequireAuth>
+        component:<RequireAuth><UserPreferences/></RequireAuth>
+    },
+    {
+        link: '/cart',
+        component:<RequireAuth><Cart/></RequireAuth>
     }
 ]

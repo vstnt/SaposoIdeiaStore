@@ -1,7 +1,7 @@
 import Footer from "../../layout/components/Footer";
 import Navbar from "../../layout/components/Navbar";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../context/useTheme";
+import { useTheme } from "../../context/Theme/useTheme";
 import { useState } from "react";
 import { useApi } from "../../hooks/useApi";
 

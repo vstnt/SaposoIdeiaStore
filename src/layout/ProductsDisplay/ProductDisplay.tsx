@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
 import { Product } from "../../types/Product";
-import { useTheme } from "../../context/useTheme";
+import { useTheme } from "../../context/Theme/useTheme";
 
 
 

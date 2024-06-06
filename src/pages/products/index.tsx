@@ -1,6 +1,6 @@
 import Footer from "../../layout/components/Footer";
 import Navbar from "../../layout/components/Navbar";
-import { useTheme } from "../../context/useTheme";
+import { useTheme } from "../../context/Theme/useTheme";
 
 export default function Products() {
   const { theme } = useTheme()
