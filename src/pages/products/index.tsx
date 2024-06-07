@@ -1,9 +1,24 @@
 import Footer from "../../layout/components/Footer";
 import Navbar from "../../layout/components/Navbar";
 import { useTheme } from "../../context/Theme/useTheme";
+import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
+import NewestProducts from "../../layout/ProductsDisplay/NewestProducts";
+import { useState, useEffect } from "react";
+import { Product } from "../../types/Product";
+import axiosClient from "../../api/axiosClient";
+
+
+
 
 export default function Products() {
   const { theme } = useTheme()
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axiosClient.get('/api/products')
+    .then(response => setProducts(response.data))
+    .catch(error => console.error('Error fetching products:', error));
+  }, []);
 
     return (
       <>
@@ -16,32 +31,14 @@ export default function Products() {
               <div id="menu de categorias">menu de categorias | menu de categorias | categorias | categorias </div>
             </div>
             
-            <div id="grade de produtos" className="mb-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-              <div className={` w-56 h-24 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}></div>
-
-
-
+            <div id="grade de produtos" className="mb-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+              {products.map(product => (
+                <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={14} truncationD={7} /></div>
+              ))}
             </div>
+
             <div>páginas. 1, 2, 3 ... </div>
-            <div id="carrossel" className={` flex items-center justify-center w-[85%] h-40 mt-8 mb-8 rounded ${theme === 'dark' ? 'bg-slate-300/60' : 'bg-slate-600/60'}  `}>carrossel propagandas</div>
-
-
+            <div id="novidades" className="col-span-3 w-3/4 h-40 mt-8 mb-8"><NewestProducts/></div>
           
           </div>
         </div>

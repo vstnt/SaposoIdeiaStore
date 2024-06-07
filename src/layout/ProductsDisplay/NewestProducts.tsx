@@ -24,12 +24,19 @@ export default function NewestProducts () {
     .catch(error => console.error('Error fetching products:', error));
   }, []);
 
-  const truncateDescription = (description: string, maxWords: number) => {
+  const truncateWords = (description: string, maxWords: number) => {
     const words = description.split(' ');
     if (words.length > maxWords) {
       return words.slice(0, maxWords).join(' ') + ' [...]';
     }
     return description;
+  };
+
+  const truncateCharacters = (description: string, maxChars: number) => {
+    if (description.length > maxChars) {
+      return description.slice(0, maxChars) + '.' + ' [...]'; // Limita a descrição pelo número de caracteres
+    }
+    return description; // Retorna a descrição completa se estiver dentro do limite de caracteres
   };
 
   const handleVisibilityChange = useCallback(() => { // daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que monta o componente
@@ -116,9 +123,9 @@ export default function NewestProducts () {
                       className='col-span-1 row-span-2' >
                         <div className={`text-[2.5vw] italic
                         ${theme === 'dark' ? 'text-neutral-300' 
-                        : 'text-black'}`}>{product.name}</div>
+                        : 'text-black'}`}>{truncateCharacters(product.name, 14)}</div>
                         <p className='leading-none '>
-                          {truncateDescription(product.description, 16)}</p>
+                          {truncateWords(product.description, 16)}</p>
                       </div>
                       <div id='price' className='text-2xl mt-2'>{product.price}</div>
                       <div id='botao ver mais' className='col-start-2 flex items-end hover:underline mb-7 text-[15px]'>

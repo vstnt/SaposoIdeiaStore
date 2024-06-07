@@ -1,5 +1,4 @@
 import Navbar from "../../layout/components/Navbar";
-//import ConteinerProduto from "../../layout/components/ConteinersProdutos";
 import Footer from "../../layout/components/Footer";
 import { useTheme } from "../../context/Theme/useTheme";
 import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
@@ -41,7 +40,7 @@ export default function Home() {
             </div>
           </div>          
           
-          <div className="relative">
+          <div className="caixa mais vendidos relative">
             <div id="caixa mais vendidos" 
             className={` flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
             ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
@@ -60,7 +59,7 @@ export default function Home() {
 
               <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
                 {products.slice(0, 5).map(product => (
-                  <div key={product.id} className=""><ProductDisplay productId={product.id} /></div>
+                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={15} truncationD={13} /></div>
                 ))}
               </div>
             </div>

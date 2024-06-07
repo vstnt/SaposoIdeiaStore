@@ -6,10 +6,13 @@ import axiosClient from "../../api/axiosClient";
 import { Product } from "../../types/Product";
 import AddToCartButton from "../Cart/AddToCartButton";
 import Footer from "../../layout/components/Footer";
+import { useTheme } from "../../context/Theme/useTheme";
 
 const ProductDetails = () => {
   const { id } = useParams<{id: string}>();
   const productId = id ? parseInt(id) : null;
+  const { theme } = useTheme();
+
 
   const [product, setProduct] = useState<Product | null>(null)
 
@@ -54,22 +57,39 @@ const ProductDetails = () => {
   return (
     <>
       <Navbar/>
-      <div className="min-h-screen bg-gradient-to-r from-slate-400 to-violet-950 px-5 pt-28">
+      <div id="bg" 
+      className={` pb-24 pt-44 bg-gradient-to-r from-slate-400 to-violet-950 px-5
+      ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
+      : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
         
-        <div className=" flex gap-5 mt-7">
+        <div id="flex com tudo dessa página" 
+        className="flex gap-5 mt-7">
           
-          <div className="basis-5/12 h-[400px] flex justify-center items-start ">
-            <img id="imgproduto" className="max-h-full h-auto object-contain w-full rounded-lg" src={product.imageUrl}></img>
+          <div id="espaço p/ imagem" 
+          className="basis-5/12 h-[400px] flex justify-center items-start ">
+            <img id="imgproduto" 
+            className="max-h-full h-auto object-contain w-full rounded-lg" src={product.imageUrl}></img>
           </div>
           
 
-          <div className="text-green-400 bg-slate-900/50 border border-zinc-600 basis-7/12 rounded-lg p-2 grid content-start h-fit mr-5"> 
+          <div id="caixa com infos" 
+          className={` bg-slate-900/60 border border-zinc-600 basis-7/12 rounded-lg p-2 grid content-start h-fit mr-5
+            ${theme === 'dark' ? 'text-green-400' 
+            : 'text-emerald-300'} `}>
             <h2 className="text-[60px] mb-12  justify-self-center mr-24">{product.name}</h2>
             <p className="text-white italic px-2">{product.description}</p>
             <p className="justify-self-end mt-12 mr-4">R$ {product.price}</p>    
             <div className="shadow-lg mt-2 mb-2 mr-1 justify-self-end">
-              <button className="shadow-inner shadow-green-400 text-sm text-green-900 italic bg-indigo-300 hover:bg-indigo-100 hover:shadow-white duration-300 rounded px-3">add carrinho</button>
-              <AddToCartButton product_id={product.id} />
+
+              <button id="botão adicionar ao carrinho"
+              className={`shadow-inner px-3 py-1 text-sm text-green-900 italic duration-300 rounded
+              ${theme === 'dark' ? 'bg-slate-500/50 hover:bg-slate-500/80 text-white shadow-green-400/20 hover:shadow-green-400/5' 
+              : 'bg-slate-200 text-black hover:bg-gray-300 ' }`}>
+                <AddToCartButton product_id={product.id} />
+              </button>
+              
+
+
             </div>      
           </div>
           

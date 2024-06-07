@@ -11,7 +11,7 @@ const Cart: React.FC = () => {
   return (
     <>
         <Navbar/>
-        <div className="max-w-4xl mx-auto mt-8 p-4 bg-white rounded-lg shadow-md">
+        <div className="max-w-4xl mx-auto mt-8 p-4 bg-white rounded-lg shadow-md min-h-screen">
         <h2 className="text-2xl font-semibold mb-4">Carrinho de Compras</h2>
         {items.length === 0 ? (
             <div className="flex justify-center items-center h-32">
