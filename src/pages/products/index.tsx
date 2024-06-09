@@ -23,7 +23,10 @@ export default function Products() {
     return (
       <>
         <Navbar/>
-        <div id='bg' className={` pt-16 flex items-center justify-center bg-gradient-to-b ${theme === 'dark' ? 'from-bgdarkgray via-bgdarkpurple to-bgdarkblue' : 'text-black from-gray-200 via-emerald-100 to-gray-400'}  `}> 
+        <div id='bg' className={` pt-16 flex items-center justify-center bg-gradient-to-b 
+        ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
+        : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}> 
+          
           <div id='grande conteiner' className=" w-11/12 h-5/6 mb-20 mt-20  min-h-[600px] flex flex-col justify-between items-center">
             
             <div id="pesquisa e menu de categorias" className="mb-8 w-full flex flex-col items-center justify-center">
@@ -31,14 +34,14 @@ export default function Products() {
               <div id="menu de categorias">menu de categorias | menu de categorias | categorias | categorias </div>
             </div>
             
-            <div id="grade de produtos" className="mb-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+            <div id="grade de produtos" className="font-mono text-xl mb-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
               {products.map(product => (
-                <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={14} truncationD={7} /></div>
+                <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={22} truncationD={15} /></div>
               ))}
             </div>
 
             <div>páginas. 1, 2, 3 ... </div>
-            <div id="novidades" className="col-span-3 w-3/4 h-40 mt-8 mb-8"><NewestProducts/></div>
+            <div id="novidades" className="col-span-3 w-full h-40 mt-8 mb-8"><NewestProducts/></div>
           
           </div>
         </div>

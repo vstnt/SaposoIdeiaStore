@@ -29,7 +29,7 @@ export default function Home() {
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
       : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
         
-        <div id="grande caixa que contém a grade" className="mt-48  gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
+        <div id="grande caixa que contém a grade" className="mt-48 gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
 
           <div id="novidades" className="col-span-3 w-full h-40 "><NewestProducts/></div>
 
@@ -59,7 +59,7 @@ export default function Home() {
 
               <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
                 {products.slice(0, 5).map(product => (
-                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={15} truncationD={13} /></div>
+                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={19} truncationD={21} /></div>
                 ))}
               </div>
             </div>

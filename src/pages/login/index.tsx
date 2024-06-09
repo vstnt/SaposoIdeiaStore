@@ -33,7 +33,9 @@ export default function Login() {
   return (
     <>
       <Navbar/>
-      <div id='bg' className={` min-h-[550px] min-w-[600px] pt-20 w-full h-screen flex items-center justify-center bg-gradient-to-r ${theme === 'dark' ? 'from-slate-400 via-violet-800 via-25% to-violet-300 to-95%' : 'from-gray-200 via-emerald-200 via-25% to-gray-200 to-95%'}  `}>
+      <div id='bg' className={` min-h-[550px] min-w-[600px] pt-20 w-full h-screen flex items-center justify-center bg-gradient-to-r 
+      ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95%' 
+      : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}> 
         <div id='conteiner inteiro' className={` min-h-[420px] min-w-[560px] w-8/12 h-5/6 flex items-center justify-center rounded-lg overflow-hidden ${theme === 'dark' ? '' : 'border-2 border-gray-400'} `}>
           <div id='bg img do conteiner' className="bg-purple-600 w-2/4 h-full relative bg-login">
           </div>

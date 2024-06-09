@@ -36,7 +36,9 @@ export default function Register() {
   return (
     <>
       <Navbar/>
-      <div className={` min-h-[550px] min-w-[600px] pt-20 w-full h-screen flex items-center justify-center bg-gradient-to-r ${theme === 'dark' ? 'from-slate-400 via-violet-800 via-25% to-violet-300 to-95%' : 'from-gray-200 via-emerald-200 via-25% to-gray-200 to-95%'} `}>
+      <div className={` min-h-[550px] min-w-[600px] pt-20 w-full h-screen flex items-center justify-center bg-gradient-to-r 
+      ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95' 
+      : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'} `}>
         <div id='conteiner inteiro' className={` min-h-[420px] min-w-[560px] w-8/12 h-5/6 rounded-lg overflow-hidden flex items-center justify-center  ${theme === 'dark' ? '' : 'border-2 border-gray-400'} `}>
           <div id='área do formulário' className="min-w-[250px] w-1/3 h-full bg-purple-800 flex flex-col items-center justify-center">
             <div className="flex flex-col justify-center bg-violet-200 px-4 w-full rounded-md shadow-lg h-full">

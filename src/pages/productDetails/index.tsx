@@ -58,25 +58,25 @@ const ProductDetails = () => {
     <>
       <Navbar/>
       <div id="bg" 
-      className={` pb-24 pt-44 bg-gradient-to-r from-slate-400 to-violet-950 px-5
+      className={` pb-24 pt-44 bg-gradient-to-b px-5
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
       : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
         
         <div id="flex com tudo dessa página" 
         className="flex gap-5 mt-7">
           
-          <div id="espaço p/ imagem" 
+          <div id="área imagem" 
           className="basis-5/12 h-[400px] flex justify-center items-start ">
             <img id="imgproduto" 
             className="max-h-full h-auto object-contain w-full rounded-lg" src={product.imageUrl}></img>
           </div>
           
 
-          <div id="caixa com infos" 
+          <div id="caixa infos" 
           className={` bg-slate-900/60 border border-zinc-600 basis-7/12 rounded-lg p-2 grid content-start h-fit mr-5
             ${theme === 'dark' ? 'text-green-400' 
             : 'text-emerald-300'} `}>
-            <h2 className="text-[60px] mb-12  justify-self-center mr-24">{product.name}</h2>
+            <h2 className="text-[50px] mb-12  ml-14">{product.name}</h2>
             <p className="text-white italic px-2">{product.description}</p>
             <p className="justify-self-end mt-12 mr-4">R$ {product.price}</p>    
             <div className="shadow-lg mt-2 mb-2 mr-1 justify-self-end">

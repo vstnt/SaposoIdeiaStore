@@ -27,14 +27,14 @@ export default function NewestProducts () {
   const truncateWords = (description: string, maxWords: number) => {
     const words = description.split(' ');
     if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(' ') + ' [...]';
+      return words.slice(0, maxWords).join(' ') + '...';
     }
     return description;
   };
 
   const truncateCharacters = (description: string, maxChars: number) => {
     if (description.length > maxChars) {
-      return description.slice(0, maxChars) + '.' + ' [...]'; // Limita a descrição pelo número de caracteres
+      return description.slice(0, maxChars) + '...'; // Limita a descrição pelo número de caracteres
     }
     return description; // Retorna a descrição completa se estiver dentro do limite de caracteres
   };
@@ -76,7 +76,7 @@ export default function NewestProducts () {
     <div id='caixa completa relative, pra poder fazer as caixas transbordando a caixa' 
     className='relative w-full h-full'>
       <div id='caixa completa' 
-      className={` bg-black border shadow-md p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
+      className={`border shadow-md p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
       ${theme === 'dark' ? 'bg-black/30 border-slate-500 text-neutral-200' 
       : 'bg-slate-100/90 text-black border-zinc-500'}`}>
 
@@ -116,20 +116,23 @@ export default function NewestProducts () {
             >
               {products.map(product => (
                   <SwiperSlide key={product.id}>
-                    <div id='slide' className='grid grid-cols-3 grid-rows-3 h-full w-full'>
+                    <div id='slide' className=' flex h-full w-full'>
                       
-                      <img id='imagem produto' className='object-contain max-h-full rounded-lg col-span-1 row-span-3 justify-self-center -ml-16 flex items-center' src={product.imageUrl} alt={product.name} />
-                      <div id='nome, descrição' 
-                      className='col-span-1 row-span-2' >
-                        <div className={`text-[2.5vw] italic
-                        ${theme === 'dark' ? 'text-neutral-300' 
-                        : 'text-black'}`}>{truncateCharacters(product.name, 14)}</div>
-                        <p className='leading-none '>
-                          {truncateWords(product.description, 16)}</p>
+                      <div className=' py-1 basis-3/12 object-contain max-h-full flex justify-center'>
+                      <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
                       </div>
-                      <div id='price' className='text-2xl mt-2'>{product.price}</div>
-                      <div id='botao ver mais' className='col-start-2 flex items-end hover:underline mb-7 text-[15px]'>
-                        <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
+                      
+                      <div id='nome, descrição' 
+                      className=' basis-6/12 flex flex-col ' >
+                        <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
+                        <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 50)}</div>
+                      </div>
+
+                      <div className='flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
+                        <div id='price' className='text-2xl'>R$ {product.price}</div>
+                        <div id='botao ver mais' className='ml-14 p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
+                            <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
+                        </div>
                       </div>
 
                     </div>

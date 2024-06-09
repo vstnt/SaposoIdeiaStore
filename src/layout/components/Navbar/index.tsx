@@ -44,7 +44,7 @@ export default function Navbar() {
     style={{ transition: 'opacity 0.3s' }} 
     className={`transition-all duration-500 z-[999] fixed flex items-start border-b min-h-[90px] max-h-[110px] w-full h-[6.5vw] text-[16px]  text-neutral-900 font-mono 
     ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
-    ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-slate-400' 
+    ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-r from-violet-900 from-5% via-violet-400 to-violet-300' 
     : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
       
       <div id='Menudaesquerda' className="h-full basis-1/3 flex items-start gap-5">
@@ -76,7 +76,7 @@ export default function Navbar() {
       <div id='SaposoIdeiaStore' 
       className={` basis-1/3 flex items-center justify-center mt-auto rounded px-2 pb-0.5 mb-2 text-[3vw] h-[63%] transition-colors duration-300
       ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80' 
-      : 'text-emerald-100 bg-zinc-900/80  hover:bg-zinc-800'} `}>
+      : 'text-emerald-50 bg-zinc-900/80  hover:bg-zinc-800'} `}>
         <Link to={'/'} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
       </div>
 
