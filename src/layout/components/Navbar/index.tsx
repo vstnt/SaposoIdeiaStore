@@ -14,7 +14,7 @@ export default function Navbar() {
   const auth = useContext(AuthContext)
 
   const handleLogout = async () => {
-    await auth.signout();
+    auth.signout();
     window.location.href;
     navigate('/');
   }

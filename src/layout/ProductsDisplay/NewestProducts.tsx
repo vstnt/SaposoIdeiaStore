@@ -125,7 +125,7 @@ export default function NewestProducts () {
                       <div id='nome, descrição' 
                       className=' basis-6/12 flex flex-col ' >
                         <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
-                        <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 50)}</div>
+                        <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
                       </div>
 
                       <div className='flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
