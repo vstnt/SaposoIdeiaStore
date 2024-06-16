@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosClient from "../../api/axiosClient";
 import { Product } from "../../types/Product";
-import AddToCartButton from "../Cart/AddToCartButton";
+import AddToCartButton from "../cart/addToCartButton";
 import Footer from "../../layout/components/Footer";
 import { useTheme } from "../../context/Theme/useTheme";
 
