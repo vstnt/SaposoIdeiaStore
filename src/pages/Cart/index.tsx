@@ -39,7 +39,7 @@ const Cart: React.FC = () => {
 
                     <>
                         <div className='flex flex-col gap-3'>
-							<ul id='lista itens carrinho' className="space-y-4"> {cart?.items.map((item) => (
+							<ul id='lista itens carrinho' className="space-y-4"> {cart?.items.sort((a, b) => a.createdAt - b.createdAt).map((item) => (
 									
 									<li key={item.productId} 
 									className={`flex  rounded-lg

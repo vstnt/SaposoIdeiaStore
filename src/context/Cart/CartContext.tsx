@@ -1,11 +1,13 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
 import axiosClient from '../../api/axiosClient';
+import { useLocation } from 'react-router-dom';
 
 
 interface CartItem {
   productId: number;
   quantity: number;
-  price: number
+  price: number;
+  createdAt: number
 }
 
 interface Cart {
@@ -28,6 +30,44 @@ export const CartContext = createContext<CartContextData>({} as CartContextData)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Cart | null>(null);
+  const [authToken, setAuthToken] = useState(localStorage.getItem('authToken'));
+  const location = useLocation();
+
+
+
+
+  const updateItem = async (item_id: number, quantity: number) => {
+    try {
+      const response = await axiosClient.post('/api/cart/updateitem', {product_id: item_id, quantity: quantity})
+      return response.data.message
+    } catch (error) {
+      console.error('Erro ao alterar quantidade de do item: ', error);
+    }
+  }
+  
+  useEffect(() => {
+    const handleAuthChange = () => {
+      const token = localStorage.getItem('authToken');
+      setAuthToken(token);
+      if (token) {
+        loadCart(); // Load cart whenever the token changes
+      } else {
+        setCart(null); // Clear cart on logout
+      }
+    };
+
+    window.addEventListener('storage', handleAuthChange);
+
+    return () => {
+      window.removeEventListener('storage', handleAuthChange);
+    };
+  }, [cart, updateItem]);
+
+  useEffect(() => {
+    if (location.pathname === '/cart') {
+      loadCart(); // Force load cart when navigating to the cart page
+    }
+  }, [location, cart, updateItem]);
 
 
 
@@ -48,14 +88,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }
   
-  const updateItem = async (item_id: number, quantity: number) => {
-    try {
-      const response = await axiosClient.post('/api/cart/updateitem', {product_id: item_id, quantity: quantity})
-      return response.data.message
-    } catch (error) {
-      console.error('Erro ao alterar quantidade de do item: ', error);
-    }
-  }
+
 
   const removeItem = async (item_id: number) => {
     try {
@@ -65,11 +98,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-
-
-  useEffect(() => {
-    loadCart();
-  }, [localStorage.getItem('authToken'), cart, updateItem]);
 
   
   return (
