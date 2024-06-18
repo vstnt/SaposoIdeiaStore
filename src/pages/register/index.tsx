@@ -1,9 +1,7 @@
-import Footer from "../../layout/components/Footer";
-import Navbar from "../../layout/components/Navbar";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from '../../hooks/useTheme';
 import { useState } from "react";
-import { useApi } from "../../hooks/useApi";
+import { useAuth } from "../../hooks/useAuth";
 
 
 
@@ -13,29 +11,27 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const { theme } = useTheme()
-  const api = useApi()
+  const auth = useAuth()
 
 
   const handleRegister = async () => {
     if(email && name && password) {
-      try {
-        api.register(email, name, password)
-        navigate('/')
-        alert('Registro bem sucedido')
-      } catch (error) {
-        console.error("Error during register (handleRegister): ", error);
-        alert(error)
+        const isRegistered = await auth.register(email, name, password)
+        if (isRegistered) {
+          navigate('/')
+          alert('Registro bem sucedido')
+        } else {
+          alert("Registro falhou. Por favor, insira um email e senha válidos e tente novamente.")
+        }
+      } else {
+        alert("Insira um email válido, um nome de usuário e uma senha.")
       }
-    }
-    else{alert("Insira um email válido, um nome de usuário e uma senha.")
-    }
   }
 
 
 
   return (
     <>
-      <Navbar/>
       <div className={` min-h-[550px] min-w-[600px] pt-48 pb-40 w-full h-full flex items-center justify-center bg-gradient-to-r 
       ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95' 
       : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'} `}>
@@ -88,10 +84,12 @@ export default function Register() {
 
             </div>
           </div>
-          <div id='bg img do conteiner' className="bg-purple-600 w-2/3 h-full relative bg-register"></div>
+          <div id='bg img do conteiner' 
+          className="bg-purple-600 w-2/3 h-full relative bg-cover bg-register"
+          style={{ backgroundImage: `url('/assets/bgreg.jpg')` }} >
+          </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 }

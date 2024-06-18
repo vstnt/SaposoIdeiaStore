@@ -1,16 +1,13 @@
-import { useContext } from 'react'
-import Navbar from '../../layout/components/Navbar'
-import { AuthContext } from '../../context/Auth/AuthContext'
 import { Link } from 'react-router-dom'
-import { useTheme } from '../../context/Theme/useTheme'
+import { useTheme } from '../../hooks/useTheme';
+import { useAuth } from '../../hooks/useAuth'
 
 const UserPreferences = () => {
-  const auth = useContext(AuthContext)
+  const auth = useAuth()
   const { theme } = useTheme()
 
   return (
     <>
-      <Navbar/>
       <div className={`pb-24 pt-44 bg-gradient-to-b px-5 min-h-[80vh]
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
       : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
@@ -31,7 +28,6 @@ const UserPreferences = () => {
           
         </div>
         
-
       </div>
     </>  
   )

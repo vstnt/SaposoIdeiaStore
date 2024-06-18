@@ -1,16 +1,16 @@
-import Navbar from "../../layout/components/Navbar";
-import Footer from "../../layout/components/Footer";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from '../../hooks/useTheme';
 import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
 import NewestProducts from "../../layout/ProductsDisplay/NewestProducts";
 import { useState, useEffect } from "react";
-import axiosClient from "../../api/axiosClient";
+import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
 
 
 
 export default function Home() {
   const { theme } = useTheme();
+
+  // essa recuperação simples da lista de produtos teria de ser substituida por uma que obtivesse apenas o id dos produtos mais vendidos.
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar/>
       <div id='background' 
       className={` min-h-[550px] min-w-[600px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
@@ -84,7 +83,6 @@ export default function Home() {
         </div>
 
       </div>
-      <Footer/>
     </>
   )
 }

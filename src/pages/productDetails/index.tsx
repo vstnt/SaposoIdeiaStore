@@ -1,12 +1,10 @@
-import Navbar from "../../layout/components/Navbar";
-import Footer from "../../layout/components/Footer";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from '../../hooks/useTheme';
 import { useEffect, useState } from "react";
-import axiosClient from "../../api/axiosClient";
+import axiosClient from "../../axiosClient";
 import { useParams } from "react-router-dom";
 import { Product } from "../../types/Product";
-import { useCart } from "../../context/Cart/useCart";
-import { useAuth } from "../../context/Auth/useAuth";
+import { useCart } from '../../hooks/useCart';
+import { useAuth } from "../../hooks/useAuth";
 
 
 const ProductDetails = () => {
@@ -67,9 +65,7 @@ const ProductDetails = () => {
   if (!product) {
     return (
     <>
-      <Navbar/>
       <p className="pt-32">Produto não encontrado</p>
-      <Footer/>
     </>
     )
   }
@@ -77,9 +73,7 @@ const ProductDetails = () => {
   if (product.id == null) {
     return (
       <>
-        <Navbar/>
         <p className="pt-32">Produto não encontrado</p>
-        <Footer/>
       </>
       )
   }
@@ -93,7 +87,6 @@ const ProductDetails = () => {
 
   return (
     <>
-      <Navbar/>
       <div id="bg" 
       className={` pb-24 pt-44 bg-gradient-to-b px-5
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
@@ -122,7 +115,7 @@ const ProductDetails = () => {
             <div className=" mt-2 self-end mr-10">
 
               <button onClick={handleDecrease}
-              className={`border rounded-full w-6 h-6 leading-none transition-all duration-300 mr-3 pb-1
+              className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300 mr-3 pb-1
                 ${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
                 : 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
                   -</button>
@@ -133,7 +126,7 @@ const ProductDetails = () => {
               : 'bg-slate-100 border-slate-400'} `} />
               
               <button onClick={handleIncrease}
-              className={`border rounded-full w-6 h-6 -inset-16 leading-none transition-all duration-300 ml-3 mr-7 pb-1
+              className={`border font-bold rounded-full w-6 h-6 -inset-16 leading-none transition-all duration-300 ml-3 mr-7 pb-1
                 ${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
                 : 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
                   +</button>
@@ -155,7 +148,6 @@ const ProductDetails = () => {
           
         </div>
       </div>
-      <Footer/>
     </>
   );
 }

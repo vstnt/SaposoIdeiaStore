@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../../context/Auth/AuthContext";
-import { useTheme } from "../../../context/Theme/useTheme";
+import { useTheme } from "../../../hooks/useTheme"
+import { useAuth } from "../../../hooks/useAuth";
+
 
 
 export default function Navbar() {
@@ -10,8 +10,7 @@ export default function Navbar() {
   const [lastScrolY, setLastScrollY] = useState(window.scrollY);
   const [headerVisible,  setHeaderVisible] = useState(true);
   const navigate = useNavigate();
-
-  const auth = useContext(AuthContext)
+  const auth = useAuth()
 
   const handleLogout = async () => {
     auth.signout();

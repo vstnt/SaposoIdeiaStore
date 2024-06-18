@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Product } from "../../types/Product";
-import axiosClient from '../../api/axiosClient';
+import axiosClient from '../../axiosClient';
 import { Link } from "react-router-dom";
-import { useTheme } from '../../context/Theme/useTheme';
+import { useTheme } from '../../hooks/useTheme';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

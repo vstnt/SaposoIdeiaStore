@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import axiosClient from '../../api/axiosClient';
+import axiosClient from '../../axiosClient';
 import { useLocation } from 'react-router-dom';
+
 
 
 interface CartItem {
@@ -23,18 +24,13 @@ export interface CartContextData {
   clearCart: () => void;
 }
 
-
 export const CartContext = createContext<CartContextData>({} as CartContextData);
 
 
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Cart | null>(null);
-  const [authToken, setAuthToken] = useState(localStorage.getItem('authToken'));
   const location = useLocation();
-
-
-
 
   const updateItem = async (item_id: number, quantity: number) => {
     try {
@@ -48,7 +44,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const handleAuthChange = () => {
       const token = localStorage.getItem('authToken');
-      setAuthToken(token);
       if (token) {
         loadCart(); // Load cart whenever the token changes
       } else {

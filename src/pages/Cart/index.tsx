@@ -1,8 +1,6 @@
 import React from 'react';
-import Navbar from '../../layout/components/Navbar';
-import Footer from '../../layout/components/Footer';
-import { useTheme } from '../../context/Theme/useTheme';
-import { useCart } from '../../context/Cart/useCart';
+import { useTheme } from '../../hooks/useTheme';
+import { useCart } from '../../hooks/useCart';
 import ProductDisplayCart from '../../layout/ProductsDisplay/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +15,6 @@ const Cart: React.FC = () => {
 
   return (
     <>
-        <Navbar/>
         <div id='bg' className={`pb-24 pt-44 bg-gradient-to-b px-5 min-h-[80vh] flex justify-center
         ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
         : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>        
@@ -59,12 +56,12 @@ const Cart: React.FC = () => {
 
 												<div className=' ml-3 self-center flex flex-col gap-3  place-content-center'>
 													<button onClick={() => updateItem(item.productId, 1)} 
-													className={`border rounded-full w-6 h-6 leading-none transition-all duration-300
+													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
 													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
 													: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
 														+</button>
 													<button onClick={() => updateItem(item.productId, -1)}
-													className={`border rounded-full w-6 h-6 leading-none transition-all duration-300
+													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
 													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
 													: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
 														-</button>
@@ -122,7 +119,6 @@ const Cart: React.FC = () => {
             </div>
 
         </div>
-        <Footer/>    
     </>
   )
 }

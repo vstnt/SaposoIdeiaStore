@@ -1,6 +1,4 @@
-import Navbar from "../../layout/components/Navbar";
-import Footer from "../../layout/components/Footer";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from '../../hooks/useTheme';
 
 
 
@@ -10,7 +8,6 @@ export default function PurchaseCompleted() {
 
   return (
     <>
-      <Navbar/>
       <div id='background' 
       className={` min-h-[550px] min-w-[600px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
@@ -46,7 +43,6 @@ export default function PurchaseCompleted() {
         </div>
 
       </div>
-      <Footer/>
     </>
   )
 }

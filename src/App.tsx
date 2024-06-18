@@ -1,24 +1,10 @@
-import { ThemeProvider } from "./context/Theme/ThemeContext";
 import Navigation from "./navigation";
-import { initializeDatabase } from "./services/localStorageServices";
-import { useEffect } from "react";
-import Footer from "./layout/components/Footer";
+import { register } from 'swiper/element/bundle'; // Importa a função para registrar os elementos customizados do Swiper. Isso é tipo um registro para com o navegador...
 
-// Importa a função para registrar os elementos customizados do Swiper
-import { register } from 'swiper/element/bundle';
-// Registra os elementos customizados do Swiper
-register();
-
+register(); // Registra os elementos customizados do Swiper
 
 export default function App() {
-  useEffect(() => {
-    initializeDatabase();
-  }, []);
-
   return (
-    <ThemeProvider>
       <Navigation/>
-      <Footer/>
-    </ThemeProvider>
   )
 }

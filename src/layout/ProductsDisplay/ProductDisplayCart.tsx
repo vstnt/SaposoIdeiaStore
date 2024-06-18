@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosClient from "../../api/axiosClient";
+import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 interface ProductDisplayProps {
   productId: number;

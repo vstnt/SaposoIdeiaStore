@@ -1,11 +1,9 @@
-import Footer from "../../layout/components/Footer";
-import Navbar from "../../layout/components/Navbar";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from '../../hooks/useTheme';
 import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
 import NewestProducts from "../../layout/ProductsDisplay/NewestProducts";
 import { useState, useEffect } from "react";
 import { Product } from "../../types/Product";
-import axiosClient from "../../api/axiosClient";
+import axiosClient from "../../axiosClient";
 
 
 
@@ -22,7 +20,6 @@ export default function Products() {
 
     return (
       <>
-        <Navbar/>
         <div id='bg' className={` pt-16 flex items-center justify-center bg-gradient-to-b 
         ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
         : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}> 
@@ -45,7 +42,6 @@ export default function Products() {
           
           </div>
         </div>
-        <Footer/>
       </>
     )
   }

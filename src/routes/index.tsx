@@ -1,5 +1,6 @@
-import { RequireAuth } from "../context/Auth/RequireAuth";
-import { RequireNotAuth } from "../context/Auth/RequireNotAuth";
+import { RequireAuth } from "./RequireAuth";
+import { RequireNotAuth } from "./RequireNotAuth";
+
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Products from "../pages/products";
@@ -18,20 +19,20 @@ export const routes = [
         component:<Home/>
     },
     {
-        link:'/register', 
-        component:<RequireNotAuth><Register/></RequireNotAuth>
-    },
-    {
         link:'/products', 
         component:<Products/>
     },
     {
-        link:'/login', 
-        component:<RequireNotAuth><Login/></RequireNotAuth>
-    },
-    {
         link: '/product/:id',
         component:<ProductDetails/>
+    },
+    {
+        link:'/register', 
+        component:<RequireNotAuth><Register/></RequireNotAuth>
+    },
+    {
+        link:'/login', 
+        component:<RequireNotAuth><Login/></RequireNotAuth>
     },
     {
         link: '/userpreferences',

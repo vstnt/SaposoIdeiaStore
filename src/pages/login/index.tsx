@@ -1,9 +1,7 @@
-import { useContext, useState } from "react";
-import Navbar from "../../layout/components/Navbar";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/Auth/AuthContext";
-import Footer from "../../layout/components/Footer";
-import { useTheme } from "../../context/Theme/useTheme";
+import { useTheme } from '../../hooks/useTheme';
+import { useAuth } from "../../hooks/useAuth";
 
 
 
@@ -12,7 +10,7 @@ export default function Login() {
   const { theme } = useTheme()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const auth = useContext(AuthContext)
+  const auth = useAuth()
 
 
   const handleLogin = async () => {
@@ -32,13 +30,16 @@ export default function Login() {
 
   return (
     <>
-      <Navbar/>
       <div id='bg' className={` min-h-[550px] min-w-[600px] pt-48 pb-40 w-full h-full flex items-center justify-center bg-gradient-to-r 
       ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95%' 
       : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}> 
         <div id='conteiner inteiro' className={` min-h-[550px] min-w-[560px] w-8/12 h-96 flex items-center justify-center rounded-lg overflow-hidden ${theme === 'dark' ? '' : 'border-2 border-gray-400'} `}>
-          <div id='bg img do conteiner' className="bg-purple-600 w-2/4 h-full relative bg-login">
+          
+          <div id='bg img do conteiner' 
+          style={{ backgroundImage: `url('/assets/bglogin.jpg')` }} 
+          className="bg-purple-600 w-2/4 h-full relative bg-cover">
           </div>
+
           <div id='área do formulário' className="min-w-[250px] w-1/2 h-full bg-purple-800 flex flex-col items-center justify-center">
             <div className="flex flex-col justify-center bg-violet-200 px-4 w-full rounded-md h-full">
               
@@ -81,7 +82,6 @@ export default function Login() {
           </div>          
         </div>
       </div>
-      <Footer/>
     </>
   )
 }
