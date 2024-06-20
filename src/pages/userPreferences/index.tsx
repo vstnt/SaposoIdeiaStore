@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme';
 import { useAuth } from '../../hooks/useAuth'
 
-const UserPreferences = () => {
-  const auth = useAuth()
+// const UserPreferences = () => {      poderia usar desse jeito. Acho que não tem diferença. Mas agr estou padronizando meu uso
+export default function UserPreferences() {   // assim fica mais limpo.
   const { theme } = useTheme()
+  const auth = useAuth()
+
 
   return (
     <>
@@ -18,7 +20,7 @@ const UserPreferences = () => {
 
           <div className='mt-10'>Olá {auth.user?.name}, tudo bem?</div>
           
-          <div id="carrinho" className='mt-10'><Link to={'/cart'} 
+          <div id="botão ir para o carrinho" className='mt-10'><Link to={'/cart'} 
             className={`px-2 py-1 rounded-sm border transition-all duration-300  
             ${theme === 'dark' ? 'border-stone-900 bg-indigo-600/70  hover:bg-zinc-100/30 hover:shadow-black hover:shadow-md' 
             : 'border-stone-400 bg-slate-300 hover:bg-zinc-500 hover:text-emerald-100 hover:shadow-md hover:shadow-black'} `}>
@@ -31,6 +33,6 @@ const UserPreferences = () => {
       </div>
     </>  
   )
-}
+};
 
-export default UserPreferences
+// export default UserPreferences;

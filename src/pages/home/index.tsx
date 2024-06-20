@@ -10,7 +10,8 @@ import { Product } from "../../types/Product";
 export default function Home() {
   const { theme } = useTheme();
 
-  // essa recuperação simples da lista de produtos teria de ser substituida por uma que obtivesse apenas o id dos produtos mais vendidos.
+  /* essa recuperação simples da lista de produtos teria de ser substituida por uma que obtivesse apenas o id
+  dos produtos mais vendidos, quando essa função nna api for implementada. */
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function Home() {
 
               <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
                 {products.slice(0, 5).map(product => (
-                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationN={19} truncationD={21} /></div>
+                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationName={19} truncationDescription={21} /></div>
                 ))}
               </div>
             </div>

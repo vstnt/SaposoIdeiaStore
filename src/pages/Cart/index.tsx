@@ -1,11 +1,23 @@
-import React from 'react';
 import { useTheme } from '../../hooks/useTheme';
 import { useCart } from '../../hooks/useCart';
 import ProductDisplayCart from '../../layout/ProductsDisplay/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
 
+/* ao invés de usar:
 const Cart: React.FC = () => {
+e após a função ter de usar:
+export default Cart; (além de ter de importar o React)
+parece mais simples usar a versão abaixo.
+Porém segundo o GPT "Em componentes mais complexos, ou quando você deseja adicionar tipos específicos ao componente,
+a primeira abordagem pode ser mais adequada."
+*/
+
+// lembrete de não usar mais 4 pontos de espaçamento kkk
+
+export default function Cart() {
+
+
   const { cart, removeItem, clearCart, updateItem } = useCart()
   const { theme } = useTheme()
 
@@ -50,11 +62,10 @@ const Cart: React.FC = () => {
 										<div className='basis-5/12 flex justify-start '>
 											
 											<div id='quantidade' className="basis-3/6 self-center text-sm flex ">
-												
 												<div className='self-center'>Quantidade :</div> 
 												<div className='ml-3 px-6 py-1 self-center border rounded-sm text-black bg-slate-100'> {item.quantity}</div>
 
-												<div className=' ml-3 self-center flex flex-col gap-3  place-content-center'>
+												<div id='+ e -' className=' ml-3 self-center flex flex-col gap-3  place-content-center'>
 													<button onClick={() => updateItem(item.productId, 1)} 
 													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
 													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
@@ -68,12 +79,12 @@ const Cart: React.FC = () => {
 												</div>
 											</div>
 
-											<div className='basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
+											<div id='valor produto' className='basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
 												<div className='text-xs'>${item.price}</div>
 												<div className='text-xl text-emerald-300'>${item.price * item.quantity}.00</div>
 											</div>
 
-											<div className='basis-1/6 flex justify-end'>
+											<div id='botão X' className='basis-1/6 flex justify-end'>
 												<button 
 												onClick={() => removeItem(item.productId)} 
 												className={`px-3 py-0.5 rounded border-b border-l transition-all duration-300 h-fit 
@@ -82,7 +93,6 @@ const Cart: React.FC = () => {
 												X
 												</button>
 											</div>
-
 
 										</div>
 
@@ -111,8 +121,6 @@ const Cart: React.FC = () => {
 							</div>
 						</div>
 
-						
-
                     </>
 
                 )}
@@ -122,5 +130,3 @@ const Cart: React.FC = () => {
     </>
   )
 }
-
-export default Cart;

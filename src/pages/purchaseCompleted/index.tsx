@@ -2,10 +2,11 @@ import { useTheme } from '../../hooks/useTheme';
 
 
 
-
 export default function PurchaseCompleted() {
   const { theme } = useTheme();
 
+
+  
   return (
     <>
       <div id='background' 

@@ -64,7 +64,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [location, cart, updateItem]);
 
-
+  // O hook useEffect é usado para realizar efeitos colaterais em componentes funcionais, como chamadas de API, assinaturas e manipulações de DOM. O useEffect é executado após a renderização do componente, o que significa que ele tem um comportamento assíncrono em relação ao ciclo de vida do componente.
+// talvez eu precise limpar o carrinho sempre no logout! O carrinho antigo que fica ali, é por memória do navegador, ou pelo próprio back? Creio que o primeiro caso.
+// talvez só precise fazer uma função de limpeza, como o GPT me mostrou.
 
   const loadCart = async () => {
     try {

@@ -4,39 +4,47 @@ import { useTheme } from "../../../hooks/useTheme"
 import { useAuth } from "../../../hooks/useAuth";
 
 
-
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
-  const [lastScrolY, setLastScrollY] = useState(window.scrollY);
-  const [headerVisible,  setHeaderVisible] = useState(true);
-  const navigate = useNavigate();
   const auth = useAuth()
+  const navigate = useNavigate();
+
 
   const handleLogout = async () => {
     auth.signout();
-    window.location.href;
     navigate('/');
   }
 
-  useEffect(() => {
+  const handlePageChanger = () => {
+    window.scrollTo({top: 0, left: 0})
+  }
+
+  const handlePageChangerSmooth = () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }
+
+  // visibilidade do cabeçalho
+  const [headerVisible,  setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+
+  useEffect(() => { 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY < lastScrolY) {
+      if (currentScrollY < lastScrollY) {
         setHeaderVisible(true);
-      } else if (currentScrollY > lastScrolY) {
+      } else if (currentScrollY > lastScrollY) {
         setHeaderVisible(false);
       }
-
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
     };
-  })
+  }) /* gpt fala pra deixar lastScrollY como dependência... mas ta funcionando bem assim... 
+        Não entendo 100% o ciclo de execução do useEffect... */
+
+
 
   return ( 
     <div id='Cabeçalho' 
@@ -49,7 +57,7 @@ export default function Navbar() {
       <div id='Menudaesquerda' className="h-full basis-1/3 flex items-start gap-5">
         
         <div id='imgsaposo'>
-          <Link to={'/'}>
+          <Link to={'/'} onClick={handlePageChangerSmooth}>
             <img 
             className={`ml-9 shadow transition-shadow duration-300 w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
             ${theme === 'dark' ? 'shadow-black/35 hover:shadow-teal-200 border-stone-700' 
@@ -60,7 +68,7 @@ export default function Navbar() {
         </div>
         
         <div id='botão buscar produtos' className="italic text-lg mb-2 ml-14 self-end  ">
-          <Link to={'/products'} 
+          <Link to={'/products'} onClick={handlePageChanger}
           className={` px-3 pb-1 pt-0.5 tracking-tight rounded-sm border-t transition-all duration-300
           ${theme === 'dark' ? 
           'border-neutral-300/80 text-neutral-300 hover:text-black hover:border-black hover:bg-zinc-100/70 hover:shadow-black hover:shadow'
@@ -76,28 +84,29 @@ export default function Navbar() {
       className={` basis-1/3 flex items-center justify-center mt-auto rounded px-2 pb-0.5 mb-2 text-[3vw] h-[63%] transition-colors duration-300
       ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80' 
       : 'text-emerald-50 bg-zinc-900/80  hover:bg-zinc-800'} `}>
-        <Link to={'/'} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
+        <Link to={'/'} onClick={handlePageChangerSmooth} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
       </div>
 
       <div id='Menudadireita' 
       className="basis-1/3 h-full flex justify-end items-start relative">
 
-        {!auth.user && <div id="2)botões - login; crie sua conta" // CASO usuário não logado
-        className="flex gap-3 self-end justify-items-end mb-2 -mr-8 "> 
+        {!auth.user && // CASO usuário não logado
+          <div id="2)botões - login; crie sua conta"
+          className="flex gap-3 self-end justify-items-end mb-2 -mr-8 "> 
             
-            <div><Link to={'/login'} 
+            <div><Link to={'/login'} onClick={handlePageChanger}
             className={` px-6 pb-0.5 pt-1 rounded-sm border-t  transition-all duration-500 
             ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
             : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
               login</Link></div>
             
-            <div><Link to={'/register'} 
+            <div><Link to={'/register'} onClick={handlePageChanger}
             className={` px-4 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500 tracking-tight
             ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
             : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
               crie sua conta</Link></div>
         
-        </div>
+          </div>
         }
 
         {auth.user && // CASO usuário logado
@@ -113,7 +122,7 @@ export default function Navbar() {
             <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
               
               <div id="minha conta">
-                <Link to={'/userpreferences'} 
+                <Link to={'/userpreferences'} onClick={handlePageChanger}
                 className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
                 ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
                 : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'} `}>
@@ -121,7 +130,7 @@ export default function Navbar() {
                 </Link>
               </div>
               
-              <div id="sair" onClick={handleLogout}><Link to={''} 
+              <div id="sair" onClick={handleLogout}><Link to={''} onClick={handlePageChangerSmooth}
               className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500
               ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
               : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}   `}>
@@ -146,7 +155,6 @@ export default function Navbar() {
             </div>
         </button>
         
-
       </div>
     </div>
     )

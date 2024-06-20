@@ -3,6 +3,7 @@ import { Product } from "../../types/Product";
 import axiosClient from '../../axiosClient';
 import { Link } from "react-router-dom";
 import { useTheme } from '../../hooks/useTheme';
+import { truncateCharacters, truncateWords } from '../../helpers/truncate';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -13,10 +14,13 @@ import { Swiper as SwiperInstance } from 'swiper/types';
 
 import '../../styles/swiper.css';
 
+
+
 export default function NewestProducts () {
-  const [products, setProducts] = useState<Product[]>([]);
   const { theme } = useTheme()
-  const swiperRef = useRef<SwiperInstance | null>(null); // Referência para o Swiper com tipagem correta
+  const swiperRef = useRef<SwiperInstance | null>(null)
+  const [products, setProducts] = useState<Product[]>([])
+
 
   useEffect(() => {
     axiosClient.get('/api/products/newest')
@@ -24,22 +28,10 @@ export default function NewestProducts () {
     .catch(error => console.error('Error fetching products:', error));
   }, []);
 
-  const truncateWords = (description: string, maxWords: number) => {
-    const words = description.split(' ');
-    if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(' ') + '...';
-    }
-    return description;
-  };
 
-  const truncateCharacters = (description: string, maxChars: number) => {
-    if (description.length > maxChars) {
-      return description.slice(0, maxChars) + '...'; // Limita a descrição pelo número de caracteres
-    }
-    return description; // Retorna a descrição completa se estiver dentro do limite de caracteres
-  };
-
-  const handleVisibilityChange = useCallback(() => { // daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que monta o componente
+/* daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que monta o componente.
+ Essa passei horas forçandoo GPT a trabalhar... Preciso revisar pra entender! */
+  const handleVisibilityChange = useCallback(() => {
     if (swiperRef.current) {
       if (document.visibilityState === 'visible') {
         swiperRef.current.slideToLoop(0, 0); // Força o swiper a voltar para o início
@@ -50,13 +42,6 @@ export default function NewestProducts () {
     }
   }, []);
 
-  useEffect(() => {
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [handleVisibilityChange]);
-
   const setSwiperRef = useCallback((node: SwiperInstance | null) => {
     if (node) {
       swiperRef.current = node;
@@ -65,11 +50,19 @@ export default function NewestProducts () {
   }, []);
 
   useEffect(() => {
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [handleVisibilityChange]);
+
+  useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.slideToLoop(0, 0); // Força o swiper a voltar para o início
       swiperRef.current.autoplay.start();
     }
   }, [products]);
+
 
   
   return (
@@ -81,18 +74,17 @@ export default function NewestProducts () {
       : 'bg-slate-100/90 text-black border-zinc-500'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-          className={`absolute shadow z-50 bottom-0 right-0 -m-2 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-[2.3vw] transition-colors duration-300 
-          ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
-          : 'bg-zinc-100 text-stone-900 border border-zinc-700'} `}>
-              <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div>
-            
+        className={`absolute shadow z-50 bottom-0 right-0 -m-2 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-[2.3vw] transition-colors duration-300 
+        ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
+        : 'bg-zinc-100 text-stone-900 border border-zinc-700'} `}>
+          <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div> 
         </div>
 
         <Link id='botão lista completa' to={'/products'} 
         className={` absolute shadow z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border border-stone-400/60 transition-colors duration-300 tracking-tight hover:underline
-            ${theme === 'dark' ? '' 
-            : 'bg-neutral-100'} `}>
-          lista completa</Link>
+        ${theme === 'dark' ? '' : 'bg-neutral-100'} `}>
+          lista completa
+        </Link>
 
           <Swiper
             onSwiper={setSwiperRef} // Atribui a referência do Swiper usando callback ref
@@ -113,37 +105,36 @@ export default function NewestProducts () {
             }}
             modules={[Autoplay, Pagination, Navigation]}
             className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
-            >
-              {products.map(product => (
-                  <SwiperSlide key={product.id}>
-                    <div id='slide' className=' flex h-full w-full'>
-                      
-                      <div className=' py-1 basis-3/12 object-contain max-h-full flex justify-center'>
+          >
+            {products.map(product => (
+                <SwiperSlide key={product.id}>
+                  <div id='slide' className=' flex h-full w-full'>
+                    
+                    <div className=' py-1 basis-3/12 object-contain max-h-full flex justify-center'>
                       <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
-                      </div>
-                      
-                      <div id='nome, descrição' 
-                      className=' basis-6/12 flex flex-col ' >
-                        <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
-                        <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
-                      </div>
-
-                      <div className='flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
-                        <div id='price' className='text-2xl'>R$ {product.price}</div>
-                        <div id='botao ver mais' className='ml-14 p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
-                            <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
-                        </div>
-                      </div>
-
                     </div>
-                  </SwiperSlide> 
-              ))}              
-            </Swiper>
+                    
+                    <div id='nome, descrição' 
+                    className=' basis-6/12 flex flex-col ' >
+                      <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
+                      <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
+                    </div>
+
+                    <div className='flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
+                      <div id='price' className='text-2xl'>R$ {product.price}</div>
+                      <div id='botao ver mais' className='ml-14 p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
+                          <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
+                      </div>
+                    </div>
+
+                  </div>
+                </SwiperSlide> 
+            ))}              
+          </Swiper>
             <div className={`custom-prev ${theme === 'dark' ? 'dark-theme' : 'light-theme'} `}>&lt;</div>
             <div className={`custom-next ${theme === 'dark' ? 'dark-theme' : 'light-theme'} `}>&gt;</div>
 
       </div>
-    </div>
-    
+    </div>  
   );
 }

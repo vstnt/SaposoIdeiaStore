@@ -6,20 +6,22 @@ import { useAuth } from "../../hooks/useAuth";
 
 
 export default function Register() {
+  const { theme } = useTheme()
+  const auth = useAuth()
   const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const { theme } = useTheme()
-  const auth = useAuth()
 
 
   const handleRegister = async () => {
     if(email && name && password) {
         const isRegistered = await auth.register(email, name, password)
         if (isRegistered) {
-          navigate('/')
           alert('Registro bem sucedido')
+          navigate('/')
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
         } else {
           alert("Registro falhou. Por favor, insira um email e senha válidos e tente novamente.")
         }
@@ -36,8 +38,10 @@ export default function Register() {
       ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95' 
       : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'} `}>
         <div id='conteiner inteiro' className={` min-h-[550px] min-w-[560px] w-8/12 h-96 rounded-lg overflow-hidden flex items-center justify-center  ${theme === 'dark' ? '' : 'border-2 border-gray-400'} `}>
-          <div id='área do formulário' className="min-w-[250px] w-1/3 h-full bg-purple-800 flex flex-col items-center justify-center">
+          
+          <div id='área do formulário' className="min-w-[250px] w-1/3 h-full bg-purple-800 flex flex-col items-center justify-center"> 
             <div className="flex flex-col justify-center bg-violet-200 px-4 w-full rounded-md shadow-lg h-full">
+              
               <div id='img e texto' className="-mt-5 mb-5 font-semibold text-3xl p-2 text-center w-full text-slate-800">
                 <div className="w-full flex items-center justify-center ">
                   <img
@@ -75,8 +79,10 @@ export default function Register() {
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
-                <button className={` mt-3 text-sm ${theme === 'dark' ? 'bg-indigo-950 text-white' : 'bg-indigo-300 border-2 border-gray-500 text-black'}  w-6/12 p-2 shadow-md  rounded-xl `}
-                onClick={handleRegister}
+                <button onClick={handleRegister}
+                className={` mt-3 text-sm w-6/12 p-2 shadow-md  rounded-xl
+                ${theme === 'dark' ? 'bg-indigo-950 text-white' 
+                : 'bg-indigo-300 border-2 border-gray-500 text-black'}  `}
                 >
                   Sign up
                 </button>
@@ -84,10 +90,12 @@ export default function Register() {
 
             </div>
           </div>
+          
           <div id='bg img do conteiner' 
           className="bg-purple-600 w-2/3 h-full relative bg-cover bg-register"
           style={{ backgroundImage: `url('/assets/bgreg.jpg')` }} >
           </div>
+
         </div>
       </div>
     </>

@@ -1,10 +1,30 @@
-import Navigation from "./navigation";
-import { register } from 'swiper/element/bundle'; // Importa a função para registrar os elementos customizados do Swiper. Isso é tipo um registro para com o navegador...
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { routes } from "./routes";
+import { AuthProvider } from "./context/Auth/AuthContext";
+import { CartProvider } from "./context/Cart/CartContext";
+import { ThemeProvider } from "./context/Theme/ThemeContext";
+import Navbar from "./layout/components/Navbar";
+import Footer from "./layout/components/Footer";
 
+import { register } from 'swiper/element/bundle'; // Importa a função para registrar os elementos customizados do Swiper. Pelo que entendi é um registro para com o navegador...
 register(); // Registra os elementos customizados do Swiper
 
 export default function App() {
   return (
-      <Navigation/>
+    <BrowserRouter>
+      <AuthProvider>
+        <CartProvider>
+          <ThemeProvider>
+            <Navbar/>
+            <Routes>
+              {routes.map((route) => (
+                  <Route key={route.link} element={route.component} path={route.link} />
+              ))}
+            </Routes>
+            <Footer/>
+          </ThemeProvider>
+        </CartProvider>
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
