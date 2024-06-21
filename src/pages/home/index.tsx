@@ -1,6 +1,6 @@
 import { useTheme } from '../../hooks/useTheme';
-import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
-import NewestProducts from "../../layout/ProductsDisplay/NewestProducts";
+import ProductDisplay from "../../layout/components/ProductDisplay";
+import NewestProducts from "../../layout/components/NewestProducts";
 import { useState, useEffect } from "react";
 import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
@@ -42,7 +42,7 @@ export default function Home() {
           
           <div className="caixa mais vendidos relative">
             <div id="caixa mais vendidos" 
-            className={` flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
+            className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
             ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
             : 'bg-white/30 border-zinc-500'} `}>
               

@@ -1,6 +1,6 @@
 import { useTheme } from '../../hooks/useTheme';
 import { useCart } from '../../hooks/useCart';
-import ProductDisplayCart from '../../layout/ProductsDisplay/ProductDisplayCart';
+import ProductDisplayCart from '../../layout/components/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
 

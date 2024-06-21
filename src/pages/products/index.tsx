@@ -1,6 +1,6 @@
 import { useTheme } from '../../hooks/useTheme';
-import ProductDisplay from "../../layout/ProductsDisplay/ProductDisplay";
-import NewestProducts from "../../layout/ProductsDisplay/NewestProducts";
+import ProductDisplay from "../../layout/components/ProductDisplay";
+import NewestProducts from "../../layout/components/NewestProducts";
 import { useState, useEffect } from "react";
 import { Product } from '../../types/Product';
 import axiosClient from "../../axiosClient";

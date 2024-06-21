@@ -1,7 +1,4 @@
-revisar a lógica do slider, que precisei espremer o GPT pra que o slider reiniciasse sempre que montado (se não me engano,
-ele não iniciava até que eu fizesse algo como clicar pra passar o primeiro slide)
 
-revisar os detalhes marcados de lógica do navbar
 
 tornar o tema permanente com o localstorage
 

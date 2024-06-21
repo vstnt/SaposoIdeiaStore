@@ -15,10 +15,8 @@ import { Swiper as SwiperInstance } from 'swiper/types';
 import '../../styles/swiper.css';
 
 
-
 export default function NewestProducts () {
   const { theme } = useTheme()
-  const swiperRef = useRef<SwiperInstance | null>(null)
   const [products, setProducts] = useState<Product[]>([])
 
 
@@ -29,37 +27,23 @@ export default function NewestProducts () {
   }, []);
 
 
-/* daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que monta o componente.
- Essa passei horas forçandoo GPT a trabalhar... Preciso revisar pra entender! */
-  const handleVisibilityChange = useCallback(() => {
-    if (swiperRef.current) {
-      if (document.visibilityState === 'visible') {
-        swiperRef.current.slideToLoop(0, 0); // Força o swiper a voltar para o início
-        swiperRef.current.autoplay.start(); // Reinicia o autoplay
-      } else {
-        swiperRef.current.autoplay.stop(); // Para o autoplay quando a aba fica invisível
-      }
-    }
-  }, []);
+  //Daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que montamos o componente.
+  
+  // Cria uma referência com o tipo do swiper ou null. O novo Ref tem um .current que pode ser atualizado..
+  const swiperRef = useRef<SwiperInstance | null>(null) 
 
+  // função pra atualizar a referência, apontando sempre pra o swiper atual. Veja na configuração do swiper que esse objeto é chamado
   const setSwiperRef = useCallback((node: SwiperInstance | null) => {
-    if (node) {
-      swiperRef.current = node;
-      node.autoplay.start();
+    if (node) { // Verifica se node não é null. Creio que ele existe quando a página montada chama ele no HTML via <swiper></swiper>, se não, será null
+      swiperRef.current = node;     
     }
   }, []);
 
-  useEffect(() => {
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [handleVisibilityChange]);
-
-  useEffect(() => {
+  // Força o swiper a voltar para o início, para poder iniciar. Ele precisa ser posto em algum slide específico, se não, não inicia.
+  useEffect(() => { 
     if (swiperRef.current) {
-      swiperRef.current.slideToLoop(0, 0); // Força o swiper a voltar para o início
-      swiperRef.current.autoplay.start();
+      swiperRef.current.slideToLoop(0, 0);
+      swiperRef.current.autoplay.resume;
     }
   }, [products]);
 
@@ -87,7 +71,7 @@ export default function NewestProducts () {
         </Link>
 
           <Swiper
-            onSwiper={setSwiperRef} // Atribui a referência do Swiper usando callback ref
+            onSwiper={setSwiperRef} // Atribui a referência do Swiper
             spaceBetween={10}
             centeredSlides={true}
             autoplay={{
