@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useTheme } from '../../hooks/useTheme';
-import { useAuth } from '../../hooks/useAuth'
+import { useTheme } from '../../context/Theme/ThemeContext';
+import { useAuth } from '../../context/Auth/AuthContext';
 
 // const UserPreferences = () => {      poderia usar desse jeito. Acho que não tem diferença. Mas agr estou padronizando meu uso
 export default function UserPreferences() {   // assim fica mais limpo.

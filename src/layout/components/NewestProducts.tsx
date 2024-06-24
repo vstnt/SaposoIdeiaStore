@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { Product } from "../../types/Product";
 import axiosClient from '../../axiosClient';
 import { Link } from "react-router-dom";
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../context/Theme/ThemeContext';
 import { truncateCharacters, truncateWords } from '../../helpers/truncate';
 
 import { Swiper, SwiperSlide } from 'swiper/react';

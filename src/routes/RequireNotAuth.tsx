@@ -1,5 +1,5 @@
 import UserPreferences from "../pages/userPreferences";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../context/Auth/AuthContext";
 
 export const RequireNotAuth = ({ children }: { children: JSX.Element }) => {
     const auth = useAuth()

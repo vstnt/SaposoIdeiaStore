@@ -1,10 +1,10 @@
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../context/Theme/ThemeContext';
 import { useEffect, useState } from "react";
 import axiosClient from "../../axiosClient";
 import { useParams } from "react-router-dom";
 import { Product } from "../../types/Product";
-import { useCart } from '../../hooks/useCart';
-import { useAuth } from "../../hooks/useAuth";
+import { useCart } from '../../context/Cart/CartContext';
+import { useAuth } from '../../context/Auth/AuthContext';
 
 
 export default function ProductDetails() {

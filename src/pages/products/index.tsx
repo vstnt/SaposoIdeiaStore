@@ -1,4 +1,4 @@
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../context/Theme/ThemeContext';
 import ProductDisplay from "../../layout/components/ProductDisplay";
 import NewestProducts from "../../layout/components/NewestProducts";
 import { useState, useEffect } from "react";

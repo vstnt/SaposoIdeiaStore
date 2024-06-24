@@ -1,27 +1,40 @@
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState, ReactNode, useEffect, useContext } from 'react';
+import { Theme } from '../../types/Theme';
 
-
-type Theme = 'light' | 'dark';
 
 type ThemeContextType = {
   theme: Theme;
   toggleTheme: () => void;
 };
 
-
-
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType);
+export const useTheme = () => {
+  return useContext(ThemeContext)
+};
 
 
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('light');
-  
-  const toggleTheme = () => { // essa função funciona como um botão. "Quando chamada, mude o tema"
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
-  
-  
+ 
+
+  // Para carregar o tema do localStorage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme') as Theme;
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
+
+  // Funciona como um botão. "Quando chamada, alterne o tema"
+  const toggleTheme = () => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+      return newTheme;
+    });
+  }
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
@@ -29,4 +42,5 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   );
   
 };
+
 

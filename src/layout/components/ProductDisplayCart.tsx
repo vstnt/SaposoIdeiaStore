@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from '../../context/Theme/ThemeContext';
 import { ProductDisplayProps } from "../../types/ProductDisplayProps";
 import { truncateCharacters } from "../../helpers/truncate";
 

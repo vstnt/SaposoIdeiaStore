@@ -1,5 +1,5 @@
-import { useTheme } from '../../hooks/useTheme';
-import { useCart } from '../../hooks/useCart';
+import { useTheme } from '../../context/Theme/ThemeContext';
+import { useCart } from '../../context/Cart/CartContext';
 import ProductDisplayCart from '../../layout/components/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ Porém segundo o GPT "Em componentes mais complexos, ou quando você deseja adic
 a primeira abordagem pode ser mais adequada."
 */
 
-// lembrete de não usar mais 4 pontos de espaçamento kkk
+// lembrete de não usar mais 4 pontos de espaçamento (em html. Em lógica pura até que fica ok)
 
 export default function Cart() {
 
@@ -24,6 +24,7 @@ export default function Cart() {
   if (!cart) {
 	return <div>Carregando carrinho...</div>;
   }
+
 
   return (
     <>
@@ -56,7 +57,7 @@ export default function Cart() {
 									: 'bg-slate-100/90 border-2 border-slate-400'}`}>
 										
 										<div id='imagem e nome' className='basis-7/12 h-full '>
-										<ProductDisplayCart productId={item.productId} truncationN={19} truncationD={21} />
+										<ProductDisplayCart productId={item.productId} truncationName={19} truncationDescription={21} />
 										</div>
 
 										<div className='basis-5/12 flex justify-start '>

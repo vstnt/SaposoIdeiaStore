@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../context/Theme/ThemeContext';
 import { useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../context/Auth/AuthContext";
 
 
 

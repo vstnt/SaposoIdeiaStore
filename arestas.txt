@@ -1,7 +1,4 @@
-
-
-tornar o tema permanente com o localstorage
-
-revisar os contextos
+Ficou a dúvida quando a algo no cart. Procure compreender, lá tem os detalhes do problema
+Tbm quando ao initialized no auth
 
 revisar  o back
