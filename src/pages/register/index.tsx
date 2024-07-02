@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '../../context/Theme/ThemeContext';
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../context/Auth/AuthContext";
 
 
@@ -11,23 +11,63 @@ export default function Register() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(true)
   const [password, setPassword] = useState('');
+  const [isValidPassword, setIsValidPassword] = useState(true)
   const [name, setName] = useState('');
+  const [isValidName, setIsValidName] = useState(true)
+
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex para validar email
+    return regex.test(email)
+  }
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setEmail(value)
+    setIsValidEmail(validateEmail(value))
+    if (value == '') {setIsValidEmail(true)}
+  }
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setName(value)
+    if (value.length > 25) {
+      setIsValidName(false)
+    } else {
+      setIsValidName(true)
+    }
+  }
+
+  const validatePassword = (password: string) => {
+    const regex = /^(?=.*[A-Za-z])[A-Za-z\d]{8,}$/; // Ajuste do regex
+    return regex.test(password);
+  }
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setPassword(value)
+    setIsValidPassword(validatePassword(value))
+    if (value == '') {setIsValidPassword(true)}
+  }
 
 
   const handleRegister = async () => {
-    if(email && name && password) {
+    if (!isValidEmail || !isValidName || !isValidPassword) {
+      alert("Dados inseridos não são válidos. Por favor, corrija-os e tente novamente.")
+    } else {
+      if(email && name && password) {
         const isRegistered = await auth.register(email, name, password)
         if (isRegistered) {
           alert('Registro bem sucedido')
           navigate('/')
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
         } else {
-          alert("Registro falhou. Por favor, insira um email e senha válidos e tente novamente.")
+          alert("Registro falhou. Por favor, insira um email, seu nome e uma senha válidos e tente novamente.")
         }
       } else {
         alert("Insira um email válido, um nome de usuário e uma senha.")
       }
+    }
   }
 
 
@@ -55,30 +95,45 @@ export default function Register() {
               </div>
               
               <div id='inputs' className="text-black flex flex-col items-center justify-center gap-2">
+                
                 <p className="self-start ml-5">
                   Endereço de e-mail</p>
                 <input
                   placeholder="Email"
-                  className="mb-1 -mt-2 placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto "
+                  type="email"
+                  className={`-mt-2 -mb-1 placeholder-gray-500  shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto 
+                    ${isValidEmail ? '' : 'border border-red-500'}`}
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={handleEmailChange}
                 />
+                <div className="h-3 flex items-start ">
+                  {!isValidEmail && <span className="text-red-500 text-xs">Email inválido.</span>}
+                </div>
+                
                 <p className="self-start ml-5">
                   Como você se chama?</p>
                 <input
                   placeholder="Seu nome"
-                  className="mb-1 -mt-2 placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto "
+                  className="-mb-1 -mt-2 placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto "
                   value={name}
-                  onChange={e => setName(e.target.value)}
+                  onChange={handleNameChange}
                 />
+                <div className="h-3 flex items-start ">
+                  {!isValidName && <span className="text-red-500 text-xs">Máximo de 25 caracteres atingido.</span>}
+                </div>
+
                 <p className="self-start ml-5">
                   Crie uma senha de acesso</p>
                 <input
                   placeholder="Senha" type="password"
-                  className="mb-1 -mt-2 placeholder-gray-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md shadow-slate-500 mx-auto "
+                  className="-mb-1 -mt-2 placeholder-gray-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md shadow-slate-500 mx-auto "
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={handlePasswordChange}
                 />
+                <div className="h-3 flex items-start mb-2 ">
+                  {!isValidPassword && <span className="mx-3 text-red-500 text-xs">A senha deve conter ao menos 8 caracteres, e possuir ao menos uma letra.</span>}
+                </div>
+
                 <button onClick={handleRegister}
                 className={` mt-3 text-sm w-6/12 p-2 shadow-md  rounded-xl
                 ${theme === 'dark' ? 'bg-indigo-950 text-white' 
@@ -86,6 +141,7 @@ export default function Register() {
                 >
                   Sign up
                 </button>
+                
               </div>
 
             </div>
