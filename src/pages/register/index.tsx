@@ -96,43 +96,53 @@ export default function Register() {
               
               <div id='inputs' className="text-black flex flex-col items-center justify-center gap-2">
                 
+
+
                 <p className="self-start ml-5">
                   Endereço de e-mail</p>
                 <input
                   placeholder="Email"
                   type="email"
-                  className={`-mt-2 -mb-1 placeholder-gray-500  shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto 
-                    ${isValidEmail ? '' : 'border border-red-500'}`}
+                  className={`-mt-2 -mb-1 border outline-none placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-1 shadow-md mx-auto 
+                    ${isValidEmail ? 'border-transparent focus:border-slate-500' : 'border-red-500 focus:border-red-400'}`}
                   value={email}
                   onChange={handleEmailChange}
                 />
-                <div className="h-3 flex items-start ">
-                  {!isValidEmail && <span className="text-red-500 text-xs">Email inválido.</span>}
+                <div className="h-3 flex ">
+                  {!isValidEmail && <span className="text-red-500 text-xs text-center">Email inválido</span>}
                 </div>
                 
+
+
                 <p className="self-start ml-5">
                   Como você se chama?</p>
                 <input
                   placeholder="Seu nome"
-                  className="-mb-1 -mt-2 placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md mx-auto "
+                  className={`-mb-1 -mt-2 border outline-none placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-1 shadow-md mx-auto
+                    ${isValidName ? 'border-transparent focus:border-slate-500' : 'border-red-500 focus:border-red-400'}`}
                   value={name}
                   onChange={handleNameChange}
                 />
-                <div className="h-3 flex items-start ">
-                  {!isValidName && <span className="text-red-500 text-xs">Máximo de 25 caracteres atingido.</span>}
+                <div className="h-3 flex  ">
+                  {!isValidName && <span className="text-red-500 text-xs text-center">Máximo de 25 caracteres atingido.</span>}
                 </div>
+
+
 
                 <p className="self-start ml-5">
                   Crie uma senha de acesso</p>
                 <input
                   placeholder="Senha" type="password"
-                  className="-mb-1 -mt-2 placeholder-gray-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-2 shadow-md shadow-slate-500 mx-auto "
+                  className={`-mb-1 -mt-2 border outline-none placeholder-gray-500 text-sm bg-white border-1 rounded-full w-11/12 pl-4 p-1 shadow-md shadow-slate-500 mx-auto
+                    ${isValidPassword ? 'border-transparent focus:border-slate-500' : 'border-red-500 focus:border-red-400'}`}
                   value={password}
                   onChange={handlePasswordChange}
                 />
-                <div className="h-3 flex items-start mb-2 ">
-                  {!isValidPassword && <span className="mx-3 text-red-500 text-xs">A senha deve conter ao menos 8 caracteres, e possuir ao menos uma letra.</span>}
+                <div className="h-3 flex mb-2 ">
+                  {!isValidPassword && <span className="mx-3 text-red-500 text-xs text-center">Sua senha deve conter ao menos 8 caracteres, e possuir ao menos uma letra.</span>}
                 </div>
+
+
 
                 <button onClick={handleRegister}
                 className={` mt-3 text-sm w-6/12 p-2 shadow-md  rounded-xl
@@ -142,6 +152,8 @@ export default function Register() {
                   Sign up
                 </button>
                 
+
+
               </div>
 
             </div>
