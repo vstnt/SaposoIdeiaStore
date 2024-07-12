@@ -23,7 +23,8 @@ export const useAuth = () => {
 // não precisamos enviar o token diretamente via validateToken ou logout
 export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null); 
-    const setToken = (token: string) => { localStorage.setItem('authToken', token) }
+    const setAccessToken = (token: string) => { localStorage.setItem('authToken', token) }
+    const setRefreshToken = (token: string) => { localStorage.setItem('refreshToken', token) }
    
 
     const [initialized, setInitialized] = useState(false);
@@ -46,7 +47,8 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
             const response = await axiosClient.post('api/signin', { email, password });
             if(response.data.user && response.data.token) {
                 setUser(response.data.user);
-                setToken(response.data.token);
+                setAccessToken(response.data.token);
+                setRefreshToken(response.data.refreshToken);
                 return true
             }
         } catch (error) {
@@ -57,9 +59,11 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
 
 
     const signout = async () => {
-        await axiosClient.post('api/logout')
+        const refreshToken = localStorage.getItem('refreshToken')
+        await axiosClient.post('api/logout', {}, {headers: {'refresh_token': refreshToken}} )
         setUser(null);
-        setToken('');
+        setAccessToken('');
+        setRefreshToken('');
     }
 
 

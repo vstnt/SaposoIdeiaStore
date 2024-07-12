@@ -28,9 +28,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
    isso leva a um leak de dados do usuário anterior. Então adicionei a chamada para a home também, e isso resolveu.
    Como seria um melhor jeito de lidar com esse problema? Perguntar pra a dé.
    Talvez algo como realizar a chamada quando do login de um usuário, e tbm limpar esses dados quando do logout.
-   Porém, não entendo ainda onde esses dados ficam salvos após o logout. */
+   Porém, não entendo ainda onde esses dados ficam salvos após o logout.
+   Percebi que deixar a página inicial chamando o cart está gerando um loop de chamadas. Deve dar pra impedir isso
+    criando algo como o que fiz em algum outro lugar... (validação do usuário?) Entao vou turar o da página inicial 
+    por enquanto */
   useEffect(() => {
-    if (location.pathname === '/cart' || location.pathname === '/' ) { 
+    if (location.pathname === '/cart' /*|| location.pathname === '/'*/ ) { 
       loadCart();
     }
   }, [location, cart]);
