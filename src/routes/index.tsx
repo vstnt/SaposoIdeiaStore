@@ -3,6 +3,7 @@ import { RequireNotAuth } from "./RequireNotAuth";
 
 import Home from "../pages/home";
 import Login from "../pages/login";
+import Login2 from "../pages/login/index2";
 import Products from "../pages/products";
 import Register from "../pages/register";
 import ProductDetails from "../pages/productDetails";
@@ -33,6 +34,10 @@ export const routes = [
     {
         link:'/login', 
         component:<RequireNotAuth><Login/></RequireNotAuth>
+    },
+    {
+        link:'/login2', 
+        component:<RequireNotAuth><Login2/></RequireNotAuth>
     },
     {
         link: '/userpreferences',
