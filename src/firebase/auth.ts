@@ -1,15 +1,16 @@
 import { firebaseAuth } from "./firebaseConfig";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup/* , sendPasswordResetEmail, updatePassword, sendEmailVerification */ } from "firebase/auth";
 
-// me parece que aqui fazemos uso dos métodos do auth do firebase.
+// aqui fazemos uso das funções do auth do firebase.
 
 export const doCreateUserWithEmailAndPassword = async (email: string, password: string) => {
     return createUserWithEmailAndPassword(firebaseAuth, email, password)
 };
-
 export const doSignInWithEmailAndPassword = (email: string, password: string) => {
     return signInWithEmailAndPassword(firebaseAuth, email, password);
 };
+
+
 
 export const doSignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();

@@ -8,6 +8,7 @@ import axiosClient from "../../axiosClient";
 export type AuthContextType = { // type pra o nosso contexto
     user: User | null;
     signin: (email: string, password: string) => Promise<boolean>;
+    googleSignin: (user: object) => void
     signout: () => void;
     register: (email: string, name: string, password: string) => Promise<boolean>;
 }
@@ -25,15 +26,18 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null); 
     const setAccessToken = (token: string) => { localStorage.setItem('authToken', token) }
     const setRefreshToken = (token: string) => { localStorage.setItem('refreshToken', token) }
+    const setTokenOrigin = (tokenOrigin: string) => { localStorage.setItem('tokenOrigin', tokenOrigin) }
    
 
     const [initialized, setInitialized] = useState(false);
     useEffect(() => {  // esse useEffect serve para checar se há um token no localStorage, valida-lo e manter a sessão desse usuário
         if (!initialized) { // adicionei essa condição por indicação do GPT. Tava dando um problema de loop de renderização infinita. Ficava chamando constantemente o RequireAuth (que agr está na pasta routes).
-            const validateToken = async () => {
-                const response = await axiosClient.post('api/validate')
-                if (response.data.user) {
-                    setUser(response.data.user)
+            const validateToken = async () => {  
+                if (localStorage.getItem('authToken') !== null && localStorage.getItem('authToken') !== 'undefined' && localStorage.getItem('authToken') !== ''){
+                    const response = await axiosClient.post('api/validate')
+                    if (response.data.user) {
+                        setUser(response.data.user)
+                    }
                 }
                 setInitialized(true)
             }
@@ -49,12 +53,20 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
                 setUser(response.data.user);
                 setAccessToken(response.data.token);
                 setRefreshToken(response.data.refreshToken);
+                setTokenOrigin('Saposo')
                 return true
             }
         } catch (error) {
             console.error("Error during login:", error);
         }
         return false
+    }
+
+    const googleSignin = async (user: any) => {
+        setUser({id: 0, name: user.displayName, email: user.email})
+        setAccessToken(user.accessToken)
+        setRefreshToken(user.refreshToken)
+        setTokenOrigin('Google')
     }
 
 
@@ -83,7 +95,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
 
 
     return (
-        <AuthContext.Provider value={{user, signin, signout, register }}>
+        <AuthContext.Provider value={{user, signin, signout, register, googleSignin }}>
             {children}
         </AuthContext.Provider>
     );

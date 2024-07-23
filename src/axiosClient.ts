@@ -7,10 +7,33 @@ const axiosClient = axios.create({
     }
 })
 
-let isRefreshing = false;
-let failedQueue: any[] = [];
 
-const processQueue = (error: any, token: string | null = null) => {
+axiosClient.interceptors.request.use( // interceptamos as requisições, sempre adicionando o accessToken a elas, caso ele exista.
+    (config) => {
+      const accessToken = localStorage.getItem('authToken');
+      //const refreshToken = localStorage.getItem('refreshToken')
+      if (accessToken) {
+        config.headers['Authorization'] = `Bearer ${accessToken}`;
+      }
+      //if (refreshToken) {
+      //  config.headers['refresh_token'] = `Bearer ${refreshToken}`;
+      //}
+      return config;
+    },
+
+    async (error) => {  // lida com os erros que podem ocorrer nessa preparação da requisição, antes de envia-la.
+      return Promise.reject(error);
+    }
+  );
+
+
+
+
+
+let isRefreshing = false;   //???
+let failedQueue: any[] = [];  //???
+
+const processQueue = (error: any, token: string | null = null) => { //???
     failedQueue.forEach(prom => {
         if (error) {
             prom.reject(error);
@@ -23,31 +46,16 @@ const processQueue = (error: any, token: string | null = null) => {
 };
 
 
-axiosClient.interceptors.request.use(
-    (config) => {
-      const accessToken = localStorage.getItem('authToken');
-      //const refreshToken = localStorage.getItem('refreshToken')
-      if (accessToken) {
-        config.headers['Authorization'] = `Bearer ${accessToken}`;
-      }
-      //if (refreshToken) {
-      //  config.headers['refresh_token'] = `Bearer ${refreshToken}`;
-      //}
-      return config;
-    },
-    async (error) => {
-      return Promise.reject(error);
-    }
-  );
-
   axiosClient.interceptors.response.use(
-    (response) => {
+    (response) => { // se recebo uma resposta sem erros, retorna ela normalmente.
       return response
     },
-    async (error) => {
+
+    async (error) => { // se tiver erro, então agimos.
       const originalRequest = error.config
   
       if (error.response.status === 401 && !originalRequest._retry) {
+        
         if (isRefreshing) { //entender
           return new Promise((resolve, reject) => {
               failedQueue.push({ resolve, reject });
@@ -57,7 +65,7 @@ axiosClient.interceptors.request.use(
           }).catch((err) => {
               return Promise.reject(err);
           });
-      }
+        }
 
         console.log('recebido erro 401 e retry não marcado')
         originalRequest._retry = true
@@ -89,6 +97,8 @@ axiosClient.interceptors.request.use(
             isRefreshing = false;
           }
         }
+
+
       }
   
       return Promise.reject(error)

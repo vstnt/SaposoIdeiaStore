@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from '../../context/Theme/ThemeContext';
-//import { useAuth } from "../../context/Auth/AuthContext";
+import { useAuth } from "../../context/Auth/AuthContext";
 //import { doSignInWithEmailAndPassword, doSignInWithGoogle } from "../../firebase/auth";
 //import { useAuth2 } from "../../context/Auth/AuthContext2";
 import firebase from "firebase/compat/app";
@@ -12,76 +12,76 @@ import { firebaseAuth } from "../../firebase/firebaseConfig";
 
 
 export default function Login2() {
-  // const { userLoggedIn } = useAuth2()
-
+  const { theme } = useTheme()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSigningIn, setIsSigningIn] = useState(false)
+  const auth = useAuth()
+  const navigate = useNavigate();
+
+  //const [isSigningIn, setIsSigningIn] = useState(false)
+  // const { userLoggedIn } = useAuth2()
   //const [errorMessage, SetErrorMessage] = useState('')
-  const { theme } = useTheme()
-  //const navigate = useNavigate();
+
 
 
 
   const handleLogin = async () => {
-     if(!email || !password) {
-       alert("Insira um nome de usuário e uma senha.") 
-     } else {
-      if(!isSigningIn) {
-        setIsSigningIn(true);
-        //await doSignInWithEmailAndPassword
+    if(!email || !password) {
+      alert("Insira um nome de usuário e uma senha.") 
+    } else {
+      const isLogged = await auth.signin(email, password);
+      if(isLogged) {
+        navigate('/');
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
       }
-     }
+      else {alert("Login falhou. Por favor, cheque suas credenciais e tente novamente.")
+      }
+    }
   }
 
   useEffect(() => {
-
-    const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebaseAuth); // Assim inicializamos a FirebaseUI. Não entendi o funcionamento.
+    const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebaseAuth); // Assim inicializamos a FirebaseUI.
 
 
     var uiConfig = { 
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       ],
+      signInFlow: 'popup',
+      //signInSuccessUrl: "http://localhost:5173/",
       callbacks: {
-        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-          // User successfully signed in.
-          // Return type determines whether we continue the redirect automatically
-          // or whether we leave that to developer to handle.
-          return true;
+        signInSuccessWithAuthResult: function(authResult: any) {
+          auth.googleSignin(authResult.user)
+          navigate('/');
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+          return false;
         },
+        signInFailure: (error: any) => {
+          console.error('Erro no login:', error);
+          return handleSignInFailure(error);
+        },
+
         uiShown: function() {
           // The widget is rendered.
           // Hide the loader.
-          document.getElementById('loader').style.display = 'none';
-        }
+          document.getElementById('loader')!.style.display = 'none'; // isso não deveria acontecer apenas quando clicamos no botão? mas está agindo o tempo todo...
+        },
       },
-      signInFlow: 'popup',
-      signInSuccessUrl: "http://localhost:5173/"
+
     };
 
-    ui.start('#firebaseui-auth-container', uiConfig);
+    ui.start('#firebaseui-auth-container', uiConfig); // Isso renderiza a FirebaseUI Auth interface
 
 
     return () => ui.reset();
 }, []); // dependência vazia assim significa montar apenas uma vez, quando o componente que o contém é montado.
 
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
+const handleSignInFailure = (error: any) => {
+  // Trate erros de login aqui
+  console.error('Erro durante o login:', error);
+  console.log('Erro no login2:');
+};
 
 /*   const onGoogleSignIn = async () => {
     if(!isSigningIn) {
@@ -127,26 +127,29 @@ export default function Login2() {
               </div>
               
               <div id='formulário'
-              className=" flex flex-col items-center justify-center gap-4">
+              className="-mt-5 flex flex-col items-center justify-center gap-4">
                 <input
                   placeholder="Email"
-                  className="placeholder-gray-500 shadow-slate-500 mb-2 text-sm bg-white border-1 rounded-full w-2/3 pl-4 p-2 shadow-md mx-auto text-black"
+                  className="placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-7/12 pl-4 p-2 shadow-md mx-auto text-black"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
                 <input
                   placeholder="Senha" 
                   type="password"
-                  className="placeholder-gray-500 text-sm bg-white border-1 rounded-full w-2/3 pl-4 p-2 shadow-md shadow-slate-500 mx-auto text-black"
+                  className="placeholder-gray-500 text-sm bg-white border-1 rounded-full w-7/12 pl-4 p-2 shadow-md shadow-slate-500 mx-auto text-black"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
                 <button 
                   onClick={handleLogin}
-                  className={` mt-4 text-sm w-1/3 p-2 shadow-md rounded-xl
+                  className={` mt-3 text-sm w-1/3 p-2 shadow-md rounded-xl
                   ${theme === 'dark' ? 'bg-indigo-950 text-white' : 'bg-indigo-300 border-2 border-gray-500 text-black'} `}>
                   Entrar
                 </button>
+                <div className="mt-4 border-t w-8/12 border-slate-400"></div>
+                <div className="text-slate-800 -mt-3 -mb-1">Quero acessar com minhas redes sociais</div>
+                
                 <div id="firebaseui-auth-container"></div>
                 <div id="loader">Loading...</div>
               </div>
