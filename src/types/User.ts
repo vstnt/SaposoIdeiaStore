@@ -1,5 +1,6 @@
 export type User = {
-    id: number;
+    id: number | null;
+    firebaseId: string;
     name: string;
-    email: string;
+    email: string | null;
 }

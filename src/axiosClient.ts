@@ -1,4 +1,11 @@
 import axios from 'axios';
+// import { useNavigate } from "react-router-dom";
+
+
+//testar se o navigate esta funfando
+// pq o _?
+
+
 
 const axiosClient = axios.create({
     baseURL: 'http://localhost:3333',
@@ -8,32 +15,31 @@ const axiosClient = axios.create({
 })
 
 
-axiosClient.interceptors.request.use( // interceptamos as requisições, sempre adicionando o accessToken a elas, caso ele exista.
-    (config) => {
-      const accessToken = localStorage.getItem('authToken');
-      //const refreshToken = localStorage.getItem('refreshToken')
-      if (accessToken) {
-        config.headers['Authorization'] = `Bearer ${accessToken}`;
-      }
-      //if (refreshToken) {
-      //  config.headers['refresh_token'] = `Bearer ${refreshToken}`;
-      //}
-      return config;
-    },
 
-    async (error) => {  // lida com os erros que podem ocorrer nessa preparação da requisição, antes de envia-la.
-      return Promise.reject(error);
+// interceptamos as requisições, sempre adicionando o accessToken a elas, caso ele exista.
+axiosClient.interceptors.request.use( 
+  (config) => {
+    const accessToken = localStorage.getItem('authToken');
+    if (accessToken) {
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
     }
-  );
+    return config;
+  },
+  async (error) => {  
+    return Promise.reject(error);
+  }
+);
 
 
 
+// Daqui pra baixo é pra lidar com as requisições que retornarem 401 (não autorizado). 
+// Declaramos variáveis globais dentro do módulo. Elas tem permanência ao longo das requisições do usuário.
+let isRefreshing = false; // indica se já está acontecendo uma tentativa de atualização dos tokens.
+let failedQueue: any[] = [];  // fila para as requisições que retornaram 401 quando já está acontecendo a tentativa de atualização de tokens.
 
-
-let isRefreshing = false;   //???
-let failedQueue: any[] = [];  //???
-
-const processQueue = (error: any, token: string | null = null) => { //???
+// Com isso processamos a fila de promises após o processo de tentativa de atualização de tokens. Enviaremos a esse processador um erro ou um novo token de acesso.
+// Se for o erro, o retornará às requisições da lista, se for token, procurará realizar as requisições com o novo token.
+const processQueue = (error: any, token: string | null = null) => {
     failedQueue.forEach(prom => {
         if (error) {
             prom.reject(error);
@@ -41,68 +47,86 @@ const processQueue = (error: any, token: string | null = null) => { //???
             prom.resolve(token);
         }
     });
-
-    failedQueue = [];
+    failedQueue = []; // depois de processar a lista, a limpa.
 };
 
 
-  axiosClient.interceptors.response.use(
-    (response) => { // se recebo uma resposta sem erros, retorna ela normalmente.
-      return response
-    },
-
-    async (error) => { // se tiver erro, então agimos.
-      const originalRequest = error.config
+// aqui temos o interceptador de respostas. Ele realiza o trabalho em si de atualização de tokens e de modificação e respostas das requisições com erro.
+axiosClient.interceptors.response.use(
   
-      if (error.response.status === 401 && !originalRequest._retry) {
-        
-        if (isRefreshing) { //entender
-          return new Promise((resolve, reject) => {
-              failedQueue.push({ resolve, reject });
-          }).then((token) => {
-              originalRequest.headers['Authorization'] = `Bearer ${token}`;
-              return axiosClient(originalRequest);
-          }).catch((err) => {
-              return Promise.reject(err);
-          });
-        }
+  // se recebe uma resposta sem erros, retorna ela normalmente e vida que segue.
+  (response) => { 
+    return response
+  },
 
-        console.log('recebido erro 401 e retry não marcado')
-        originalRequest._retry = true
-        isRefreshing = true; // entender
-
-  
-        const refreshToken = localStorage.getItem('refreshToken')
-        if (refreshToken) {
-          try {
-            const response = await axios.post('http://localhost:3333/api/refreshtoken',{}, {headers:{ refresh_token: refreshToken }})
-            const token = response.data.token
-            const refresh_token = response.data.refreshToken
-  
-            localStorage.setItem('authToken', token)
-            localStorage.setItem('refreshToken', refresh_token)
-  
-            originalRequest.headers['Authorization'] = `Bearer ${token}`
-
-            processQueue(null, token); // entender
-  
-            return axiosClient(originalRequest)
-          } catch (refreshError) {
-            processQueue(refreshError, null); // entender
-            localStorage.removeItem('authToken')
-            localStorage.removeItem('refresh_token')
-            window.location.href = '/login'
-            return Promise.reject(refreshError)
-          } finally { // entender
-            isRefreshing = false;
-          }
-        }
-
-
+  // Se resposta com erro, nosso interceptador entra em ação.
+  async (error) => {
+    const originalRequest = error.config // salva a requisição inicial
+    
+    // Caso erro de auth (401) e não seja a segunda tentativa da requisição:
+    if (error.response.status === 401 && !originalRequest._retry) {
+      
+      // caso outra requisição já esteja tentando atualizar os tokens, adicionamos a requisição à fila de requisições que retornaram erro. 
+      // Isso evita a execução paralela de múltiplas operações de refresh token.
+      if (isRefreshing) {
+        return new Promise((resolve, reject) => {
+            failedQueue.push({ resolve, reject });
+        }).then((token) => {
+            originalRequest.headers['Authorization'] = `Bearer ${token}`;
+            return axiosClient(originalRequest);
+        }).catch((err) => {
+            return Promise.reject(err);
+        });
       }
-  
-      return Promise.reject(error)
+
+      // Aqui chegamos no caso de primeira requisição com erro 401, em sua primeira tentativa.
+      // Marcamos então que se está tentando o refresh, e também essa requisição com o retry, para evitar um loop no caso de continuidade do erro 401.
+      originalRequest._retry = true; // pq esse _?
+      isRefreshing = true;
+      
+      // Tratamos de usar o refresh token, obtendo novos tokens e modificando também as requisições que possam ter ido para a lista
+      // Também relançamos a requisição original que nos trouxe até aqui. E avisamos via variavel que o processo de atualização não está mais acontecendo.
+      const refreshToken = localStorage.getItem('refreshToken')
+      if (refreshToken) {
+        try {
+          if (localStorage.getItem('tokenOrigin') == 'backend') {
+            const refreshTokenResponse = await axios.post('http://localhost:3333/api/refreshtoken',{}, {headers:{ refresh_token: refreshToken }})
+            console.log(refreshTokenResponse)
+            const newAccessToken = refreshTokenResponse.data.token
+            const newRefreshToken = refreshTokenResponse.data.refreshToken
+            localStorage.setItem('authToken', newAccessToken)
+            localStorage.setItem('refreshToken', newRefreshToken)
+            originalRequest.headers['Authorization'] = `Bearer ${ newAccessToken }`
+            const response = axiosClient(originalRequest)
+            processQueue(null, newAccessToken)
+            return response
+          }
+          
+        // Caso tenhamos erro na atualização dos tokens, enviamos o erro para a lista, para que ela retorne o erro para suas requisições
+        // Então limpamos os tokens do usuário, o enviamos para /login e passamos o erro obtido.
+        // E avisamos, por meio da variável, que o processo de atualização de tokens não está mais ocorrendo.
+        } catch (refreshError) {
+          processQueue(refreshError, null);
+          localStorage.setItem('authToken', '')
+          localStorage.setItem('refreshToken', '')
+          localStorage.setItem('tokenOrigin', '')
+          // window.location.href = '/login'; 
+          return Promise.reject(refreshError)
+        
+        } finally {
+          isRefreshing = false;
+        }
+      // isso é para caso não exista um refreshToken, indicando a outras requisições que
+      // o processo de atualização de tokens não está mais ocorrendo, e levando para baixo, passando o erro obtido anteriormente.
+      } else {
+        isRefreshing = false;
+      }
     }
-  )
+
+    // Vamos pra cá caso retorne erro na segunda tentativa da requisição original, já com o novo token de acesso.
+    // Ou caso na primeira resposta de erro, se não houver um refresh token no localStorage
+    return Promise.reject(error)
+  }
+)
 
 export default axiosClient

@@ -19,6 +19,8 @@ export default function UserPreferences() {   // assim fica mais limpo.
           <div className='text-3xl'>Minha Conta</div>
 
           <div className='mt-10'>Olá {auth.user?.name}, tudo bem?</div>
+          <div className='mt-10'>Olá {auth.user?.email}</div>
+          <div className='mt-10'>Olá {auth.user?.id}</div>
           
           <div id="botão ir para o carrinho" className='mt-10'><Link to={'/cart'} 
             className={`px-2 py-1 rounded-sm border transition-all duration-300  
