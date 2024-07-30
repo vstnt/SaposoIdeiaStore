@@ -56,7 +56,7 @@ export default function Register() {
       alert("Dados inseridos não são válidos. Por favor, corrija-os e tente novamente.")
     } else {
       if(email && name && password) {
-        const isRegistered = await auth.register(email, name, password)
+        const isRegistered = await auth.register('uid', 'backend', email, name, password)
         if (isRegistered) {
           alert('Registro bem sucedido')
           navigate('/')

@@ -44,6 +44,11 @@ export default function Login() {
       callbacks: {
         signInSuccessWithAuthResult: function(authResult: any) {
           auth.googleSignin(authResult.user)
+          const isNewUser = authResult.additionalUserInfo.isNewUser
+          if (isNewUser) {
+            auth.register(authResult.user.uid, 'firebase', authResult.user.email, authResult.user.displayName, null)
+
+          }
           navigate('/');
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
           return false;

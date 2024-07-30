@@ -12,7 +12,7 @@ export type AuthContextType = { // type pra o nosso contexto
     signin: (email: string, password: string) => Promise<boolean>;
     googleSignin: (user: firebase.User) => void
     signout: () => void;
-    register: (email: string, name: string, password: string) => Promise<boolean>;
+    register: (uid: string|null, source: string, email: string, name: string, password: string | null) => Promise<boolean>;
 }
 
 export const AuthContext = createContext<AuthContextType>(null!);
@@ -80,13 +80,15 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
 
     const googleSignin = async (firebaseUser: firebase.User) => {
         try {
-            localStorage.setItem('tokenOrigin', 'firebase');
+            setTokenOrigin('firebase')
+            setAccessToken(await firebaseUser.getIdToken())
             setUser({
                 id: null,
                 firebaseId: firebaseUser.uid,
                 email: firebaseUser.email,
                 name: firebaseUser.displayName || 'Firebase User'
             });
+            await axiosClient.post('api/carts/create', {'uid': firebaseUser.uid} )
         } catch (error) {
             console.error('Google Signin failed:', error);
         }
@@ -105,20 +107,21 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
             signOut(firebaseAuth)
             setUser(null);
             setTokenOrigin('')
+            setAccessToken('');
         }
     }
 
 
-    const register = async (email: string, name: string, password: string) => {
+    const register = async (uid: string | null, source: string, email: string, name: string, password: string | null) => {
         try {
-            const response = await axiosClient.post('api/register', { email, fullName: name, password });
-            if (response.data) {
+            await axiosClient.post('api/register', { uid, source, email, fullName: name, password });
+
                 return true
-            }
-            return false
+            
+            
         } catch (error) {
             console.error("Error during register (useApi):", error);
-            throw error;
+            return false
         }
         
     }
