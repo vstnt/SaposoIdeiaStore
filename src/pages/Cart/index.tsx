@@ -4,6 +4,15 @@ import ProductDisplayCart from '../../layout/components/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
 
+export default function Cart() {
+  const { cart, removeItem, clearCart, updateItem } = useCart()
+  const { theme } = useTheme()
+
+  if (!cart) {
+	return <div>Carregando carrinho...</div>;
+  }
+
+
 /* ao invés de usar:
 const Cart: React.FC = () => {
 e após a função ter de usar:
@@ -14,14 +23,6 @@ a primeira abordagem pode ser mais adequada."
 */
 
 // lembrete de não usar mais 4 pontos de espaçamento (em html. Em lógica pura até que fica ok)
-
-export default function Cart() {
-  const { cart, removeItem, clearCart, updateItem } = useCart()
-  const { theme } = useTheme()
-
-  if (!cart) {
-	return <div>Carregando carrinho...</div>;
-  }
 
 
   return (
@@ -129,3 +130,5 @@ export default function Cart() {
     </>
   )
 }
+
+

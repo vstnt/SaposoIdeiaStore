@@ -7,8 +7,8 @@ import Products from "../pages/products";
 import Register from "../pages/register";
 import ProductDetails from "../pages/productDetails";
 import UserPreferences from "../pages/userPreferences";
-import Cart from "../pages/cart";
 import PurchaseCompleted from "../pages/purchaseCompleted";
+import Cart from "../pages/cart";
 
 
 
