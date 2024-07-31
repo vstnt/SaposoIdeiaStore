@@ -16,8 +16,6 @@ a primeira abordagem pode ser mais adequada."
 // lembrete de não usar mais 4 pontos de espaçamento (em html. Em lógica pura até que fica ok)
 
 export default function Cart() {
-
-
   const { cart, removeItem, clearCart, updateItem } = useCart()
   const { theme } = useTheme()
 

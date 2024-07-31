@@ -7,7 +7,7 @@ import Products from "../pages/products";
 import Register from "../pages/register";
 import ProductDetails from "../pages/productDetails";
 import UserPreferences from "../pages/userPreferences";
-//import Cart from "../pages/cart";
+import Cart from "../pages/cart";
 import PurchaseCompleted from "../pages/purchaseCompleted";
 
 
@@ -38,10 +38,10 @@ export const routes = [
         link: '/userpreferences',
         component:<RequireAuth><UserPreferences/></RequireAuth>
     },
-    //{
-    //    link: '/cart',
-    //    component:<RequireAuth><Cart/></RequireAuth>
-    //},
+    {
+        link: '/cart',
+        component:<RequireAuth><Cart/></RequireAuth>
+    },
     {
         link: '/purchasecompleted',
         component:<RequireAuth><PurchaseCompleted/></RequireAuth>
