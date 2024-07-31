@@ -3,18 +3,6 @@ import { useCart } from '../../context/Cart/CartContext';
 import ProductDisplayCart from '../../layout/components/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
-
-/* ao invés de usar:
-const Cart: React.FC = () => {
-e após a função ter de usar:
-export default Cart; (além de ter de importar o React)
-parece mais simples usar a versão abaixo.
-Porém segundo o GPT "Em componentes mais complexos, ou quando você deseja adicionar tipos específicos ao componente,
-a primeira abordagem pode ser mais adequada."
-*/
-
-// lembrete de não usar mais 4 pontos de espaçamento (em html. Em lógica pura até que fica ok)
-
 export default function Cart() {
 
 
@@ -131,3 +119,14 @@ export default function Cart() {
     </>
   )
 }
+
+/* ao invés de usar:
+const Cart: React.FC = () => {
+e após a função ter de usar:
+export default Cart; (além de ter de importar o React)
+parece mais simples usar a versão abaixo.
+Porém segundo o GPT "Em componentes mais complexos, ou quando você deseja adicionar tipos específicos ao componente,
+a primeira abordagem pode ser mais adequada."
+*/
+
+// lembrete de não usar mais 4 pontos de espaçamento (em html. Em lógica pura até que fica ok)
