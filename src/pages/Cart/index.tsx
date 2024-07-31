@@ -7,7 +7,7 @@ import { Product } from "../../types/Product";
 
 
 
-export default function Cart() {
+export default function Home2() {
   const { theme } = useTheme();
 
   /* essa recuperação simples da lista de produtos teria de ser substituida por uma que obtivesse apenas o id

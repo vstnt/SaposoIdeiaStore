@@ -8,7 +8,7 @@ import Register from "../pages/register";
 import ProductDetails from "../pages/productDetails";
 import UserPreferences from "../pages/userPreferences";
 import PurchaseCompleted from "../pages/purchaseCompleted";
-import Cart from "../pages/cart";
+import Home2 from "../pages/cart";
 
 
 
@@ -40,7 +40,7 @@ export const routes = [
     },
     {
         link: '/cart',
-        component:<RequireAuth><Cart/></RequireAuth>
+        component:<RequireAuth><Home2/></RequireAuth>
     },
     {
         link: '/purchasecompleted',
