@@ -1,134 +1,93 @@
 import { useTheme } from '../../context/Theme/ThemeContext';
-import { useCart } from '../../context/Cart/CartContext';
-import ProductDisplayCart from '../../layout/components/ProductDisplayCart';
-import { Link } from 'react-router-dom';
+import ProductDisplay from "../../layout/components/ProductDisplay";
+import NewestProducts from "../../layout/components/NewestProducts";
+import { useState, useEffect } from "react";
+import axiosClient from "../../axiosClient";
+import { Product } from "../../types/Product";
+
 
 
 export default function Cart() {
-  const { cart, removeItem, clearCart, updateItem } = useCart()
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
-  if (!cart) {
-	return <div>Carregando carrinho...</div>;
-  }
+  /* essa recuperação simples da lista de produtos teria de ser substituida por uma que obtivesse apenas o id
+  dos produtos mais vendidos, quando essa função nna api for implementada. */
+  const [products, setProducts] = useState<Product[]>([]);
 
+  useEffect(() => {
+    axiosClient.get('/api/products')
+    .then(response => setProducts(response.data))
+    .catch(error => console.error('Error fetching products:', error));
+  }, []);
 
-/* ao invés de usar:
-const Cart: React.FC = () => {
-e após a função ter de usar:
-export default Cart; (além de ter de importar o React)
-parece mais simples usar a versão abaixo.
-Porém segundo o GPT "Em componentes mais complexos, ou quando você deseja adicionar tipos específicos ao componente,
-a primeira abordagem pode ser mais adequada."
-*/
-
-// lembrete de não usar mais 4 pontos de espaçamento (em html. Em lógica pura até que fica ok)
-
+ 
 
   return (
     <>
-        <div id='bg' className={`pb-24 pt-44 bg-gradient-to-b px-5 min-h-[80vh] flex justify-center
-        ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
-        : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>        
+      <div id='background' 
+      className={` min-h-[550px] min-w-[600px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
+      ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
+      : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
         
-            <div id='espaço contendo os elementos da página' className='w-11/12'>
-                <h2 className="text-2xl font-semibold mb-4 italic ml-14">
-					Seu carrinho de Compras
-				</h2>
-                
-                {cart?.items.length === 0 ? (
-                    
-                    <div className={`flex justify-center items-center h-32 w-full rounded-lg
-					${theme === 'dark' ? 'bg-slate-500/30 border-2 border-gray-400' 
-					: 'bg-slate-500/30 border-2 border-slate-400'}`}>
-                    	<p className="text-lg ">Carrinho  vazio...</p>
-                    </div>
+        <div id="grande caixa que contém a grade" className="mt-48 gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 h-5/6 min-h-[800px]">
 
-                ) : (
+          <div id="novidades" className="col-span-3 w-full h-40 "><NewestProducts/></div>
 
-                    <>
-                        <div className='flex flex-col gap-3'>
-							<ul id='lista itens carrinho' className="space-y-4"> {cart?.items.sort((a, b) => a.createdAt - b.createdAt).map((item) => (
-									
-									<li key={item.productId} 
-									className={`flex  rounded-lg
-									${theme === 'dark' ? 'border-2  bg-black/30 border-slate-400 text-neutral-200' 
-									: 'bg-slate-100/90 border-2 border-slate-400'}`}>
-										
-										<div id='imagem e nome' className='basis-7/12 h-full '>
-										<ProductDisplayCart productId={item.productId} truncationName={19} truncationDescription={21} />
-										</div>
-
-										<div className='basis-5/12 flex justify-start '>
-											
-											<div id='quantidade' className="basis-3/6 self-center text-sm flex ">
-												<div className='self-center'>Quantidade :</div> 
-												<div className='ml-3 px-6 py-1 self-center border rounded-sm text-black bg-slate-100'> {item.quantity}</div>
-
-												<div id='+ e -' className=' ml-3 self-center flex flex-col gap-3  place-content-center'>
-													<button onClick={() => updateItem(item.productId, 1)} 
-													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
-													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
-													: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
-														+</button>
-													<button onClick={() => updateItem(item.productId, -1)}
-													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
-													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
-													: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
-														-</button>
-												</div>
-											</div>
-
-											<div id='valor produto' className='basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
-												<div className='text-xs'>${item.price}</div>
-												<div className='text-xl text-emerald-300'>${item.price * item.quantity}.00</div>
-											</div>
-
-											<div id='botão X' className='basis-1/6 flex justify-end'>
-												<button 
-												onClick={() => removeItem(item.productId)} 
-												className={`px-3 py-0.5 rounded border-b border-l transition-all duration-300 h-fit 
-												${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-												: 'border-stone-900 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
-												X
-												</button>
-											</div>
-
-										</div>
-
-									</li>
-							
-							))}</ul>
-							<div className='self-end mr-[70px] mt-4 flex gap-3'>
-								<div className='self-end'>total: </div>
-								<div className=' text-3xl text-emerald-300'>${cart.total}</div>
-							</div>
-
-							<div id='botões limpar carrinho e finalizar compra' className="mt-8 flex gap-5 justify-center">
-								<button 
-									onClick={clearCart} 
-									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300  
-									${theme === 'dark' ? 'text-neutral-100 border-stone-700 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-									: 'border-2 border-gray-400 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-lime-500'}`}>
-									Limpar Carrinho
-								</button>
-								<Link to={'/purchasecompleted'} onClick={clearCart}
-									className={`px-5 rounded border-2 transition-all duration-300  
-									${theme === 'dark' ? 'text-slate-800 border-stone-700 bg-emerald-400/90 hover:bg-emerald-300 hover:shadow-black hover:shadow-md' 
-									: 'border-2 border-slate-400 bg-emerald-300 hover:bg-green-200 hover: hover:shadow-sm hover:shadow-lime-500'}`}>
-									Finalizar compra
-								</Link>
-							</div>
-						</div>
-
-                    </>
-
-                )}
+          <div id="texto grande SAPOSO IDEIA STORE" className="flex flex-col justify-start w-full h-full col-span-2 row-span-5 mt-32">
+            <div className="-mx-2 -ml-10">
+              {theme === 'dark' ? <img src='assets/saposoideiastore2.png'></img> 
+              : <img src='assets/saposoideiastore.png'></img>}
             </div>
+          </div>          
+          
+          <div className="caixa mais vendidos relative">
+            <div id="caixa mais vendidos" 
+            className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
+            ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
+            : 'bg-white/30 border-zinc-500'} `}>
+              
+              <div id="caixinha mais vendidos superior" 
+                className={`absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
+                ${theme === 'dark' ? ' bg-black/70 border border-emerald-100' 
+                : 'bg-zinc-100  border border-black'} `}>
+                mais vendidos</div>
+              <div id="caixinha mais vendidos inferior" 
+                className={`absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
+                ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
+                : 'bg-zinc-100  border border-black'} `}>
+                mais vendidos</div>
+
+              <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
+                {products.slice(0, 5).map(product => (
+                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationName={19} truncationDescription={21} /></div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div id="big saposo" className="flex justify-center"><img src="assets/saposobig.png" className="w-[60%]"></img></div>
+        <div id="caixa do aviso misterioso" 
+        className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
+        ${theme === 'dark' ? 'bg-[#1d1d1d]' 
+        : 'bg-slate-400/30 shadow-inner border-b border-[6px]'}`}>
+          
+          <div id="grande sapo de chapéu" className="mx-6 mt-14 mb-4">o grande sapo te viu</div>
+          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
+          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
+          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
+          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
+          <div id="grande sapo de chapéu" className="mb-10">.</div>
 
         </div>
+
+      </div>
     </>
   )
 }
+
+ 
 
 
