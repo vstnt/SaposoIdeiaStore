@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import axiosClient from '../../axiosClient';
 import { useLocation } from 'react-router-dom';
 import { Cart } from '../../types/Cart';
+import { apiPath } from "../../developmentOrProductionVariables";
+
 
 
 export interface CartContextData {
@@ -41,7 +43,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const loadCart = async () => {
     try {
-      const response = await axiosClient.get('/api/cart');
+      const response = await axiosClient.get(apiPath.getCart);
       setCart(response.data);
     } catch (error) {
       console.error('Erro ao recuperar carrinho:', error);
@@ -51,7 +53,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   
   const clearCart = async () => {
     try {
-      await axiosClient.get('/api/cart/clear')
+      await axiosClient.get(apiPath.clearCart)
     } catch (error) {
       console.error('Erro ao limpar carrinho: ', error);
     }
@@ -60,7 +62,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const updateItem = async (item_id: number, quantity: number) => {
     try {
-      const response = await axiosClient.post('/api/cart/updateitem', {product_id: item_id, quantity: quantity})
+      const response = await axiosClient.post(apiPath.updateItem, {product_id: item_id, quantity: quantity})
       return response.data.message
     } catch (error) {
       console.error('Erro ao alterar quantidade do item: ', error);
@@ -70,7 +72,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const removeItem = async (item_id: number) => {
     try {
-      await axiosClient.post('/api/cart/deleteitem', {product_id: item_id})
+      await axiosClient.post(apiPath.deleteItem, {product_id: item_id})
     } catch (error) {
       console.error('Erro ao remover item do carrinho: ', error);
     }

@@ -1,10 +1,9 @@
 import axios from 'axios';
-import devOrProdConfig from './developmentOrProductionVariables';
-
+import { apiPath } from './developmentOrProductionVariables';
 // pq o _?
 
 const axiosClient = axios.create({
-    baseURL: devOrProdConfig.apiEndpoint,
+    baseURL: apiPath.base,
     headers: {
         'Content-type': 'application/json'
     }
@@ -87,7 +86,7 @@ axiosClient.interceptors.response.use(
       if (refreshToken) {
         try {
           if (localStorage.getItem('tokenOrigin') == 'backend') {
-            const refreshTokenResponse = await axios.post(`${devOrProdConfig.apiEndpoint}/api/refreshtoken`,{}, {headers:{ refresh_token: refreshToken }})
+            const refreshTokenResponse = await axios.post(apiPath.base+apiPath.refreshToken,{}, {headers:{ refresh_token: refreshToken }})
             console.log(refreshTokenResponse)
             const newAccessToken = refreshTokenResponse.data.token
             const newRefreshToken = refreshTokenResponse.data.refreshToken

@@ -5,6 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { firebaseAuth } from "../../firebase/firebaseConfig";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { apiPath } from "../../developmentOrProductionVariables";
 
 
 export type AuthContextType = { // type pra o nosso contexto
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
                 const authToken = localStorage.getItem('authToken');
                 const tokenOrigin = localStorage.getItem('tokenOrigin');
                 if (authToken && tokenOrigin === 'backend' && authToken !== ''){
-                    const response = await axiosClient.post('api/validate')
+                    const response = await axiosClient.post(apiPath.validateToken)
                     if (response.data.user) {
                         setUser(response.data.user)
                     }
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
 
     const signin = async (email: string, password: string) => {
         try {
-            const response = await axiosClient.post('api/signin', { email, password });
+            const response = await axiosClient.post(apiPath.signin, { email, password });
             if(response.data.user && response.data.token) {
                 setUser(response.data.user);
                 setAccessToken(response.data.token);
@@ -88,7 +89,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
                 email: firebaseUser.email,
                 name: firebaseUser.displayName || 'Firebase User'
             });
-            await axiosClient.post('api/carts/create', {'uid': firebaseUser.uid} )
+            await axiosClient.post(apiPath.createCart, {'uid': firebaseUser.uid} )
         } catch (error) {
             console.error('Google Signin failed:', error);
         }
@@ -98,7 +99,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     const signout = async () => {
         if (localStorage.getItem('tokenOrigin') == 'backend'){
             const refreshToken = localStorage.getItem('refreshToken')
-            await axiosClient.post('api/logout', {}, {headers: {'refresh_token': refreshToken}} )
+            await axiosClient.post(apiPath.logout, {}, {headers: {'refresh_token': refreshToken}} )
             setUser(null);
             setAccessToken('');
             setRefreshToken('');
@@ -114,7 +115,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
 
     const register = async (uid: string | null, source: string, email: string, name: string, password: string | null) => {
         try {
-            await axiosClient.post('api/register', { uid, source, email, fullName: name, password });
+            await axiosClient.post(apiPath.register, { uid, source, email, fullName: name, password });
 
                 return true
             
