@@ -5,8 +5,9 @@ para que o git o ignore é: git update-index --assume-unchanged src/developmentO
 Junto com esse arquivo, vamos criar um ambiente com as variáveis e endpoints para as duas opções.
 Este poderá ser sincronizado entre os repositórios normalmente. */
 
-export const selector = 'production';
+export const selector: 'production' | 'development' = 'production';
 
 // ou
 
-//export const seletor = 'development';
+//export const selector: 'production' | 'development' = 'development';
+
