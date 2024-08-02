@@ -1,14 +1,10 @@
-import { selector } from "./developmentOrProductionSelector";
-
-
 const devOrProdConfig = {apiEndpoint: '',};
 
-if (selector === 'development') {
+if (process.env.NODE_ENV === 'development') {
     devOrProdConfig.apiEndpoint = 'http://localhost:3333'
-} else if ( selector === 'production') {
+} else if ( process.env.NODE_ENV === 'production') {
     devOrProdConfig.apiEndpoint = 'https://saposoapi-eydy.onrender.com'
 }
-
 
 export const apiPath = {
     base: `${devOrProdConfig.apiEndpoint}`,
