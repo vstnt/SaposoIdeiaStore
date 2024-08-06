@@ -85,8 +85,8 @@ export default function Navbar() {
       </div>
       
       <div id='SaposoIdeiaStore texto' 
-      className={`basis-1/3 ml-[2%] px-[1%] pb-0.5 text-[210%] 
-        sm:ml-[10%] 
+      className={`basis-1/3 ml-[2%] px-[1%]  text-[145%] 
+        sm:ml-[10%] sm:pb-0.5
         md:ml-[0%] md:h-[63%] md:mt-auto md:mb-2 md:text-[3vw] flex items-center justify-center rounded transition-colors duration-300
       ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80' 
       : 'text-emerald-50 bg-zinc-900/80  hover:bg-zinc-800'} `}>
@@ -167,7 +167,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      <button id="botão menu" className="md:hidden border border-indigo-300 px-2 py-1 mr-2 text-2xl rounded bg-slate-300/65">&#9776;</button>
+      <button id="botão menu" className="md:hidden border border-indigo-300 px-1  mr-2 text-2xl rounded bg-slate-300/65">&#9776;</button>
 
     </div>
     )
