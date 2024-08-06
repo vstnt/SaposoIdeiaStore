@@ -58,7 +58,8 @@ export default function NewestProducts () {
       : 'bg-slate-100/90 text-black border-zinc-500'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-        className={`absolute shadow z-50 bottom-0 right-0 -m-2 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-[2.3vw] transition-colors duration-300 
+        className={`absolute shadow z-50 bottom-0 right-0 -m-7 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-base transition-colors duration-300 
+          md:-m-2 
         ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
         : 'bg-zinc-100 text-stone-900 border border-zinc-700'} `}>
           <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div> 
@@ -99,7 +100,7 @@ export default function NewestProducts () {
                     </div>
                     
                     <div id='nome, descrição' 
-                    className=' basis-6/12 flex flex-col ' >
+                    className=' basis-6/12 flex flex-col ml-[1vw]' >
                       <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
                       <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
                     </div>
