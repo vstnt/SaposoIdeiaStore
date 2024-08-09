@@ -194,7 +194,7 @@ export default function Navbar() {
       <button id="menu-button" className="block md:hidden text-3xl focus:outline-none">
         &#9776;
       </button>
-      <nav id="nav-menu" className="hidden md:flex flex-col md:flex-row md:items-center md:space-x-6 w-full md:w-auto">
+      <nav id="nav-menu" className="hidden  flex-col md:flex-row md:items-center md:space-x-6 w-full md:w-auto">
         <ul className="flex flex-col md:flex-row md:space-x-6 w-full md:w-auto text-center md:text-left">
           <li><a href="#home" className="block py-2 md:py-0">Home</a></li>
           <li><a href="#about" className="block py-2 md:py-0">Sobre</a></li>
@@ -215,7 +215,7 @@ export default function Navbar() {
       
       <div id='menu-mobile'>
       <div id='Menudadireita' 
-      className="basis-1/3 h-full flex justify-end items-start relative">
+      className="hidden basis-1/3 h-full flex justify-end items-start relative">
 
         {!auth.user && // CASO usuário não logado
           <div id="botões login, crie sua conta"

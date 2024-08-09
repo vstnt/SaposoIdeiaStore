@@ -36,9 +36,7 @@ export default function Home() {
 
           <div id="novidades" className="col-span-3 w-full h-80 lg:h-40 "><NewestProducts/></div>
           
-          
-          
-          <div>
+      
             
             <div id="texto grande SAPOSO IDEIA STORE" className="flex flex-col justify-start w-full h-full col-span-2 row-span-5 mt-32">
               <div className="-mx-2 -ml-10">
@@ -71,8 +69,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            
-          </div>
+
 
 
 
