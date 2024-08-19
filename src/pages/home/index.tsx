@@ -45,7 +45,7 @@ export default function Home() {
               </div>
             </div>          
             
-            <div className="caixa mais vendidos relative">
+            <div id="caixa mais vendidos relative" className='hidden'>
               <div id="caixa mais vendidos" 
               className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
               ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
