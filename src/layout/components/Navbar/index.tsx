@@ -102,6 +102,7 @@ export default function Navbar() {
         <Link to={'/'} onClick={handlePageChangerSmooth} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
       </div>
       
+
       <div id='Menudadireita' 
       className="basis-1/3 h-full flex justify-end items-start relative">
 
@@ -125,7 +126,7 @@ export default function Navbar() {
         
           </div>
         }
-
+        
         {auth.user && // CASO usuário logado
           <div id="Menu da direita, primeira parte"
           className="hidden 
@@ -136,7 +137,8 @@ export default function Navbar() {
             className={`bg-gray-400 border flex items-center px-3 rounded h-fit text-xs mt-3 absolute left-10
             ${theme === 'dark' ? 'border-gray-300' 
               : 'border-gray-800'} `}>
-              Oi, {auth.user.name}</div>
+              Oi, {auth.user.name}
+            </div>
             
             <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
               
@@ -181,19 +183,14 @@ export default function Navbar() {
 
 
 
-
-
-
-
-
-
-      <button id="botão menu" className="md:hidden border border-indigo-300 px-1 mr-2 text-2xl rounded bg-slate-300/65">&#9776;</button>
-      
-
-      
-      <button id="menu-button" className="block md:hidden text-3xl focus:outline-none">
+      <button id="botão-menu" className="md:hidden border border-indigo-300 px-1 mr-2 text-2xl rounded bg-slate-300/65">
         &#9776;
       </button>
+      
+
+      
+
+
       <nav id="nav-menu" className="hidden  flex-col md:flex-row md:items-center md:space-x-6 w-full md:w-auto">
         <ul className="flex flex-col md:flex-row md:space-x-6 w-full md:w-auto text-center md:text-left">
           <li><a href="#home" className="block py-2 md:py-0">Home</a></li>
@@ -213,82 +210,10 @@ export default function Navbar() {
       
       
       
-      <div id='menu-mobile'>
-      <div id='Menudadireita' 
-      className="hidden basis-1/3 h-full flex justify-end items-start relative">
-
-        {!auth.user && // CASO usuário não logado
-          <div id="botões login, crie sua conta"
-          className="hidden
-          md:flex text-sm gap-3 self-end justify-items-end mb-2 -mr-8
-          lg:text-base "> 
-            
-            <div><Link to={'/login'} onClick={handlePageChanger}
-            className={` px-[1.5vw] pb-0.5 pt-1 rounded-sm border-t  transition-all duration-500 
-            ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-            : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
-              login</Link></div>
-            
-            <div><Link to={'/register'} onClick={handlePageChanger}
-            className={`mr-1 px-[1vw] pb-0.5 pt-1 rounded-sm border-t transition-all duration-500 tracking-tight
-            ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-            : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
-              crie sua conta</Link></div>
-        
-          </div>
-        }
-
-        {auth.user && // CASO usuário logado
-          <div id="Menu da direita, primeira parte"
-          className="hidden 
-          md:grid text-sm h-full gap-1 justify-items-end mr-2 bg-slate-600
-          lg:text-base">
-              
-            <div id="parte superior. Oi, Usuário" 
-            className={`bg-gray-400 border flex items-center px-3 rounded h-fit text-xs mt-3 absolute left-10
-            ${theme === 'dark' ? 'border-gray-300' 
-              : 'border-gray-800'} `}>
-              Oi, {auth.user.name}</div>
-            
-            <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
-              
-              <div id="minha conta">
-                <Link to={'/userpreferences'} onClick={handlePageChanger}
-                className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
-                ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-                : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'} `}>
-                Minha Conta
-                </Link>
-              </div>
-              
-              <div id="sair" onClick={handleLogout}><Link to={''} onClick={handlePageChangerSmooth}
-              className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500
-              ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-              : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}   `}>
-                Sair</Link>   
-              </div>
-              
-            </div>
-
-          </div>
-        }
 
 
-        <button id="1-alternador tema" 
-        onClick={toggleTheme} 
-        className={`hidden md:flex items-center rounded-bl transition-all duration-500 
-        ${theme === 'dark' ? ' bg-[#c7e9db]/60 hover:bg-[#c7e9db] text-black shadow shadow-black ' 
-        : 'bg-violet-600/60 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
-            <div id="imagem" 
-            className="w-[23px] mr-1 ml-2 my-1">
-            {theme === 'dark' ? 
-              <img src='/assets/themeicon.png'></img> 
-              : <img src='/assets/themeicon2.png'></img>}
-            </div>
-        </button>
-      </div>
 
-      </div>
+
     </div>
     )
 }
