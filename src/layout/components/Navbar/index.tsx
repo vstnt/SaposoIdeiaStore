@@ -21,6 +21,11 @@ export default function Navbar() {
 
   const handlePageChangerSmooth = () => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    const sideMenu = document.getElementById('sideMenu');
+    if (sideMenu) {
+      const isMenuVisible = sideMenu.style.left === '0%';
+      sideMenu.style.left = isMenuVisible ? '-100%' : '-100%'; // Alterna entre mostrar e esconder o menu
+    } 
   }
 
   // visibilidade do cabeçalho
