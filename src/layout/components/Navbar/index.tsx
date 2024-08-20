@@ -17,6 +17,11 @@ export default function Navbar() {
 
   const handlePageChanger = () => {
     window.scrollTo({top: 0, left: 0})
+    const sideMenu = document.getElementById('sideMenu');
+    if (sideMenu) {
+      const isMenuVisible = sideMenu.style.left === '0%';
+      sideMenu.style.left = isMenuVisible ? '-100%' : '-100%'; // Alterna entre mostrar e esconder o menu
+    } 
   }
 
   const handlePageChangerSmooth = () => {
@@ -60,7 +65,8 @@ export default function Navbar() {
 
   return (
     <div id='header-and-sideMenu'>
-      <div id='Cabeçalho' 
+      
+      <div id='header' 
       style={{ transition: 'opacity 0.3s' }} 
       className={`transition-all duration-500 z-[987] fixed flex items-center border-b h-[80px] w-full text-[16px] text-neutral-900 font-mono 
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
@@ -166,7 +172,6 @@ export default function Navbar() {
             </div>
           }
 
-
           <button id="1-alternador tema" 
           onClick={toggleTheme} 
           className={`hidden md:flex items-center rounded-bl transition-all duration-500 
@@ -189,39 +194,167 @@ export default function Navbar() {
       </div>
 
 
-      <div id="sideMenu" 
-        style={{ transition: 'left 0.3s' }} 
-        className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-full bg-gray-500 visible pointer-events-auto 
-        ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r' 
-        : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} 
-      
-      `}>
-        <div id="buttons" className="flex flex-row-reverse">
-          
-          <button id="leaveMenuButton" onClick={toggleMenu} className=" border border-indigo-300 px-1 m-4 h-fit w-9 text-2xl rounded bg-slate-300/65">
-            X
-          </button>
 
-          <ul className="absolute inset-0 mt-20 flex flex-col text-center">
-            <li>          
-              <div id='imgsaposo'>
-                <Link to={'/'} onClick={handlePageChangerSmooth}>
-                  <img 
-                    className={`ml-[2vw] shadow transition-shadow duration-300 w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
-                    ${theme === 'dark' ? 'shadow-black/35 hover:shadow-teal-200 border-stone-700' 
-                    : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-300'}`} 
-                    src='/assets/saposo.png'>
-                  </img>
-                </Link>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div id="sideMenu" 
+      style={{ transition: 'left 0.3s' }} 
+      className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-full bg-gray-500 visible pointer-events-auto 
+      ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r' 
+      : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
+        <div id="flex base elementos" className="flex justify-between">
+          
+        <div id='saposo-home and theme-button' className="flex items-start">
+            
+            <div className="flex flex-col items-center">
+            <Link to={'/'} onClick={handlePageChangerSmooth}>
+              <img 
+                className={`ml-[2vw] shadow transition-shadow duration-300 w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
+                ${theme === 'dark' ? 'shadow-black/35 hover:shadow-teal-200 border-stone-700' 
+                : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-300'}`} 
+                src='/assets/saposo.png'>
+              </img>
+            </Link>
+            <div className={`font-mono ${theme === 'dark' ? '' : 'text-black text-xs mb-5'}`}>--&gt; Home</div>              
+            </div>
+            
+            <button id="1-alternador tema" 
+            onClick={toggleTheme} 
+            className={`flex items-center rounded-b transition-all duration-500 ml-4
+            ${theme === 'dark' ? ' bg-[#c7e9db]/60 hover:bg-[#c7e9db] text-black shadow shadow-black ' 
+            : 'bg-violet-600/60 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
+              <div id="imagem" 
+              className="w-[23px] mr-1 ml-2 my-1">
+                {theme === 'dark' ? 
+                  <img src='/assets/themeicon.png'></img> 
+                  : <img src='/assets/themeicon2.png'></img>}
               </div>
+            </button>
+            
+                  
+          </div>
+
+
+
+
+          <div id="leave-menu and oi, usuário" className="flex flex-col items-end">
+            
+            <button id="leave-Menu-Button" onClick={toggleMenu} 
+            className={` border border-indigo-300 m-3 px-1 self h-fit w-9 text-2xl rounded bg-slate-300/65
+            ${theme === 'dark' ? '' : 'border-gray-600 text-slate-600'}`}>
+              X
+            </button>
+
+            {auth.user &&
+              <div id="parte superior. Oi, Usuário" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+              className={`bg-gray-400 border flex items-center px- py-3 mt-20 rounded h-fit text-xs mr-3 transform-
+              ${theme === 'dark' ? 'border-gray-300' 
+                : 'border-gray-800'} `}>
+                Oi, {auth.user.name}
+              </div>
+            }
+          </div>
+
+          
+          <ul id="buttons-list" className="absolute ml-10 mt-40 flex flex-col text-center gap-5 text-xl w-[50vw]">
+
+            <li>
+              <Link id='botão buscar produtos' 
+              to={'/products'}
+                className="w-full ">
+                  <button onClick={handlePageChanger}
+                  className={`italic pb-1 pt-0.5 px-3 w-[45vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    Buscar produtos
+                  </button>
+              </Link>
             </li>
-            <li><a href="#home" className="block py-2 md:py-0">Home</a></li>
-            <li><a href="#about" className="block py-2 md:py-0">Sobre</a></li>
-            <li><a href="#products" className="block py-2 md:py-0">Produtos</a></li>
-            <li><a href="#contact" className="block py-2 md:py-0">Contato</a></li>
+
+            {!auth.user &&
+              <li>
+              <Link id='botão login' 
+              to={'/login'}
+                className="w-full ">
+                  <button onClick={handlePageChanger}
+                  className={`italic pb-1 pt-0.5 px-3 w-[45vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    Login
+                  </button>
+              </Link>
+            </li>
+            }
+            
+            {!auth.user &&
+              <li>
+              <Link id='botão registro' 
+              to={'/register'}
+                className=" w-full ">
+                  <button onClick={handlePageChanger}
+                  className={`italic pb-1 pt-0.5 px-3 w-[45vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    Registro
+                  </button>
+              </Link>
+            </li>
+            }
+            {auth.user &&
+              <li>
+              <Link id='botão minha conta' 
+              to={'/userpreferences'}
+                className="w-full ">
+                  <button onClick={handlePageChanger}
+                  className={`italic pb-1 pt-0.5 px-3 w-[40vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    Minha Conta
+                  </button>
+              </Link>
+            </li>
+            }
+            
+            {auth.user &&
+              <li>
+              <Link id='botão logout' 
+              onClick={handleLogout} to={''}
+                className="w-full ">
+                  <button onClick={handlePageChangerSmooth}
+                  className={`italic pb-1 pt-0.5 px-3 w-[40vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    Sair
+                  </button>
+              </Link>
+            </li>
+            }
+
+            
+
           </ul>
+
+
         </div>
-        </div>
+
+      </div>
 
     </div>
     
