@@ -103,7 +103,7 @@ export default function Navbar() {
         </div>
         
         <div id='SaposoIdeiaStore texto' 
-        className={`basis-1/3 ml-[2%] px-[1%] py-1  text-[170%] 
+        className={`basis-1/3 ml-[2%] px-[1%] py-1  text-[160%] 
           sm:ml-[10%] sm:pb-0.5
           md:ml-[0%] md:h-[63%] md:mt-auto md:mb-2 md:text-[3vw] flex items-center justify-center rounded transition-colors duration-300
         ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80' 
@@ -187,7 +187,7 @@ export default function Navbar() {
         </div>
 
 
-        <button id="menuButton" onClick={toggleMenu} className="md:hidden border border-indigo-300 px-1 mr-2 text-2xl rounded bg-slate-300/65">
+        <button id="menuButton" onClick={toggleMenu} className="md:hidden border border-indigo-300 px-1 mr-2 text-4xl rounded bg-slate-300/65">
           &#9776;
         </button>
 
@@ -218,10 +218,10 @@ export default function Navbar() {
           
         <div id='saposo-home and theme-button' className="flex items-start">
             
-            <div className="flex flex-col items-center">
+            <div id="saposo-home" className="flex flex-col items-center">
             <Link to={'/'} onClick={handlePageChangerSmooth}>
               <img 
-                className={`ml-[2vw] shadow transition-shadow duration-300 w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
+                className={`ml-[2vw] shadow transition-shadow duration-300 w-[6rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
                 ${theme === 'dark' ? 'shadow-black/35 hover:shadow-teal-200 border-stone-700' 
                 : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-300'}`} 
                 src='/assets/saposo.png'>
@@ -236,7 +236,7 @@ export default function Navbar() {
             ${theme === 'dark' ? ' bg-[#c7e9db]/60 hover:bg-[#c7e9db] text-black shadow shadow-black ' 
             : 'bg-violet-600/60 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
               <div id="imagem" 
-              className="w-[23px] mr-1 ml-2 my-1">
+              className="w-[30px] mr-1 ml-2 my-1">
                 {theme === 'dark' ? 
                   <img src='/assets/themeicon.png'></img> 
                   : <img src='/assets/themeicon2.png'></img>}
