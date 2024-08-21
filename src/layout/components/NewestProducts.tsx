@@ -48,7 +48,7 @@ export default function NewestProducts () {
   }, [products]);
 
 
-  
+   
   return (
     <div id='caixa completa relative, pra poder fazer as caixas transbordando a caixa' 
     className='relative w-full h-full'>
@@ -66,8 +66,8 @@ export default function NewestProducts () {
         </div>
 
         <Link id='botão lista completa' to={'/products'} 
-        className={` absolute shadow z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border border-stone-400/60 transition-colors duration-300 tracking-tight hover:underline
-        ${theme === 'dark' ? '' : 'bg-neutral-100'} `}>
+        className={`text-xs md:text-md absolute shadow z-50 top-0 right-0 justify-self-end px-3 pr-2 pt-1 pb-1 rounded border  border-stone-400/60 transition-colors duration-300 tracking-tight hover:underline
+        ${theme === 'dark' ? 'bg-slate-800/50' : 'bg-neutral-100'} `}>
           lista completa
         </Link>
 
@@ -76,7 +76,7 @@ export default function NewestProducts () {
             spaceBetween={10}
             centeredSlides={true}
             autoplay={{
-              delay: 2500,
+              delay: 222500,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -93,21 +93,40 @@ export default function NewestProducts () {
           >
             {products.map(product => (
                 <SwiperSlide key={product.id}>
-                  <div id='slide' className=' flex h-full w-full'>
+                  <div id='slide' className='flex flex-col md:flex-row h-full w-full'>
                     
-                    <div className=' py-1 basis-3/12 object-contain max-h-full flex justify-center'>
+                    <div className='hidden py-1 basis-3/12 object-contain max-h-full md:flex justify-center'>
                       <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
                     </div>
                     
                     <div id='nome, descrição' 
-                    className=' basis-6/12 flex flex-col ml-[1vw]' >
+                    className='hidden basis-6/12 md:flex flex-col ml-[1vw]' >
                       <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
                       <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
                     </div>
 
-                    <div className='flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
+                    <div className='hidden md:flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
                       <div id='price' className='text-2xl'>R$ {product.price}</div>
                       <div id='botao ver mais' className='ml-14 p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
+                          <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
+                      </div>
+                    </div>
+
+
+
+
+                    <div className='md:hidden py-1 h-[28vh] object-contain max-h-full flex justify-center'>
+                      <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
+                    </div>
+                    
+                    <div id='nome' className={`md:hidden mt-1 font-bold text-center basis-1/3 w-full px-8  md:text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
+                    <div id='descrição' className='md:hidden  h-[100vh] mb-2 px-2  overflow-hidden line-clamp-4'>
+                      <div >{truncateWords(product.description, 40)}</div>
+                    </div>
+      
+                    <div className='md:hidden flex mb-9 justify-between '>
+                      <div id='price' className='ml-3 text-2xl'>R$ {product.price}</div>
+                      <div id='botao ver mais' className=' p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>

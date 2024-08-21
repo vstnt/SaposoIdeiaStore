@@ -34,53 +34,47 @@ export default function Home() {
         <div id="área com: novidades, Saposoideiastore, mais vendidos" 
         className="mt-[5vw] gap-5 grid grid-cols-3 justify-items-center items-start w-11/12">
 
-          <div id="novidades" className="col-span-3 w-full h-80 lg:h-40 "><NewestProducts/></div>
+          <div id="novidades" className="col-span-3 w-full h-[60vh] lg:h-40 ">
+            <NewestProducts/>
+          </div>
+                  
+          <div id="texto grande SAPOSO IDEIA STORE" className=" flex flex-col mt-14 justify-start w-[100vw] md:w-full h-full col-span-3 md:col-span-2 row-span-5 md:mt-32">
+            <div className="md:-mx-2 md:-ml-10 ">
+              {theme === 'dark' ? <img src='assets/saposoideiastore2.png'></img> 
+              : <img src='assets/saposoideiastore.png' className='w-[100%]'></img>}
+            </div>
+          </div>          
           
-      
-            
-            <div id="texto grande SAPOSO IDEIA STORE" className="flex flex-col justify-start w-full h-full col-span-2 row-span-5 mt-32">
-              <div className="-mx-2 -ml-10">
-                {theme === 'dark' ? <img src='assets/saposoideiastore2.png'></img> 
-                : <img src='assets/saposoideiastore.png'></img>}
-              </div>
-            </div>          
-            
-            <div id="caixa mais vendidos relative" className='hidden'>
-              <div id="caixa mais vendidos" 
-              className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
-              ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
-              : 'bg-white/30 border-zinc-500'} `}>
-                
-                <div id="caixinha mais vendidos superior" 
-                  className={`absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
-                  ${theme === 'dark' ? ' bg-black/70 border border-emerald-100' 
-                  : 'bg-zinc-100  border border-black'} `}>
-                  mais vendidos</div>
-                <div id="caixinha mais vendidos inferior" 
-                  className={`absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
-                  ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
-                  : 'bg-zinc-100  border border-black'} `}>
-                  mais vendidos</div>
+          <div id="caixa mais vendidos relative" className='hidden md:block'>
+            <div id="caixa mais vendidos" 
+            className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
+            ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
+            : 'bg-white/30 border-zinc-500'} `}>
+              
+              <div id="caixinha mais vendidos superior" 
+                className={`absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
+                ${theme === 'dark' ? ' bg-black/70 border border-emerald-100' 
+                : 'bg-zinc-100  border border-black'} `}>
+                mais vendidos</div>
+              <div id="caixinha mais vendidos inferior" 
+                className={`absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
+                ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
+                : 'bg-zinc-100  border border-black'} `}>
+                mais vendidos</div>
 
-                <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
-                  {products.slice(0, 5).map(product => (
-                    <div key={product.id} className=""><ProductDisplay productId={product.id} truncationName={19} truncationDescription={21} /></div>
-                  ))}
-                </div>
+              <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
+                {products.slice(0, 5).map(product => (
+                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationName={19} truncationDescription={21} /></div>
+                ))}
               </div>
             </div>
+          </div>
 
-
-
-
-
-
-
-          
         </div>
 
 
-        <div id="big saposo" className="flex justify-center"><img src="assets/saposobig.png" className="w-[60%]"></img></div>
+        <div id="big saposo" className="flex justify-center md:w-full"><img src="assets/saposobig.png" className="w-[100%]"></img></div>
+        
         <div id="caixa do aviso misterioso" 
         className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
         ${theme === 'dark' ? 'bg-[#1d1d1d]' 
