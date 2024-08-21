@@ -4,10 +4,9 @@ import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
 import { useTheme } from '../../context/Theme/ThemeContext';
 import { ProductDisplayProps } from "../../types/ProductDisplayProps";
-import { truncateCharacters } from "../../helpers/truncate";
 
 
-const ProductDisplayCart: React.FC<ProductDisplayProps> = ({ productId, truncationName }) => {
+const ProductDisplayCart: React.FC<ProductDisplayProps> = ({ productId }) => {
   const { theme } = useTheme()
   const [product, setProduct] = useState<Product | null>(null);
   const navigate = useNavigate();
@@ -41,7 +40,7 @@ const ProductDisplayCart: React.FC<ProductDisplayProps> = ({ productId, truncati
       
       {product?.id == null ?
         <div id="nome produto" className="cursor-pointer ml-8 text-lg font-semibold tracking-wider">Produto não encontrado</div>
-      : <div id="nome produto" className="cursor-pointer ml-8 text-lg font-semibold tracking-wider" onClick={() => redirect()}>{truncateCharacters(product.name, truncationName)}</div>
+      : <div id="nome produto" className="cursor-pointer ml-8 text-lg font-semibold tracking-wider" onClick={() => redirect()}>{product.name}</div>
       }
 
     </div>
