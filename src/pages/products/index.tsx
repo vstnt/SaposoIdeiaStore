@@ -26,18 +26,18 @@ export default function Products() {
         ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
         : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}> 
           
-          <div id='grande conteiner' className=" w-11/12 h-5/6 mb-20 mt-20  min-h-[600px] flex flex-col justify-between items-center">
+          <div id='grande conteiner' className=" w-11/12 h-5/6 mt-10 mb-20 md:mt-20  min-h-[600px] flex flex-col justify-between items-center">
             
             <div id="pesquisa e menu de categorias" className="mb-8 w-full flex flex-col items-center justify-center">
               
               <input id="caixa de pesquisa" type="search" 
-                className={` w-[40%] mt-5 bg-slate-100 
+                className={` md:w-[40%] mt-5 bg-slate-100 
                 ${theme === 'dark' ? '' 
                 : 'border border-black'}  rounded `} 
                   placeholder=" Busque em nossos produtos">
               </input>
 
-              <div id="menu de categorias">menu de categorias | menu de categorias | categorias | categorias </div>
+              <div id="menu de categorias" className='text-center'>menu de categorias | menu de categorias | categorias | categorias </div>
             </div>
             
             <div id="grade de produtos" className="font-mono text-xl mb-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
