@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
 import { useTheme } from '../../context/Theme/ThemeContext';
-import { truncateCharacters, truncateWords } from "../../helpers/truncate";
 import { ProductDisplayProps } from "../../types/ProductDisplayProps";
 
 
-const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId, truncationName, truncationDescription }) => {
+const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
   const [product, setProduct] = useState<Product | null>(null);
   const { theme } = useTheme()
 
@@ -46,9 +45,9 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId, truncationNa
       
       <div id="área img" className=" rounded basis-1/5 flex items-center justify-center"><img id='img produto' className="py-1 object-scale-down max-w-full max-h-full basis-1/4 rounded-md" src={product.imageUrl}></img></div>
       
-      <div id="área Nome + Descrição" className="basis-3/5 h-full flex flex-col gap-0.5 text-sm text-justify pr-3">
-        <p className=" text-md font-bold ">{truncateCharacters(product.name, truncationName)}</p>
-        <p className="text-[10px] italic leading-tight">{truncateWords(product.description, truncationDescription)}</p>
+      <div id="área Nome + Descrição" className="basis-3/5 h-full flex flex-col gap-1 text-sm text-justify pr-3">
+        <p className=" text-md font-bold ">{product.name}</p>
+        <p className="text-[10px] italic leading-tight overflow-hidden line-clamp-3 md:line-clamp-4">{product.description}</p>
       </div>
 
       <div id="área valor + botão ver mais" className="basis-1/5 flex flex-col items-end justify-between text-xs self">
