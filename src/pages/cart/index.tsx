@@ -56,7 +56,7 @@ a primeira abordagem pode ser mais adequada."
 									: 'bg-slate-100/90 border-2 border-slate-400'}`}>
 										
 										<div id='imagem e nome' className='basis-7/12 h-full '>
-										<ProductDisplayCart productId={item.productId} truncationName={19} truncationDescription={21} />
+										<ProductDisplayCart productId={item.productId} />
 										</div>
 
 										<div className='basis-5/12 flex justify-start '>
