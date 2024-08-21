@@ -64,7 +64,7 @@ export default function Home() {
 
               <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
                 {products.slice(0, 5).map(product => (
-                  <div key={product.id} className=""><ProductDisplay productId={product.id} truncationName={19} truncationDescription={21} /></div>
+                  <div key={product.id} className=""><ProductDisplay productId={product.id}/></div>
                 ))}
               </div>
             </div>
