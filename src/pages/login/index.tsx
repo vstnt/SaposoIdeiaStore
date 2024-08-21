@@ -80,22 +80,23 @@ export default function Login() {
 
   return (
     <>
-      <div id='bg' className={`pt-32 md:min-h-[550px] md:min-w-[600px] md:pt-32 pb-14 w-full h-full flex items-center justify-center bg-gradient-to-r 
+      <div id='bg' className={`pt-32 md:min-h-[550px] md:min-w-[600px] pb-14 w-full h-full flex items-center justify-center bg-gradient-to-r 
       ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95%' 
       : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}> 
         
-        <div id='conteiner completo, bg-img + formulário' 
+        <div title='conteiner completo, bg-img + formulário' 
         className={` w-10/12 flex flex-col justify-center rounded-lg overflow-hidden md:w-8/12 md:h-96 md:min-h-[550px] md:min-w-[560px] md:flex-row 
         ${theme === 'dark' ? '' : 'border-2 border-gray-400'} `}>
           
           <div id='bg-img' 
           style={{ backgroundImage: `url('/assets/bglogin.jpg')`}} 
-          className="bg-purple-600 md:w-2/4 w-full h-40 md:h-full bg-cover bg-bottom">
+          className="md:w-2/4 w-full h-40 md:h-full bg-cover bg-bottom">
           </div>
 
-          <div title="área formulário" className="flex flex-col items-center justify-center bg-violet-200 pt-3 md:pt-0  w-full md:w-1/2 rounded-md h-full">
+          <div title="área formulário" 
+          className="flex flex-col items-center justify-center bg-violet-200 pt-3 md:pt-0  w-full md:w-1/2 rounded-md h-full">
             
-            <div id='img e texto' className="md:mb-10 font-semibold text-3xl p-2 text-center w-full text-slate-800">
+            <div title='imgperfil e texto' className="md:mb-10 font-semibold text-3xl p-2 text-center w-full text-slate-800">
               <div className="w-full flex items-center justify-center ">
                 <img
                   className={` w-[60px] mb-2 rounded-full 
@@ -104,13 +105,13 @@ export default function Login() {
                 />
               </div>
               <div>Log in</div>
-              <div className="mt-1 text-sm text-slate-600">
+              <div className="font-mono mt-1 text-sm text-slate-600">
                 Entre na sua conta
               </div>
             </div>
             
-            <div id='formulário'
-            className="md:-mt-5 flex flex-col items-center justify-center gap-4 w-10/12 ">
+            <div title='inputs'
+            className="md:-mt-5 flex flex-col items-center justify-center gap-4 w-10/12">
               <input
                 placeholder="Email"
                 className="placeholder-gray-500 shadow-slate-500 text-sm bg-white border-1 rounded-full w-full  md:w-8/12  pl-4 p-2 shadow-md mx-auto text-black"
@@ -133,7 +134,7 @@ export default function Login() {
               <div className="mt-2 md:mt-4 border-t w-8/12 border-slate-400"></div>
               <div className="text-xs text-slate-800 -mt-3 -mb-5 md:-mb-1  ">Quero acessar com minhas redes sociais</div>
               
-              <div id="firebaseui-auth-container" className="mb-3 md:mb-0"></div>
+              <div id="firebaseui-auth-container" className="mb-3 md:mb-0 w-60"></div>
               <div id="loader">Loading...</div>
             </div>
 
