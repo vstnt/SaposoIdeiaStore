@@ -80,7 +80,7 @@ export default function Login() {
 
   return (
     <>
-      <div id='bg' className={`pt-28 md:min-h-[550px] md:min-w-[600px] md:pt-32 pb-14 w-full h-full flex items-center justify-center bg-gradient-to-r 
+      <div id='bg' className={`pt-32 md:min-h-[550px] md:min-w-[600px] md:pt-32 pb-14 w-full h-full flex items-center justify-center bg-gradient-to-r 
       ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95%' 
       : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}> 
         
