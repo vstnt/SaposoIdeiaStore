@@ -146,7 +146,7 @@ export default function Navbar() {
               className={`bg-gray-400 border flex items-center px-3 rounded h-fit text-xs mt-3 absolute left-10
               ${theme === 'dark' ? 'border-gray-300' 
                 : 'border-gray-800'} `}>
-                Oi, {auth.user.name}
+                Oi, {auth.user.name}!
               </div>
               
               <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
@@ -262,7 +262,7 @@ export default function Navbar() {
               className={`bg-gray-400 border flex items-center px- py-3 mt-20 rounded h-fit text-xs mr-3 transform-
               ${theme === 'dark' ? 'border-gray-300' 
                 : 'border-gray-800'} `}>
-                Oi, {auth.user.name}
+                Oi, {auth.user.name}!
               </div>
             }
           </div>
