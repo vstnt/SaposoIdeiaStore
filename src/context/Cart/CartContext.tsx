@@ -43,7 +43,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const loadCart = async () => {
     try {
+      console.log('tentando acessar carrinho')
       const response = await axiosClient.get(apiPath.getCart);
+      console.log('resposta da tentativa', response.data)
       setCart(response.data);
     } catch (error) {
       console.error('Erro ao recuperar carrinho:', error);
