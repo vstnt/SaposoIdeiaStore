@@ -200,7 +200,7 @@ export default function Register() {
                 </button>
 
                 <div className="mt-4 md:mt-4 border-t w-8/12 border-slate-400"></div>
-                <div className="text-xs text-slate-800  -mb-5 md:-mb-1  ">Quero acessar com minhas redes sociais</div>
+                <div className="text-xs text-slate-800  -mb-2 md:-mb-1  ">Quero acessar com minhas redes sociais</div>
                 
                 <div id="firebaseui-auth-container" className="mb-3 md:mb-0 w-60"></div>
                 <div id="loader">Loading...</div>

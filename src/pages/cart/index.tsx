@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 export default function Cart() {
   const { cart, removeItem, clearCart, updateItem } = useCart()
   const { theme } = useTheme()
+  console.log(cart)
 
   if (!cart) {
 	return <div>Carregando carrinho...</div>;
@@ -99,6 +100,7 @@ a primeira abordagem pode ser mais adequada."
 									</li>
 							
 							))}</ul>
+							
 							<div className='self-end mr-[70px] mt-4 flex gap-3'>
 								<div className='self-end'>total: </div>
 								<div className=' text-3xl text-emerald-300'>${cart.total}</div>
