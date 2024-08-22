@@ -28,10 +28,10 @@ const ProductDisplayCart: React.FC<ProductDisplayProps> = ({ productId }) => {
 
 
   return (
-    <div id="caixa completa" className={`  text-black  rounded flex items-center gap-2 pl-2 py-[2px]
+    <div id="caixa completa" className={`justify-between md:justify-start text-black flex h-full md:items-center md:gap-2 md:pl-2 md:py-[2px] 
     ${theme === 'dark' ? '  text-neutral-200 ' : ''}`}>
       
-      <div id="área img" className="basis-1/5 ml-5 h-32 flex justify-center">
+      <div id="área img" className=" md:ml-5 md:h-32 flex items-center justify-center w-[37%] md:w-[20%]">
         {product?.id == null ? 
             <img id='img not found' className="cursor-pointer object-scale-down max-w-full max-h-full rounded-md" src='/assets/notFound.jpg'></img>
           : <img id='img produto' className="cursor-pointer object-scale-down max-w-full max-h-full rounded-md" src={product.imageUrl} onClick={() => redirect()}></img> 
@@ -39,8 +39,8 @@ const ProductDisplayCart: React.FC<ProductDisplayProps> = ({ productId }) => {
       </div>
       
       {product?.id == null ?
-        <div id="nome produto" className="cursor-pointer ml-8 text-lg font-semibold tracking-wider">Produto não encontrado</div>
-      : <div id="nome produto" className="cursor-pointer ml-8 text-lg font-semibold tracking-wider" onClick={() => redirect()}>{product.name}</div>
+        <div id="nome produto" className=" w-[60%] cursor-pointer md:ml-8 md:text-lg font-semibold tracking-wider">Produto não encontrado</div>
+      : <div id="nome produto" className=" w-[60%] mt-5 md:mt-0 cursor-pointer md:ml-8 md:text-lg font-semibold tracking-wider" onClick={() => redirect()}>{product.name}</div>
       }
 
     </div>

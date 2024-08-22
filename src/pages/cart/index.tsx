@@ -28,12 +28,12 @@ a primeira abordagem pode ser mais adequada."
 
   return (
     <>
-        <div id='bg' className={`pb-24 pt-44 bg-gradient-to-b px-5 min-h-[80vh] flex justify-center
+        <div id='bg' className={`pb-24 pt-32 md:pt-44 bg-gradient-to-b px-5 min-h-[80vh] flex justify-center
         ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
         : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>        
         
-            <div id='espaço contendo os elementos da página' className='w-11/12'>
-                <h2 className="text-2xl font-semibold mb-4 italic ml-14">
+            <div id='espaço contendo os elementos da página' className='w-11/12 '>
+                <h2 className="text-lg text-center md:text-left md:text-2xl font-semibold mb-6 md:mb-4 italic md:ml-14">
 					Seu carrinho de Compras
 				</h2>
                 
@@ -52,21 +52,21 @@ a primeira abordagem pode ser mais adequada."
 							<ul id='lista itens carrinho' className="space-y-4"> {cart?.items.sort((a, b) => a.createdAt - b.createdAt).map((item) => (
 									
 									<li key={item.productId} 
-									className={`flex  rounded-lg
+									className={`flex flex-col md:flex-row  rounded-lg h-44 md:h-fit
 									${theme === 'dark' ? 'border-2  bg-black/30 border-slate-400 text-neutral-200' 
 									: 'bg-slate-100/90 border-2 border-slate-400'}`}>
 										
-										<div id='imagem e nome' className='basis-7/12 h-full '>
+										<div id='imagem e nome' className='h-1/2 md:basis-7/12 md:h-full  '>
 										<ProductDisplayCart productId={item.productId} />
 										</div>
 
-										<div className='basis-5/12 flex justify-start '>
+										<div className='relative flex-col justify-end h-1/2 md:h-auto md:basis-5/12 flex md:flex-row md:justify-start  overflow-hidden'>
 											
-											<div id='quantidade' className="basis-3/6 self-center text-sm flex ">
+											<div id='quantidade' className="-mb-4 md:mb-0 flex ml-1 md:basis-3/6 md:self-center text-xs md:text-sm  ">
 												<div className='self-center'>Quantidade :</div> 
-												<div className='ml-3 px-6 py-1 self-center border rounded-sm text-black bg-slate-100'> {item.quantity}</div>
+												<div className='ml-1 md:ml-3 px-3 md:px-6 py-1 self-center border rounded-sm text-black bg-slate-100'> {item.quantity}</div>
 
-												<div id='+ e -' className=' ml-3 self-center flex flex-col gap-3  place-content-center'>
+												<div id='+ e -' className='ml-3 self-center flex flex-col gap-1 md:gap-3  place-content-center'>
 													<button onClick={() => updateItem(item.productId, 1)} 
 													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
 													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
@@ -80,12 +80,12 @@ a primeira abordagem pode ser mais adequada."
 												</div>
 											</div>
 
-											<div id='valor produto' className='basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
+											<div id='valor produto' className='hidden basis-2/6 md:flex flex-col justify-center place-items-end gap-1 '>
 												<div className='text-xs'>${item.price}</div>
 												<div className='text-xl text-emerald-300'>${item.price * item.quantity}.00</div>
 											</div>
 
-											<div id='botão X' className='basis-1/6 flex justify-end'>
+											<div title='botão X e valor-mobile' className='  basis-1/6 flex justify-between items-end md:justify-end md:items-start'>
 												<button 
 												onClick={() => removeItem(item.productId)} 
 												className={`px-3 py-0.5 rounded border-b border-l transition-all duration-300 h-fit 
@@ -93,6 +93,11 @@ a primeira abordagem pode ser mais adequada."
 												: 'border-stone-900 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
 												X
 												</button>
+
+												<div title='valores mobile' className='mr-1 md:mr-0 md:hidden basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
+													<div className='text-xs'>${item.price}</div>
+													<div className='text-xl text-emerald-300'>${item.price * item.quantity}.00</div>
+												</div>
 											</div>
 
 										</div>
@@ -109,16 +114,20 @@ a primeira abordagem pode ser mais adequada."
 							<div id='botões limpar carrinho e finalizar compra' className="mt-8 flex gap-5 justify-center">
 								<button 
 									onClick={clearCart} 
-									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300  
+									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300  text-center 
 									${theme === 'dark' ? 'text-neutral-100 border-stone-700 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
 									: 'border-2 border-gray-400 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-lime-500'}`}>
 									Limpar Carrinho
 								</button>
-								<Link to={'/purchasecompleted'} onClick={clearCart}
-									className={`px-5 rounded border-2 transition-all duration-300  
+								<Link to={'/purchasecompleted'} >
+									<button
+									onClick={clearCart}
+									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300 text-center md:h-14
 									${theme === 'dark' ? 'text-slate-800 border-stone-700 bg-emerald-400/90 hover:bg-emerald-300 hover:shadow-black hover:shadow-md' 
 									: 'border-2 border-slate-400 bg-emerald-300 hover:bg-green-200 hover: hover:shadow-sm hover:shadow-lime-500'}`}>
 									Finalizar compra
+									</button>
+
 								</Link>
 							</div>
 						</div>
