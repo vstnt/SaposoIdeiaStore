@@ -102,10 +102,11 @@ export default function Navbar() {
 
         </div>
 
-        <Link to={'/'} onClick={handlePageChangerSmooth} 
-        className="ml-3 h-full flex justify-center py-[3px] md:basis-4/12 md:ml-0 lg:basis-1/3">
+        <Link title="Botão-saposoideiastore" 
+        to={'/'} onClick={handlePageChangerSmooth} 
+        className="ml-3 h-full flex justify-center py-[5px] md:basis-4/12 md:ml-0 lg:basis-1/3">
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-          className={`w-[300px] sm:w-fit h-full flex items-center justify-center   rounded-lg
+          className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg
           ${theme == 'dark' ? 'bg-slate-800/50 ' :'bg-slate-300/50 border border-black'}`}> 
             <div title="conteiner p/ modulação da imagem" 
             className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
@@ -118,14 +119,7 @@ export default function Navbar() {
         </Link>
 
   
-        
-
-
-
-
-
-
-        <div id='Menudadireita' 
+        <div title='Menudadireita, sem botão-mobile-menu' 
         className="basis-1/3 h-full flex justify-end items-start relative">
 
           {!auth.user && // CASO usuário não logado
@@ -200,7 +194,8 @@ export default function Navbar() {
         </div>
 
 
-        <button id="menuButton" onClick={toggleMenu} className="md:hidden border border-indigo-300 px-1 mr-2 text-4xl rounded bg-slate-300/65">
+        <button id="menuButton" onClick={toggleMenu} className={`md:hidden border px-1 mr-[3vw] text-4xl rounded
+          ${ theme == 'dark' ? 'bg-slate-800/50 text-gray-200 border-gray-200/60' : 'border-black'} `}>
           &#9776;
         </button>
 
@@ -246,14 +241,16 @@ export default function Navbar() {
 
 
 
-
           <div id="leave-menu and oi, usuário" className="flex flex-col items-end">
             
-            <button id="leave-Menu-Button" onClick={toggleMenu} 
-            className={` border border-indigo-300 m-3 px-1 self h-fit w-9 text-2xl rounded bg-slate-300/65
-            ${theme === 'dark' ? '' : 'border-gray-600 text-slate-600'}`}>
+            <button id="leaveMenu-Button" onClick={toggleMenu} 
+            className={` border text-3xl  m-5 px-2  self h-fit  rounded bg-slate-300/65 mr-[3vw]
+            ${theme === 'dark' ? 'bg-slate-800/50 text-gray-200 border-gray-200/60' : 'border-black text-slate-700'}`}>
               X
             </button>
+
+
+
 
             {auth.user &&
               <div id="parte superior. Oi, Usuário" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
@@ -264,7 +261,6 @@ export default function Navbar() {
               </div>
             }
           </div>
-
           
           <ul id="buttons-list" className="absolute ml-10 mt-40 flex flex-col text-center gap-5 text-xl w-[50vw]">
 
@@ -348,7 +344,6 @@ export default function Navbar() {
             
 
           </ul>
-
 
         </div>
 

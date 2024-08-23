@@ -33,8 +33,8 @@ a primeira abordagem pode ser mais adequada."
         : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>        
         
             <div id='espaço contendo os elementos da página' className='w-11/12 '>
-                <h2 className="text-lg text-center md:text-left md:text-2xl font-semibold mb-6 md:mb-4 italic md:ml-14">
-					Seu carrinho de Compras
+                <h2 className="text-lg font-mono  md:text-2xl font-semibold mb-6 md:mb-4  md:ml-14">
+					Seu carrinho de compras
 				</h2>
                 
                 {cart?.items.length === 0 ? (
