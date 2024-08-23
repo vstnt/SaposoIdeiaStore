@@ -103,7 +103,7 @@ export default function Navbar() {
         </div>
         
         <div id='SaposoIdeiaStore texto' 
-        className={`basis-1/3 ml-[2%] px-[1%] py-1  text-[160%] 
+        className={`font-bold basis-1/3 ml-[2%] px-[1%] py-1  text-[160%] 
           sm:ml-[10%] lg:pb-2
           md:ml-[0%] md:h-[63%] md:mt-auto md:mb-2 md:text-[3vw] flex items-center justify-center rounded transition-colors duration-300
         ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80 border border-slate-800/30' 
