@@ -1,6 +1,6 @@
 import { useTheme } from '../../context/Theme/ThemeContext';
-import ProductDisplay from "../../layout/components/ProductDisplay";
-import NewestProducts from "../../layout/components/NewestProducts";
+import ProductDisplay from "../../layout/components/ProductsDisplays/ProductDisplay";
+import NewestProducts from "../../layout/components/ProductsDisplays/NewestProducts";
 import { useState, useEffect } from "react";
 import { Product } from '../../types/Product';
 import axiosClient from "../../axiosClient";

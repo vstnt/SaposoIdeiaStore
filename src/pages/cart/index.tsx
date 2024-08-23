@@ -1,6 +1,6 @@
 import { useTheme } from '../../context/Theme/ThemeContext';
 import { useCart } from '../../context/Cart/CartContext';
-import ProductDisplayCart from '../../layout/components/ProductDisplayCart';
+import ProductDisplayCart from '../../layout/components/ProductsDisplays/ProductDisplayCart';
 import { Link } from 'react-router-dom';
 
 
