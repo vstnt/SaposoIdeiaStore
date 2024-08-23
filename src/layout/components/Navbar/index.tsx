@@ -101,16 +101,29 @@ export default function Navbar() {
           </div>
 
         </div>
+
+        <Link to={'/'} onClick={handlePageChangerSmooth} 
+        className="ml-3 h-full flex justify-center py-[3px] md:basis-4/12 md:ml-0 lg:basis-1/3">
+          <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
+          className={`w-[300px] sm:w-fit h-full flex items-center justify-center   rounded-lg
+          ${theme == 'dark' ? 'bg-slate-800/50 ' :'bg-slate-300/50 border border-black'}`}> 
+            <div title="conteiner p/ modulação da imagem" 
+            className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
+              <div title="imagem em si">
+                {theme === 'dark' ? <img src='assets/saposoideiastore2.png' className=" h-[130%] md:h-[150%] "></img> 
+                : <img src='assets/saposoideiastore.png' className=' h-[130%] md:h-[150%] '></img>}
+              </div>
+            </div>
+          </div>
+        </Link>
+
+  
         
-        <div id='SaposoIdeiaStore texto' 
-        className={`font-bold basis-1/3 ml-[2%] px-[1%] py-1  text-[160%] 
-          sm:ml-[10%] lg:pb-2
-          md:ml-[0%] md:h-[63%] md:mt-auto md:mb-2 md:text-[3vw] flex items-center justify-center rounded transition-colors duration-300
-        ${theme === 'dark' ? 'text-gray-700 bg-zinc-300/50  hover:bg-zinc-100/80 border border-slate-800/30' 
-        : 'text-emerald-50 bg-zinc-900/80  hover:bg-zinc-800'} `}>
-          <Link to={'/'} onClick={handlePageChangerSmooth} className="flex"><div className="font-bold tracking-widest">Saposo</div><div>.ideiaStore</div></Link>
-        </div>
-        
+
+
+
+
+
 
         <div id='Menudadireita' 
         className="basis-1/3 h-full flex justify-end items-start relative">
