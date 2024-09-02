@@ -76,7 +76,7 @@ export default function NewestProducts () {
             spaceBetween={10}
             centeredSlides={true}
             autoplay={{
-              delay: 222500,
+              delay: 3500,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
