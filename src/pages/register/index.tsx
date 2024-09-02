@@ -92,7 +92,6 @@ export default function Register() {
           const isNewUser = authResult.additionalUserInfo.isNewUser
           if (isNewUser) {
             auth.register(authResult.user.uid, 'firebase', authResult.user.email, authResult.user.displayName, null)
-            auth.googleSignin(authResult.user)
           }
           navigate('/');
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'})

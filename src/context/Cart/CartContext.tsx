@@ -67,7 +67,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
    
   useEffect(() => {
-    if (location.pathname === '/cart' || location.pathname === '/') {
+    if (location.pathname === '/cart' /* || location.pathname === '/' */) {
+      
       loadCart();
     }
   }, [cartFetched, location])
