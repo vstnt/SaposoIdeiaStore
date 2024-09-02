@@ -27,7 +27,7 @@ export default function Home() {
       <div id='background' 
       className={` min-h-[550px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
       ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
-      : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
+      : 'from-slate-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
         
         <div id='área vazia espaço header' className='h-[80px]'></div>
 

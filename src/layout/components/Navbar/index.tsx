@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useTheme } from "../../../context/Theme/ThemeContext";
 import { useAuth } from "../../../context/Auth/AuthContext";
@@ -8,6 +8,7 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const auth = useAuth()
   const navigate = useNavigate();
+  const location = useLocation();
 
 
   const handleLogout = async () => {
@@ -78,11 +79,11 @@ export default function Navbar() {
           <div id='imgsaposo'>
             <Link to={'/'} onClick={handlePageChangerSmooth}>
               <img 
-              className={`hidden sm:block ml-[2vw] shadow transition-shadow duration-300 w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
-              ${theme === 'dark' ? 'shadow-black/35 hover:shadow-teal-200 border-stone-700' 
-              : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-300'}`
+              className={` hidden sm:block ml-[2vw] shadow w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-4 border-r-2 transition-all duration-300
+              ${theme === 'dark' ? 'shadow-black/35 border-teal-300/50 bg-indigo-300/60 hover:bg-indigo-300/90' 
+              : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-800/70 bg-black/10'}`
               } 
-              src='/assets/saposo.png'></img>
+              src='/assets/sapososemfundo.png'></img>
             </Link>
           </div>
           
@@ -93,10 +94,12 @@ export default function Navbar() {
             <Link to={'/products'} onClick={handlePageChanger}
             className={` px-[1vw] pb-1 pt-0.5 tracking-tight rounded-sm border-t transition-all duration-300
             ${theme === 'dark' ? 
-            'border-neutral-300/80 text-neutral-300 hover:text-black hover:border-black hover:bg-zinc-100/70 hover:shadow-black hover:shadow'
-            : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}   
+            `border-neutral-300/80 text-neutral-300 hover:text-black hover:border-black hover:bg-zinc-100/70 hover:shadow-black hover:shadow
+            ${location.pathname.startsWith('/product') ?  'text-black/100  border-black bg-zinc-100/70 shadow shadow-black' : ''}   `
+            : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
+            ${location.pathname.startsWith('/product') ? 'bg-zinc-800 text-emerald-100 shadow-sm shadow-lime-500' : ''}   `}
             `}>
-            buscar produtos
+            Buscar produtos
             </Link>
           </div>
 
@@ -104,22 +107,23 @@ export default function Navbar() {
 
         <Link title="Botão-saposoideiastore" 
         to={'/'} onClick={handlePageChangerSmooth} 
-        className="ml-3 h-full flex justify-center py-[5px] md:basis-4/12 md:ml-0 lg:basis-1/3">
+        className="ml-3 h-full flex justify-center py-[5px] md:basis-4/12 md:ml-0 lg:basis-1/3 ">
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-          className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg transition-[300]
-          ${theme == 'dark' ? 'bg-slate-800/50 hover:bg-slate-800/80 border border-slate-300/60' :'bg-slate-300/50 hover:bg-slate-400/60 border border-black/70'}`}> 
+          className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg transition-[400]
+          ${theme == 'dark' ? 'bg-slate-800/50 hover:bg-slate-800/80 border border-slate-300/60 shadow-inner shadow-black' 
+          :' bg-slate-800/50 hover:bg-slate-800/90  border border-black/40 shadow-inner shadow-gray-800 '}`}> 
             <div title="conteiner p/ modulação da imagem" 
             className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
               <div title="imagem em si">
                 {theme === 'dark' ? <img src='assets/saposoideiastore2.png' className=" h-[130%] md:h-[150%] "></img> 
-                : <img src='assets/saposoideiastore.png' className=' h-[130%] md:h-[150%] '></img>}
+                : <img src='assets/saposoideiastore2.png' className=' h-[130%] md:h-[150%] '></img>}
               </div>
             </div>
           </div>
         </Link>
 
   
-        <div title='Menudadireita, sem botão-mobile-menu' 
+        <div title='parte à direita do header, sem botão hamburguer' 
         className="basis-1/3 h-full flex justify-end items-start relative">
 
           {!auth.user && // CASO usuário não logado
@@ -130,15 +134,20 @@ export default function Navbar() {
               
               <div><Link to={'/login'} onClick={handlePageChanger}
               className={` px-[1.5vw] pb-0.5 pt-1 rounded-sm border-t  transition-all duration-500 
-              ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-              : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
-                login</Link></div>
+              ${theme === 'dark' ? `border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md
+                ${location.pathname.startsWith('/login') ? 'bg-zinc-100/50 shadow-black shadow-md' : ''}` 
+              : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
+                ${location.pathname.startsWith('/login') ? 'bg-zinc-800 text-emerald-100 shadow-sm shadow-lime-500' : ''}` }`
+              }>
+                Login</Link></div>
               
               <div><Link to={'/register'} onClick={handlePageChanger}
               className={`mr-1 px-[1vw] pb-0.5 pt-1 rounded-sm border-t transition-all duration-500 tracking-tight
-              ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-              : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'}`}>
-                crie sua conta</Link></div>
+              ${theme === 'dark' ? `border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md
+                ${location.pathname.startsWith('/register') ? 'bg-zinc-100/50 shadow-black shadow-md':''}`
+              : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
+                ${location.pathname.startsWith('/register') ? 'bg-zinc-800 text-emerald-100 shadow-sm shadow-lime-500':''}`}`}>
+                Crie sua conta</Link></div>
           
             </div>
           }
@@ -202,7 +211,7 @@ export default function Navbar() {
       </div>
 
 
-      <div id="sideMenu" 
+      <div title="página menu mobile" id="sideMenu" 
       style={{ transition: 'left 0.3s' }} 
       className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-full bg-gray-500 visible pointer-events-auto 
       ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r' 
@@ -214,15 +223,16 @@ export default function Navbar() {
             <div id="saposo-home" className="flex flex-col items-center">
             <Link to={'/'} onClick={handlePageChangerSmooth}>
               <img 
-                className={`ml-[2vw] shadow transition-shadow duration-300 w-[6rem] min-h-12 min-w-12 rounded-b-xl border-b-2 border-l-2 border-r-2 
-                ${theme === 'dark' ? 'shadow-black/35 hover:shadow-teal-200 border-stone-700' 
-                : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-300'}`} 
-                src='/assets/saposo.png'>
+                className={`ml-[2vw] shadow w-[6rem] min-h-12 min-w-12 rounded-b-xl border-b-4  border-r-2 transition-all duration-300
+              ${theme === 'dark' ? 'shadow-black/35 border-teal-300/50 bg-indigo-300/60 hover:bg-indigo-300/90' 
+              : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-800/70 bg-black/10'}`} 
+                src='/assets/sapososemfundo.png'>
               </img>
             </Link>
-            <div className={`font-mono ${theme === 'dark' ? '' : 'text-black text-xs mb-5'}`}>--&gt; Home</div>              
+            <div className={`font-mono ${theme === 'dark' ? 'text-xs mb-5' : 'text-black text-xs mb-5'}`}>--&gt; Home</div>              
             </div>
-            
+
+
             <button id="1-alternador tema" 
             onClick={toggleTheme} 
             className={`flex items-center rounded-b transition-all duration-500 ml-4

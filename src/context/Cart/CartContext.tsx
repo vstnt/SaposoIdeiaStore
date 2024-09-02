@@ -8,7 +8,6 @@ import { apiPath } from "../../developmentOrProductionVariables";
 
 export interface CartContextData {
   cart: Cart | null;
-  // loadCart: () => void;
   clearCart: () => void;
   updateItem: (product_id: number, quantity: number) => any;
   removeItem: (item_id: number) => void;
@@ -67,7 +66,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
    
   useEffect(() => {
-    if (location.pathname === '/cart' /* || location.pathname === '/' */) {
+    if (location.pathname === '/cart' || location.pathname === '/') {
       
       loadCart();
     }
