@@ -106,8 +106,8 @@ export default function Navbar() {
         to={'/'} onClick={handlePageChangerSmooth} 
         className="ml-3 h-full flex justify-center py-[5px] md:basis-4/12 md:ml-0 lg:basis-1/3">
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-          className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg
-          ${theme == 'dark' ? 'bg-slate-800/50 ' :'bg-slate-300/50 border border-black'}`}> 
+          className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg transition-[300]
+          ${theme == 'dark' ? 'bg-slate-800/50 hover:bg-slate-800/80 border border-slate-300/60' :'bg-slate-300/50 hover:bg-slate-400/60 border border-black/70'}`}> 
             <div title="conteiner p/ modulação da imagem" 
             className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
               <div title="imagem em si">
