@@ -12,6 +12,10 @@ export default function Cart() {
 	return <div>Carregando carrinho...</div>;
   }
 
+  const handlePageChangerSmooth = () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }
+
 
 /* ao invés de usar:
 const Cart: React.FC = () => {
@@ -118,7 +122,7 @@ a primeira abordagem pode ser mais adequada."
 									: 'border-2 border-gray-400 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-lime-500'}`}>
 									Limpar Carrinho
 								</button>
-								<Link to={'/purchasecompleted'} >
+								<Link to={'/purchasecompleted'} onClick={handlePageChangerSmooth} >
 									<button
 									onClick={clearCart}
 									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300 text-center md:h-14

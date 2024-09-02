@@ -57,9 +57,9 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
   }
 
   return (
-    <div id="caixa completa" className={` col-span-1  border-x-2 border-b-2 to-slate-500/80 text-black shadow-md rounded flex h-20 gap-2 pl-2 py-[2px]
+    <div id="caixa completa" className={` col-span-1  border-2 to-slate-500/80 text-black shadow-inner  rounded flex h-20 gap-2 pl-2 py-[2px]
     ${theme === 'dark' ? 'bg-black/30 border-slate-400 text-neutral-200 border-t' 
-    : 'border-slate-300 bg-slate-100/90'}`}>
+    : 'border-slate-300  bg-slate-100/90'}`}>
       
       <div id="área img" className=" rounded basis-1/5 flex items-center justify-center"><img id='img produto' className="py-1 object-scale-down max-w-full max-h-full basis-1/4 rounded-md" src={product.imageUrl}></img></div>
       

@@ -129,7 +129,7 @@ export default function Register() {
     <>
       <div className={`pt-32 md:min-h-[550px] md:min-w-[600px] pb-14 w-full h-full flex items-center justify-center bg-gradient-to-r 
       ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95%' 
-      : 'from-emerald-200 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}>
+      : 'from-slate-300 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}>
         
         <div title='conteiner completo, bg-img + formulário' 
         className={` w-10/12 flex flex-col-reverse justify-center rounded-lg overflow-hidden md:w-8/12 md:h-96 md:min-h-[550px] md:min-w-[560px] md:flex-row 

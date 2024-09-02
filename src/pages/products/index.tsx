@@ -42,7 +42,7 @@ export default function Products() {
             
             <div id="grade de produtos" className="font-mono text-xl mb-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
               {products.map(product => (
-                <div key={product.id} className=""><ProductDisplay productId={product.id}/></div>
+                <div key={product.id}><ProductDisplay productId={product.id}/></div>
               ))}
             </div>
 
