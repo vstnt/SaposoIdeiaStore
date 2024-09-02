@@ -40,6 +40,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await axiosClient.post(apiPath.updateItem, {product_id: item_id, quantity: quantity})
       setCart(response.data)
+      console.log(response.data)
+      return ('Item atualizado')
     } catch (error) {
       console.error('Erro ao alterar quantidade do item: ', error);
     }
@@ -65,10 +67,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
    
   useEffect(() => {
-    console.log('useeffect')
     if (location.pathname === '/cart' || location.pathname === '/') {
       loadCart();
-      console.log('useeffect loadcart')
     }
   }, [cartFetched, location])
 

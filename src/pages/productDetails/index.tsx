@@ -32,7 +32,7 @@ export default function ProductDetails() {
       try {  
         const response = await updateItem(product_id, quantity)
         if (response) {
-          alert(response)
+          alert('Produto adicionado ao carrinho.')
         } else {
           throw new Error('Sem resposta do banco de dados');
         }
@@ -57,7 +57,6 @@ export default function ProductDetails() {
           console.log('sem resposta!')
           setProduct(null)
         } else {
-          console.log(response.data)
           setProduct(response.data)
         }
         })
