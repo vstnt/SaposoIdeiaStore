@@ -72,7 +72,8 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
                 setTokenOrigin('backend')
                 return true
             }
-        } catch (error) {
+        } 
+        catch (error) {
             console.error("Error during login:", error);
         }
         return false
