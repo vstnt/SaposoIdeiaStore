@@ -92,12 +92,12 @@ export default function Navbar() {
           md:block ml-[1vw] italic text-sm mb-2 self-end
           lg:text-base ">
             <Link to={'/products'} onClick={handlePageChanger}
-            className={` px-[1vw] pb-1 pt-0.5 tracking-tight rounded-sm border-t transition-all duration-300
+            className={` px-[1vw] pb-1 pt-0.5 tracking-tight  rounded-sm border-t transition-all duration-300
             ${theme === 'dark' ? 
-            `border-neutral-300/80 text-neutral-300 hover:text-black hover:border-black hover:bg-zinc-100/70 hover:shadow-black hover:shadow
-            ${location.pathname.startsWith('/product') ?  'text-black/100  border-black bg-zinc-100/70 shadow shadow-black' : ''}   `
+            `border-neutral-300/80  hover:text-black hover:border-black hover:bg-zinc-100/70 hover:shadow-black hover:shadow
+            ${location.pathname.startsWith('/product') ?  'text-black  border-black bg-zinc-100/70 shadow shadow-black' : 'text-neutral-300'}   `
             : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
-            ${location.pathname.startsWith('/product') ? 'bg-zinc-800 text-emerald-100 shadow-sm shadow-lime-500' : ''}   `}
+            ${location.pathname.startsWith('/product') ? 'bg-zinc-800/100 text-emerald-100 shadow-sm shadow-lime-500' : ''}   `}
             `}>
             Buscar produtos
             </Link>
