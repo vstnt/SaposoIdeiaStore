@@ -81,7 +81,7 @@ a primeira abordagem pode ser mais adequada."
 
 											<div id='valor produto' className='hidden basis-2/6 md:flex flex-col justify-center place-items-end gap-1 '>
 												<div className='text-xs'>${item.price}</div>
-												<div className='text-xl text-emerald-300'>${item.price * item.quantity}.00</div>
+												<div className='text-xl text-emerald-300'>${(item.price * item.quantity).toFixed(2)}</div>
 											</div>
 
 											<div title='botão X e valor-mobile' className='  basis-1/6 flex justify-between items-end md:justify-end md:items-start'>
@@ -95,7 +95,7 @@ a primeira abordagem pode ser mais adequada."
 
 												<div title='valores mobile' className='mr-1 md:mr-0 md:hidden basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
 													<div className='text-xs'>${item.price}</div>
-													<div className='text-xl text-emerald-300'>${item.price * item.quantity}.00</div>
+													<div className='text-xl text-emerald-300'>${(item.price * item.quantity).toFixed(2)}</div>
 												</div>
 											</div>
 
@@ -107,7 +107,7 @@ a primeira abordagem pode ser mais adequada."
 							
 							<div className='self-end mr-[70px] mt-4 flex gap-3'>
 								<div className='self-end'>total: </div>
-								<div className=' text-3xl text-emerald-300'>${cart.total}</div>
+								<div className=' text-3xl text-emerald-300'>${Number(cart.total).toFixed(2)}</div>
 							</div>
 
 							<div id='botões limpar carrinho e finalizar compra' className="mt-8 flex gap-5 justify-center">
