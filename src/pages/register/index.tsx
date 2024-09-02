@@ -8,6 +8,8 @@ import 'firebaseui/dist/firebaseui.css'
 import * as firebaseui from 'firebaseui';
 import firebase from "firebase/compat/app";
 import { firebaseAuth } from "../../firebase/firebaseConfig";
+import axiosClient from "../../axiosClient";
+import { apiPath } from "../../developmentOrProductionVariables";
 
 
 
@@ -92,6 +94,7 @@ export default function Register() {
           const isNewUser = authResult.additionalUserInfo.isNewUser
           if (isNewUser) {
             auth.register(authResult.user.uid, 'firebase', authResult.user.email, authResult.user.displayName, null)
+            axiosClient.post(apiPath.createCart, {'uid': authResult.user.uid} )
           }
           navigate('/');
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
