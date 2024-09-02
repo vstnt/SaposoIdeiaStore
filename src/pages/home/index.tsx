@@ -45,7 +45,7 @@ export default function Home() {
             </div>
           </div>          
           
-          <div id="caixa mais vendidos relative" className='hidden md:block'>
+          <div id="caixa mais vendidos relative" className='hidden md:block relative'>
             <div id="caixa mais vendidos" 
             className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
             ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
@@ -56,6 +56,7 @@ export default function Home() {
                 ${theme === 'dark' ? ' bg-black/70 border border-emerald-100' 
                 : 'bg-zinc-100  border border-black'} `}>
                 mais vendidos</div>
+
               <div id="caixinha mais vendidos inferior" 
                 className={`absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
                 ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
@@ -67,6 +68,8 @@ export default function Home() {
                   <div key={product.id} className=""><ProductDisplay productId={product.id}/></div>
                 ))}
               </div>
+
+              
             </div>
           </div>
 
@@ -81,7 +84,6 @@ export default function Home() {
         : 'bg-slate-400/30 shadow-inner border-b border-[6px]'}`}>
           
           <div id="grande sapo de chapéu" className="mx-6 mt-14 mb-4">o grande sapo te viu</div>
-          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
           <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
           <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
           <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
