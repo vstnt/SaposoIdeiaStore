@@ -170,8 +170,10 @@ export default function Navbar() {
                 <div id="minha conta">
                   <Link to={'/userpreferences'} onClick={handlePageChanger}
                   className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
-                  ${theme === 'dark' ? 'border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-                  : 'border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500'} `}>
+                  ${theme === 'dark' ? `border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md
+                    ${location.pathname.startsWith('/userpreferences') ? 'bg-zinc-100/50 shadow-black shadow-md':''}` 
+                  : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
+                  ${location.pathname.startsWith('/userpreferences') ? 'bg-zinc-800 text-emerald-100 shadow-sm shadow-lime-500':''}`} `}>
                   Minha Conta
                   </Link>
                 </div>
