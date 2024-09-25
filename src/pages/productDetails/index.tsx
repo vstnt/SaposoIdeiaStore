@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { Product } from "../../types/Product";
 import { useCart } from '../../context/Cart/CartContext';
 import { useAuth } from '../../context/Auth/AuthContext';
+import { showToast } from '../../layout/components/Toasts';
+
 
 
 export default function ProductDetails() {
@@ -27,12 +29,12 @@ export default function ProductDetails() {
 
   const handleAddToCart = async (product_id: number, quantity: number) => {
     if(!auth.user){
-      alert('Você precisa estar logado para adicionar itens ao carrinho!')
+      showToast('default', 'Você precisa estar logado pra adicionar items no carrinho!', '🚫', theme, {})
     } else {
       try {  
         const response = await updateItem(product_id, quantity)
         if (response) {
-          alert('Produto adicionado ao carrinho.')
+          showToast('toCart', 'Item adicionado ao', '🐸', theme, {autoClose: 4000,})
         } else {
           throw new Error('Sem resposta do banco de dados');
         }
@@ -82,7 +84,7 @@ export default function ProductDetails() {
 
 
 
-  return (
+  return ( 
     <>
       <div id="bg" 
       className={` pb-24 pt-24 md:pt-44 bg-gradient-to-b px-5

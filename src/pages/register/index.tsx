@@ -10,6 +10,7 @@ import firebase from "firebase/compat/app";
 import { firebaseAuth } from "../../firebase/firebaseConfig";
 import axiosClient from "../../axiosClient";
 import { apiPath } from "../../developmentOrProductionVariables";
+import { showToast } from "../../layout/components/Toasts";
 
 
 
@@ -61,19 +62,19 @@ export default function Register() {
 
   const handleRegister = async () => {
     if (!isValidEmail || !isValidName || !isValidPassword) {
-      alert("Dados inseridos não são válidos. Por favor, corrija-os e tente novamente.")
+      showToast('default', 'Dados inseridos não são válidos. Por favor, corrija-os e tente novamente.', '🐸 🚷', theme, {position: 'bottom-center'})
     } else {
       if(email && name && password) {
         const isRegistered = await auth.register('uid', 'backend', email, name, password)
         if (isRegistered) {
-          alert('Registro bem sucedido')
+          showToast('default', 'Registro bem sucedido', '🐸 ✅', theme, {position: 'bottom-center'})
           navigate('/')
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
         } else {
-          alert("Registro falhou. Por favor, insira um email, seu nome e uma senha válidos e tente novamente.")
+          showToast('default', 'Registro falhou. Por favor, insira um email, seu nome e uma senha válidos e tente novamente.', '🐸 🚷', theme, {position: 'bottom-center'})
         }
       } else {
-        alert("Insira um email válido, um nome de usuário e uma senha.")
+        showToast('default', 'Insira um email válido, um nome de usuário e uma senha.', '🚷🤔', theme, {position: 'bottom-center'})
       }
     }
   }

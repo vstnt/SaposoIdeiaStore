@@ -9,6 +9,7 @@ import firebase from "firebase/compat/app";
 import { firebaseAuth } from "../../firebase/firebaseConfig";
 import axiosClient from "../../axiosClient";
 import { apiPath } from "../../developmentOrProductionVariables";
+import { showToast } from "../../layout/components/Toasts";
 
 
 
@@ -22,14 +23,15 @@ export default function Login() {
 
   const handleLogin = async () => {
     if(!email || !password) {
-      alert("Insira um nome de usuário e uma senha.") 
+      showToast('default', 'Insira um nome de usuário e uma senha!', '🐸', theme, {position: 'bottom-center'})
     } else {
       const isLogged = await auth.signin(email, password);
       if(isLogged) {
         navigate('/');
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
       }
-      else {alert("Login falhou. Por favor, cheque suas credenciais e tente novamente.")
+      else {
+        showToast('default', 'Login falhou. Por favor, cheque suas credenciais e tente novamente.', '🐸', theme, {position: 'bottom-center'})
       }
     }
   }
