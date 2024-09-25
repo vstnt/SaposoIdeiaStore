@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const showToast = (type: string, toastText: string, emoticon: string|null, theme: Theme|null, options = {}) => {
     const SelectedComponent = toastComponents[type] || DefaultSubContainer;
     toast(<SelectedComponent toastText={toastText} emoticon={emoticon} />, {
-        className: `${theme == 'dark' ? 'bg-gradient-to-b from-bgdarkpurple to-bgdarkblue/80 to-70% border border-white italic' : ''}`,
+        className: `${theme == 'dark' ? 'bg-gradient-to-b from-bgdarkpurple to-bgdarkblue/80 to-70% border border-emerald-400 italic' : 'bg-slate-100 border-[3px] border-black text-black'}`,
         position: "top-center",
         autoClose: 1800,
         hideProgressBar: true,
