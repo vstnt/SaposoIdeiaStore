@@ -62,19 +62,19 @@ export default function Register() {
 
   const handleRegister = async () => {
     if (!isValidEmail || !isValidName || !isValidPassword) {
-      showToast('default', 'Dados inseridos não são válidos. Por favor, corrija-os e tente novamente.', '🐸 🚷', theme, {position: 'bottom-center'})
+      showToast('default', 'Dados inseridos não são válidos. Por favor, corrija-os e tente novamente.', '🐸 🚷', theme, {})
     } else {
       if(email && name && password) {
         const isRegistered = await auth.register('uid', 'backend', email, name, password)
         if (isRegistered) {
-          showToast('default', 'Registro bem sucedido', '🐸 ✅', theme, {position: 'bottom-center'})
+          showToast('default', 'Registro bem sucedido', '🐸 ✅', theme, {})
           navigate('/')
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
         } else {
-          showToast('default', 'Registro falhou. Por favor, insira um email, seu nome e uma senha válidos e tente novamente.', '🐸 🚷', theme, {position: 'bottom-center'})
+          showToast('default', 'Registro falhou. Por favor, insira um email, seu nome e uma senha válidos e tente novamente.', '🐸 🚷', theme, {})
         }
       } else {
-        showToast('default', 'Insira um email válido, um nome de usuário e uma senha.', '🚷🤔', theme, {position: 'bottom-center'})
+        showToast('default', 'Insira um email válido, um nome de usuário e uma senha.', '🚷🤔', theme, {})
       }
     }
   }

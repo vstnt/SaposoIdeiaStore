@@ -23,7 +23,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     if(!email || !password) {
-      showToast('default', 'Insira um nome de usuário e uma senha!', '🐸', theme, {position: 'bottom-center'})
+      showToast('default', 'Insira um nome de usuário e uma senha!', '🐸', theme, {})
     } else {
       const isLogged = await auth.signin(email, password);
       if(isLogged) {
@@ -31,7 +31,7 @@ export default function Login() {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
       }
       else {
-        showToast('default', 'Login falhou. Por favor, cheque suas credenciais e tente novamente.', '🐸', theme, {position: 'bottom-center'})
+        showToast('default', 'Login falhou. Por favor, cheque suas credenciais e tente novamente.', '🐸', theme, {})
       }
     }
   }
