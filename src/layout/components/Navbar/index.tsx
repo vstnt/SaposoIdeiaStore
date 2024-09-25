@@ -115,8 +115,8 @@ export default function Navbar() {
             <div title="conteiner p/ modulação da imagem" 
             className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
               <div title="imagem em si">
-                {theme === 'dark' ? <img src='assets/saposoideiastore2.png' className=" h-[130%] md:h-[150%] "></img> 
-                : <img src='assets/saposoideiastore2.png' className=' h-[130%] md:h-[150%] '></img>}
+                {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%] md:h-[150%] "></img> 
+                : <img src='/assets/saposoideiastore2.png' className=' h-[130%] md:h-[150%] '></img>}
               </div>
             </div>
           </div>
