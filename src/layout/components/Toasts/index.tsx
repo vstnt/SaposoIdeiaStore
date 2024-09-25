@@ -9,7 +9,7 @@ export const showToast = (type: string, toastText: string, emoticon: string|null
         className: `${theme == 'dark' ? 'bg-gradient-to-b from-bgdarkpurple to-bgdarkblue/80 to-70% border border-white italic' : ''}`,
         position: "top-center",
         autoClose: 1800,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
