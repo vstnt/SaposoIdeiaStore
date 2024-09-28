@@ -93,19 +93,19 @@ export default function NewestProducts () {
           >
             {products.map(product => (
                 <SwiperSlide key={product.id}>
-                  <div id='slide' className='flex flex-col md:flex-row h-full w-full'>
+                  <div id='slide' className='flex flex-col lg:flex-row h-full w-full justify-start'>
                     
-                    <div className='hidden py-1 basis-3/12 object-contain max-h-full md:flex justify-center'>
+                    <div className='hidden py-1 basis-3/12 object-contain max-h-full lg:flex justify-center'>
                       <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
                     </div>
                     
                     <div id='nome, descrição' 
-                    className='hidden basis-6/12 md:flex flex-col ml-[1vw]' >
+                    className='hidden basis-6/12 lg:flex flex-col ml-[1vw]' >
                       <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
                       <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
                     </div>
 
-                    <div className='hidden md:flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
+                    <div className='hidden lg:flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
                       <div id='price' className='text-2xl'>R$ {product.price}</div>
                       <div id='botao ver mais' className='ml-14 p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
@@ -113,21 +113,31 @@ export default function NewestProducts () {
                     </div>
 
 
-                    <div className='md:hidden py-1 h-[28vh] object-contain max-h-full flex justify-center'>
-                      <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
+
+
+
+
+                    <div className='lg:hidden mt-2 h-[45%] bg-slate-300/30 rounded-3xl w-[85%] self-center'>
+                      <div className=' py-4 flex justify-center h-full '>
+                        <img id='imagem produto' className='lg:hidden object-contain max-h-full max-w-[75%]' src={product.imageUrl} alt={product.name} />
+                      </div>
                     </div>
+
+
+                    <div id='nome' className={`lg:hidden text-lg mt-2 py-2 font-bold text-center  italic ${theme === 'dark' ? 'text-neutral-100' : 'text-black'}`}>{product.name}</div>
                     
-                    <div id='nome' className={`md:hidden mt-1 font-bold text-center basis-1/3 w-full px-8  md:text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
-                    <div id='descrição' className='md:hidden  h-[100vh] mb-2 px-2  overflow-hidden line-clamp-4'>
-                      <div >{truncateWords(product.description, 40)}</div>
-                    </div>
-      
-                    <div className='md:hidden flex mb-9 justify-between '>
-                      <div id='price' className='ml-3 text-2xl'>R$ {product.price}</div>
-                      <div id='botao ver mais' className=' p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
+                    <div id='descrição' className='lg:hidden h-[23%] px-5 font-sans text-xs text-justify overflow-hidden line-clamp-4 '><div >{truncateWords(product.description, 40)}</div></div>
+                    
+                    <div className='lg:hidden flex justify-between items-end h-[8%]'>
+                      <div id='price' className='ml-3'>R$ {product.price}</div>
+                      <div id='botao ver mais' className=' p-1 rounded border border-gray-300 hover:underline text-[15px]'>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>
+
+
+
+
 
                   </div>
                 </SwiperSlide> 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const showToast = (type: string, toastText: string, emoticon: string|null, theme: Theme|null, options = {}) => {
     const SelectedComponent = toastComponents[type] || DefaultSubContainer;
-    toast(<SelectedComponent toastText={toastText} emoticon={emoticon} />, {
+    toast(<SelectedComponent toastText={toastText} emoticon={emoticon}/>, {
         className: `${theme == 'dark' ? 'bg-gradient-to-b from-bgdarkpurple to-bgdarkblue/80 to-70% border border-emerald-400 italic' : 'bg-slate-100 border-[3px] border-black text-black'}`,
         position: "top-center",
         autoClose: 1800,
@@ -21,7 +21,7 @@ export const showToast = (type: string, toastText: string, emoticon: string|null
 }
 
 
-const DefaultSubContainer = ({ toastText, emoticon,}: { toastText: string; emoticon: string | null; }) => {
+const DefaultSubContainer = ({ toastText, emoticon }: { toastText: string; emoticon: string | null }) => {
     return (
         <div className="flex gap-2 items-center">
             <div className="flex text-center whitespace-nowrap">{emoticon}</div>
@@ -30,7 +30,7 @@ const DefaultSubContainer = ({ toastText, emoticon,}: { toastText: string; emoti
     )
 }
 
-const CartToastSubContainer = ({ toastText, emoticon, }: { toastText: string; emoticon: string | null; }) => {
+const CartToastSubContainer = ({ toastText, emoticon }: { toastText: string; emoticon: string | null }) => {
     return (
         <div
         className="flex gap-2 items-center">
@@ -44,7 +44,7 @@ const CartToastSubContainer = ({ toastText, emoticon, }: { toastText: string; em
 
 
 // Mapeamento de componentes baseado no tipo
-const toastComponents: {[key: string]: React.FC<{ toastText: string; emoticon: string | null }>} = { // isso aqui eu não entendo a sintáxe
+const toastComponents: {[key: string]: React.FC<{ toastText: string; emoticon: string | null }>} = {
     toCart: CartToastSubContainer,
     default: DefaultSubContainer,
   };
