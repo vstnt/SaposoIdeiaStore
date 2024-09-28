@@ -76,7 +76,8 @@ export default function NewestProducts () {
             spaceBetween={10}
             centeredSlides={true}
             autoplay={{
-              delay: 3500,
+              //delay: 3500,
+              delay: 3500000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -126,10 +127,11 @@ export default function NewestProducts () {
 
                     <div id='nome' className={`lg:hidden text-lg mt-2 py-2 font-bold text-center italic ${theme === 'dark' ? 'text-emerald-300' : 'text-black'}`}>{product.name}</div>
                     
-                    <div id='descrição' className={`lg:hidden h-[23%] px-5 font-sans text-sm text-justify overflow-hidden line-clamp-4
-                      ${theme == 'dark'? 'text-slate-200':''} `}><div >{product.description}</div></div>
+                    <div id='descrição' className={`lg:hidden h-[18%] mb-6 overflow-hidden px-5 font-sans text-sm text-justify line-clamp-4 
+                      ${theme == 'dark'? 'text-slate-200':''} `}>{product.description}
+                    </div>
                     
-                    <div className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
+                    <div title='preço e ver mais' className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
                       <div id='price' className={` ${theme == 'dark'? 'text-slate-300':''}`}>R$ {product.price}</div>
                       <div id='botao ver mais' className={` p-1 px-2    hover:underline text-[15px] ${theme == 'dark'? 'rounded bg-emerald-400/60 border border-gray-300':'rounded-sm border border-slate-700/70'}`}>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
