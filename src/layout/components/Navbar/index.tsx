@@ -116,7 +116,7 @@ export default function Navbar() {
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
           className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg transition-[400]
           ${theme == 'dark' ? 'bg-slate-800/50 hover:bg-slate-800/80 border border-slate-300/60 shadow-inner shadow-black' 
-          :' bg-slate-800/50 hover:bg-slate-800/90  border border-black/40 shadow-inner shadow-gray-800 '}`}> 
+          :' bg-cyan-800/50 hover:bg-cyan-800  border border-black/40 shadow-inner shadow-gray-800 '}`}> 
             <div title="conteiner p/ modulação da imagem" 
             className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
               <div title="imagem em si">

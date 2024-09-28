@@ -118,7 +118,7 @@ export default function NewestProducts () {
 
 
 
-                    <div className='lg:hidden mt-2 h-[45%] bg-slate-300/30 rounded-3xl w-[85%] self-center'>
+                    <div className='lg:hidden mt-2 h-[45%] bg-slate-300/30 rounded-3xl w-[85%] sm:w-[60%] self-center'>
                       <div className=' py-4 flex justify-center h-full '>
                         <img id='imagem produto' className='lg:hidden object-contain max-h-full max-w-[75%]' src={product.imageUrl} alt={product.name} />
                       </div>
@@ -136,7 +136,9 @@ export default function NewestProducts () {
                     
                     <div title='preço e ver mais' className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
                       <div id='price' className={` ${theme == 'dark'? 'text-slate-300':''}`}>R$ {product.price}</div>
-                      <div id='botao ver mais' className={` p-1 px-2    hover:underline text-[15px] ${theme == 'dark'? 'rounded bg-emerald-400/60 border border-gray-300':'rounded-sm border border-slate-700/70'}`}>
+                      <div id='botao ver mais' className={` p-1 px-2    hover:underline text-[15px] 
+                        ${theme == 'dark'? 'rounded bg-emerald-400/60 border border-gray-300'
+                        :'rounded-sm border border-slate-700/70 bg-emerald-200/40'}`}>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>

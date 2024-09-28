@@ -26,7 +26,7 @@ export default function Home() {
     <>
       <div id='background' 
       className={` min-h-[550px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
-      ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
+      ${theme === 'dark' ? 'from-indigo-950 to-bgdarkblue/80 to-90% text-neutral-200' 
       : 'from-slate-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
         
         <div id='área vazia espaço header' className='h-[80px]'></div>
@@ -38,10 +38,13 @@ export default function Home() {
             <NewestProducts/>
           </div>
                   
-          <div id="texto grande SAPOSO IDEIA STORE" className=" flex flex-col mt-14 justify-start w-[100vw] md:w-full h-full col-span-3 md:col-span-2 row-span-5 md:mt-32">
-            <div className="md:-mx-2 md:-ml-10 ">
-              {theme === 'dark' ? <img src='assets/saposoideiastore2.png'></img> 
-              : <img src='assets/saposoideiastore.png' className='w-[100%]'></img>}
+          <div title="Pensou? Aqui tem." 
+          className={`flex justify-end mt-10 h-[250px] w-full col-span-3 row-span-5  rounded-lg sm:w-[70%]   md:col-span-2 md:mt-32
+          ${theme=='dark'?'border-t border-slate-300 bg-gradient-to-b from-violet-800 via-transparent via-80%'
+          :'bg-gradient-to-b from-cyan-600/45 via-transparent via-80%'}`}>
+            <div className="mt-5 mr-1 md:-mx-2 md:-ml-10 h-full">
+              {theme === 'dark' ? <img className='h-full' src='assets/pensou-white4.png'></img> 
+              : <img className='h-full' src='assets/pensou-white3.png'></img>}
             </div>
           </div>          
           
@@ -76,7 +79,7 @@ export default function Home() {
         </div>
 
 
-        <div id="big saposo" className="flex justify-center"><img src="assets/saposobig.png" className="w-[100%] md:w-[60%]"></img></div>
+        <div id="big saposo" className=" -mt-[53px] flex justify-center"><img src="assets/saposobig.png" className="w-[100%] md:w-[60%]"></img></div>
         
         <div id="caixa do aviso misterioso" 
         className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
