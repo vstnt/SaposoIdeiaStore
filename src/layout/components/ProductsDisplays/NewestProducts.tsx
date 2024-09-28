@@ -58,7 +58,7 @@ export default function NewestProducts () {
       : 'bg-slate-100/90 text-black border-zinc-500'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-        className={`absolute shadow z-50 bottom-0 right-0 -m-7 mr-3 mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-base transition-colors duration-300 
+        className={`absolute shadow z-50 bottom-0 right-0 -mb-7 -mr-1 sm:-m-7 sm:mr-3 sm:mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-base transition-colors duration-300 
           md:-m-2 
         ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
         : 'bg-zinc-100 text-stone-900 border border-zinc-700'} `}>
@@ -124,13 +124,14 @@ export default function NewestProducts () {
                     </div>
 
 
-                    <div id='nome' className={`lg:hidden text-lg mt-2 py-2 font-bold text-center  italic ${theme === 'dark' ? 'text-neutral-100' : 'text-black'}`}>{product.name}</div>
+                    <div id='nome' className={`lg:hidden text-lg mt-2 py-2 font-bold text-center italic ${theme === 'dark' ? 'text-emerald-300' : 'text-black'}`}>{product.name}</div>
                     
-                    <div id='descrição' className='lg:hidden h-[23%] px-5 font-sans text-xs text-justify overflow-hidden line-clamp-4 '><div >{truncateWords(product.description, 40)}</div></div>
+                    <div id='descrição' className={`lg:hidden h-[23%] px-5 font-sans text-sm text-justify overflow-hidden line-clamp-4
+                      ${theme == 'dark'? 'text-slate-200':''} `}><div >{truncateWords(product.description, 40)}</div></div>
                     
-                    <div className='lg:hidden flex justify-between items-end h-[8%]'>
-                      <div id='price' className='ml-3'>R$ {product.price}</div>
-                      <div id='botao ver mais' className=' p-1 rounded border border-gray-300 hover:underline text-[15px]'>
+                    <div className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
+                      <div id='price' className={` ${theme == 'dark'? 'text-slate-300':''}`}>R$ {product.price}</div>
+                      <div id='botao ver mais' className={` p-1 px-2    hover:underline text-[15px] ${theme == 'dark'? 'rounded bg-emerald-400/60 border border-gray-300':'rounded-sm border border-slate-700/70'}`}>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>
