@@ -127,9 +127,12 @@ export default function NewestProducts () {
 
                     <div id='nome' className={`lg:hidden text-lg mt-2 py-2 font-bold text-center italic ${theme === 'dark' ? 'text-emerald-300' : 'text-black'}`}>{product.name}</div>
                     
-                    <div id='descrição' className={`lg:hidden h-[18%] mb-6 overflow-hidden px-5 font-sans text-sm text-justify line-clamp-4 
-                      ${theme == 'dark'? 'text-slate-200':''} `}>{product.description}
+                    <div className='h-[23%]'>
+                      <div id='descrição' className={`lg:hidden px-5 font-sans text-sm text-justify line-clamp-4
+                        ${theme == 'dark'? 'text-slate-200':''} `}>{product.description}
+                      </div>
                     </div>
+
                     
                     <div title='preço e ver mais' className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
                       <div id='price' className={` ${theme == 'dark'? 'text-slate-300':''}`}>R$ {product.price}</div>
