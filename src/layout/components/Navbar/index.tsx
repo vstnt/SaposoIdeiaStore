@@ -63,6 +63,11 @@ export default function Navbar() {
     }    
   }
 
+  const handleMobileThemeButtonClick = () => {
+    toggleTheme();
+    toggleMenu();
+  };
+
 
   return (
     <div id='header-and-sideMenu'>
@@ -234,9 +239,11 @@ export default function Navbar() {
             <div className={`font-mono ${theme === 'dark' ? 'text-xs mb-5' : 'text-black text-xs mb-5'}`}>--&gt; Home</div>              
             </div>
 
+            
+
 
             <button id="1-alternador tema" 
-            onClick={toggleTheme} 
+            onClick={handleMobileThemeButtonClick}  
             className={`flex items-center rounded-b transition-all duration-500 ml-4
             ${theme === 'dark' ? ' bg-[#c7e9db]/60 hover:bg-[#c7e9db] text-black shadow shadow-black ' 
             : 'bg-violet-600/60 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
