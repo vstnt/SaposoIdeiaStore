@@ -218,49 +218,49 @@ export default function Navbar() {
       </div>
 
 
+
+
+
+
       <div title="página menu mobile" id="sideMenu" 
       style={{ transition: 'left 0.3s' }} 
       className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-full bg-gray-500 visible pointer-events-auto 
-      ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r' 
+      ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr from-indigo-950 to-indigo-600 to-90% text-neutral-200 md:bg-gradient-to-r' 
       : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
+        
         <div id="flex base elementos" className="flex justify-between">
           
-        <div id='saposo-home and theme-button' className="flex items-start">
+          <div title='saposo-home and theme-button, oi usuário' className="flex items-start">
             
             <div id="saposo-home" className="flex flex-col items-center">
-            <Link to={'/'} onClick={handlePageChangerSmooth}>
-              <img 
-                className={`ml-[2vw] shadow w-[6rem] min-h-12 min-w-12 rounded-b-xl border-b-4  border-r-2 transition-all duration-300
-              ${theme === 'dark' ? 'shadow-black/35 border-teal-300/50 bg-indigo-300/60 hover:bg-indigo-300/90' 
-              : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-800/70 bg-black/10'}`} 
-                src='/assets/sapososemfundo.png'>
-              </img>
-            </Link>
-            <div className={`font-mono ${theme === 'dark' ? 'text-xs mb-5' : 'text-black text-xs mb-5'}`}>--&gt; Home</div>              
+              <Link to={'/'} onClick={handlePageChangerSmooth}>
+                <img 
+                  className={`ml-[2vw] shadow w-[6rem] min-h-12 min-w-12 rounded-b-xl border-b-4  border-r-2 transition-all duration-300
+                ${theme === 'dark' ? 'shadow-black/35 border-teal-300/50 bg-indigo-300/60 hover:bg-indigo-300/90' 
+                : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-800/70 bg-black/10'}`} 
+                  src='/assets/sapososemfundo.png'>
+                </img>
+              </Link>
+              <div className={`font-mono ${theme === 'dark' ? 'text-xs mb-5' : 'text-black text-xs mb-5'}`}>--&gt; Home</div> 
+              
+              {auth.user &&
+              <div id="parte superior. Oi, Usuário" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+              className={`bg-gray-400 self-start ml-3 border flex items-center  py-3 mt-14 rounded h-fit text-xs mr-3
+              ${theme === 'dark' ? 'border-gray-300' 
+                : 'border-gray-800'} `}>
+                Oi, {auth.user.name}!
+              </div>
+            }               
             </div>
 
             
 
-
-            <button id="1-alternador tema" 
-            onClick={handleMobileThemeButtonClick}  
-            className={`flex items-center rounded-b transition-all duration-500 ml-4
-            ${theme === 'dark' ? ' bg-[#c7e9db]/60 hover:bg-[#c7e9db] text-black shadow shadow-black ' 
-            : 'bg-violet-600/60 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
-              <div id="imagem" 
-              className="w-[30px] mr-1 ml-2 my-1">
-                {theme === 'dark' ? 
-                  <img src='/assets/themeicon.png'></img> 
-                  : <img src='/assets/themeicon2.png'></img>}
-              </div>
-            </button>
             
                   
           </div>
 
 
-
-          <div id="leave-menu and oi, usuário" className="flex flex-col items-end">
+          <div id="leave-menu" className="flex flex-col items-end">
             
             <button id="leaveMenu-Button" onClick={toggleMenu} 
             className={` border text-3xl  m-5 px-2  self h-fit  rounded-lg bg-slate-300/65 mr-[3vw]
@@ -268,27 +268,29 @@ export default function Navbar() {
               X
             </button>
 
-
-
-
-            {auth.user &&
-              <div id="parte superior. Oi, Usuário" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-              className={`bg-gray-400 border flex items-center px- py-3 mt-20 rounded h-fit text-xs mr-3 transform-
-              ${theme === 'dark' ? 'border-gray-300' 
-                : 'border-gray-800'} `}>
-                Oi, {auth.user.name}!
+            <button id="1-alternador tema" 
+            onClick={handleMobileThemeButtonClick}  
+            className={`flex items-center rounded transition-all duration-500 mr-[2.5vw] mt-2
+            ${theme === 'dark' ? ' bg-emerald-200/90 hover:bg-[#c7e9db] text-black shadow shadow-black ' 
+            : 'bg-violet-600/50 hover:bg-violet-800/90 text-emerald-100  shadow shadow-black'}`}>
+              <div id="imagem" 
+              className="w-[30px] mr-1 ml-2 my-1">
+                {theme === 'dark' ? 
+                  <img src='/assets/themeicon.png'></img> 
+                  : <img src='/assets/themeicon2.png'></img>}
               </div>
-            }
+            </button>
+
           </div>
           
-          <ul id="buttons-list" className="absolute ml-10 mt-40 flex flex-col text-center gap-5 text-xl w-[50vw]">
+          <ul id="buttons-list" className="absolute right-0 mt-[180px] mr-5 flex flex-col text-center gap-6 text-2xl w-[65vw] ">
 
             <li>
               <Link id='botão buscar produtos' 
               to={'/products'}
                 className="w-full ">
                   <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[45vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
                   ' text-black border-black bg-zinc-100/70 shadow-black shadow'
                   : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
@@ -303,7 +305,7 @@ export default function Navbar() {
               to={'/login'}
                 className="w-full ">
                   <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[45vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
                   ' text-black border-black bg-zinc-100/70 shadow-black shadow'
                   : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
@@ -319,7 +321,7 @@ export default function Navbar() {
               to={'/register'}
                 className=" w-full ">
                   <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[45vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
                   ' text-black border-black bg-zinc-100/70 shadow-black shadow'
                   : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
@@ -334,7 +336,7 @@ export default function Navbar() {
               to={'/userpreferences'}
                 className="w-full ">
                   <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[40vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
                   ' text-black border-black bg-zinc-100/70 shadow-black shadow'
                   : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
@@ -350,7 +352,7 @@ export default function Navbar() {
               onClick={handleLogout} to={''}
                 className="w-full ">
                   <button onClick={handlePageChangerSmooth}
-                  className={`italic pb-1 pt-0.5 px-3 w-[40vw] min-w-44 tracking-tight rounded-sm border-t transition-all duration-300
+                  className={`italic pb-1 pt-0.5 px-3 w-[50%] max-w-[150px]  tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
                   ' text-black border-black bg-zinc-100/70 shadow-black shadow'
                   : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
