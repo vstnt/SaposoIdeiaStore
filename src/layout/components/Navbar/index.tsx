@@ -211,7 +211,7 @@ export default function Navbar() {
 
 
         <button id="menuButton" onClick={toggleMenu} className={`md:hidden border px-1 mr-[3vw] text-4xl rounded-lg
-          ${ theme == 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-200/60' : 'border-black text-slate-600'} `}>
+          ${ theme == 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-400/80 shadow shadow-black' : 'border-slate-500 shadow shadow-black text-slate-600'} `}>
           &#9776;
         </button>
 
@@ -263,8 +263,8 @@ export default function Navbar() {
           <div id="leave-menu and oi, usuário" className="flex flex-col items-end">
             
             <button id="leaveMenu-Button" onClick={toggleMenu} 
-            className={` border text-3xl  m-5 px-2  self h-fit  rounded bg-slate-300/65 mr-[3vw]
-            ${theme === 'dark' ? 'bg-slate-800/50 text-gray-200 border-gray-200/60' : 'border-black text-slate-700'}`}>
+            className={` border text-3xl  m-5 px-2  self h-fit  rounded-lg bg-slate-300/65 mr-[3vw]
+            ${theme === 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-400/80 shadow shadow-black' : 'border-slate-500 shadow shadow-black text-slate-600'}`}>
               X
             </button>
 
