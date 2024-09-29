@@ -55,15 +55,15 @@ export default function Home() {
             : 'bg-white/30 border-zinc-500'} `}>
               
               <div id="caixinha mais vendidos superior" 
-                className={`absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
-                ${theme === 'dark' ? ' bg-black/70 border border-emerald-100' 
-                : 'bg-zinc-100  border border-black'} `}>
+                className={`text-sm absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
+                ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
+        : 'bg-zinc-100 text-stone-900 border border-zinc-500'} `}>
                 mais vendidos</div>
 
               <div id="caixinha mais vendidos inferior" 
-                className={`absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
-                ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
-                : 'bg-zinc-100  border border-black'} `}>
+                className={`text-sm absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
+                ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
+        : 'bg-zinc-100 text-stone-900 border border-zinc-500'} `}>
                 mais vendidos</div>
 
               <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">

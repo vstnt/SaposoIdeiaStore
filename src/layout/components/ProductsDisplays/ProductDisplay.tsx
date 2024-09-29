@@ -65,7 +65,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
       
       <div id="área Nome + Descrição" className="basis-3/5 h-full flex flex-col gap-1 text-sm text-justify pr-3">
         <p className=" text-md font-bold ">{product.name}</p>
-        <p className="text-[10px] italic leading-tight overflow-hidden line-clamp-3 md:line-clamp-4">{product.description}</p>
+        <p className="text-[10px] font-sans leading-none overflow-hidden line-clamp-3 md:line-clamp-4 ml-2 mr-1">{product.description}</p>
       </div>
 
       <div id="área valor + botão ver mais" className="basis-1/5 flex flex-col items-end justify-between text-xs self">

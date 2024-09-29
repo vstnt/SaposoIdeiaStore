@@ -58,8 +58,7 @@ export default function NewestProducts () {
       : 'bg-slate-100/90 text-black border-zinc-400'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-        className={`text-sm absolute shadow z-50 bottom-0 right-0 -mb-5 mr-2 sm:-m-7 sm:mr-3 sm:mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 md:text-base transition-colors duration-300 
-          md:-m-2 
+        className={`text-sm absolute shadow z-50 bottom-0 right-0 -mb-5 mr-2 sm:-m-7 sm:mr-3 sm:mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 md:text-base transition-colors duration-300 md:-m-2 
         ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
         : 'bg-zinc-100 text-stone-900 border border-zinc-500'} `}>
           <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div> 
