@@ -210,8 +210,8 @@ export default function Navbar() {
         </div>
 
 
-        <button id="menuButton" onClick={toggleMenu} className={`md:hidden border px-1 mr-[3vw] text-4xl rounded
-          ${ theme == 'dark' ? 'bg-slate-800/50 text-gray-200 border-gray-200/60' : 'border-black'} `}>
+        <button id="menuButton" onClick={toggleMenu} className={`md:hidden border px-1 mr-[3vw] text-4xl rounded-lg
+          ${ theme == 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-200/60' : 'border-black text-slate-600'} `}>
           &#9776;
         </button>
 

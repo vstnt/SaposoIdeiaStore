@@ -55,13 +55,13 @@ export default function NewestProducts () {
       <div id='caixa completa' 
       className={`border shadow-md p-1 overflow-hidden rounded font-mono text-[17px] w-full h-full
       ${theme === 'dark' ? 'bg-black/30 border-slate-500 text-neutral-200' 
-      : 'bg-slate-100/90 text-black border-zinc-500'}`}>
+      : 'bg-slate-100/90 text-black border-zinc-400'}`}>
 
         <div id='novidades.novelties.nouvelles' 
-        className={`absolute shadow z-50 bottom-0 right-0 -mb-7 -mr-1 sm:-m-7 sm:mr-3 sm:mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 text-base transition-colors duration-300 
+        className={`text-sm absolute shadow z-50 bottom-0 right-0 -mb-5 mr-2 sm:-m-7 sm:mr-3 sm:mt-3 h-7 ml-1 flex items-center rounded px-3 py-4 md:text-base transition-colors duration-300 
           md:-m-2 
         ${theme === 'dark' ? ' bg-zinc-900/70 border border-emerald-100' 
-        : 'bg-zinc-100 text-stone-900 border border-zinc-700'} `}>
+        : 'bg-zinc-100 text-stone-900 border border-zinc-500'} `}>
           <div className="font-bold tracking-widest">novidades</div><div>.novelties.nouvelles</div> 
         </div>
 
@@ -135,10 +135,10 @@ export default function NewestProducts () {
 
                     
                     <div title='preço e ver mais' className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
-                      <div id='price' className={` ${theme == 'dark'? 'text-slate-300':''}`}>R$ {product.price}</div>
+                      <div id='price' className={` ${theme == 'dark'? 'text-slate-300':'text-slate-600'}`}>R$ {product.price}</div>
                       <div id='botao ver mais' className={` p-1 px-2    hover:underline text-[15px] 
-                        ${theme == 'dark'? 'rounded bg-emerald-400/80 border border-gray-700 text-black'
-                        :'rounded-sm border border-slate-700/80 bg-emerald-200/90 text-slate-700'}`}>
+                        ${theme == 'dark'? ' bg-emerald-400/80 border border-gray-700 text-black'
+                        :'rounded-sm border border-slate-700/80 bg-emerald-200/70 text-slate-700'}`}>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>

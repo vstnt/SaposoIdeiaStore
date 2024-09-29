@@ -39,7 +39,7 @@ export default function Home() {
           </div>
                   
           <div title="dá pra imaginar?" 
-          className={`flex justify-end mt-10   lg:h-[50%] md:mr-5 col-span-3 row-span-5 rounded-lg md:col-span-2 md:mt-32
+          className={`flex justify-end mt-10 ml-10 md:ml-0 lg:h-[50%] md:mr-5 col-span-3 row-span-5 rounded-lg md:col-span-2 md:mt-32
           ${theme=='dark'?' md:border-transparent md:from-transparent '
           :''}`}>
             <div className="mt-5 mr-[3vw]  h-full">
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
 
 
-        <div id="big saposo" className=" -mt-[53px] md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[80%] md:w-[50%]"></img></div>
+        <div id="big saposo" className=" -mt-7 md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[85%] md:w-[50%]"></img></div>
         
         <div id="caixa do aviso misterioso" 
         className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
