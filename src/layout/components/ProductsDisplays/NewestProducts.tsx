@@ -76,8 +76,8 @@ export default function NewestProducts () {
             spaceBetween={10}
             centeredSlides={true}
             autoplay={{
-              //delay: 3500,
-              delay: 3500000,
+              delay: 4000,
+              //delay: 100,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -96,28 +96,31 @@ export default function NewestProducts () {
                 <SwiperSlide key={product.id}>
                   <div id='slide' className='flex flex-col lg:flex-row h-full w-full justify-start'>
                     
+                    
                     <div className='hidden py-1 basis-3/12 object-contain max-h-full lg:flex justify-center'>
                       <img id='imagem produto' className='rounded-lg  object-contain max-h-full  justify-self-center' src={product.imageUrl} alt={product.name} />
                     </div>
                     
                     <div id='nome, descrição' 
                     className='hidden basis-6/12 lg:flex flex-col ml-[1vw]' >
-                      <div id='nome' className={` basis-1/3 text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
-                      <div id='descrição' className='basis-2/3 leading-none '>{truncateWords(product.description, 40)}</div>
+                      <div id='nome' className={`text-[2.5vw] italic ${theme === 'dark' ? 'text-neutral-300' : 'text-black'}`}>{truncateCharacters(product.name, 50)}</div>
+                      <div id='descrição' className={`leading-none line-clamp-4 text-justify`}>{product.description}</div>
                     </div>
 
-                    <div className='hidden lg:flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
-                      <div id='price' className='text-2xl'>R$ {product.price}</div>
-                      <div id='botao ver mais' className='ml-14 p-1 rounded border  border-gray-300 hover:underline text-[15px]'>
+                    <div title="price, ver mais"
+                    className='hidden lg:flex flex-col pl-10 place-items-center pt-12  basis-3/12'>
+                      <div id='price' className={`text-md 
+                        ${theme=='dark'? 'text-slate-300/90':'text-slate-600/70'}`}>R$ {product.price}</div>
+                      <div id='botao ver mais' 
+                      className={`ml-8 mt-2 px-1 rounded border  border-gray-300 hover:underline text-[15px]
+                      ${theme=='dark'? 'bg-emerald-500/80 border-emerald-400/60 text-slate-900'
+                      :'border-emerald-400/60 bg-emerald-200/70 text-slate-700'}`}>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>
 
 
-
-
-
-
+                    
                     <div className='lg:hidden mt-2 h-[45%] bg-slate-300/30 rounded-3xl w-[85%] sm:w-[60%] self-center'>
                       <div className=' py-4 flex justify-center h-full '>
                         <img id='imagem produto' className='lg:hidden object-contain max-h-full max-w-[75%]' src={product.imageUrl} alt={product.name} />
@@ -142,9 +145,6 @@ export default function NewestProducts () {
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>
-
-
-
 
 
                   </div>
