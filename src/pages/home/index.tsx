@@ -32,17 +32,17 @@ export default function Home() {
         <div id='área vazia espaço header' className='h-[80px]'></div>
 
         <div id="área com: novidades, Saposoideiastore, mais vendidos" 
-        className="mt-[5vw] gap-5 grid grid-cols-3 justify-items-center items-start w-11/12">
+        className="mt-[5vw] gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 ">
 
           <div id="novidades" className="col-span-3 w-full h-[60vh] lg:h-40 ">
             <NewestProducts/>
           </div>
                   
           <div title="Pensou? Aqui tem." 
-          className={`flex justify-end mt-10 h-[250px] w-full col-span-3 row-span-5  rounded-lg sm:w-[70%]   md:col-span-2 md:mt-32
-          ${theme=='dark'?'border-t border-slate-300 bg-gradient-to-b from-violet-800 via-transparent via-80%'
-          :'bg-gradient-to-b from-cyan-600/45 via-transparent via-80%'}`}>
-            <div className="mt-5 mr-1 md:-mx-2 md:-ml-10 h-full">
+          className={`flex justify-end mt-10 h-[250px] md:h-[50%] lg:h-[60%] lg:mr-[10vw] md:mr-5 w-[90%] col-span-3 row-span-5  rounded-lg sm:w-[60%] md:w-[100%]  md:col-span-2 md:mt-32
+          ${theme=='dark'?'border-t border-slate-300 md:border-transparent md:from-transparent bg-gradient-to-b from-violet-700/90 via-transparent via-80% '
+          :'bg-gradient-to-b from-cyan-600/45 via-transparent via-80% md:from-transparent'}`}>
+            <div className="mt-5 mr-[3vw]  h-full">
               {theme === 'dark' ? <img className='h-full' src='assets/pensou-white4.png'></img> 
               : <img className='h-full' src='assets/pensou-white3.png'></img>}
             </div>
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
 
 
-        <div id="big saposo" className=" -mt-[53px] flex justify-center"><img src="assets/saposobig.png" className="w-[100%] md:w-[60%]"></img></div>
+        <div id="big saposo" className=" -mt-[53px] md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[100%] md:w-[60%]"></img></div>
         
         <div id="caixa do aviso misterioso" 
         className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
