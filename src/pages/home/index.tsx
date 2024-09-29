@@ -27,7 +27,7 @@ export default function Home() {
       <div id='background' 
       className={` min-h-[550px] w-full flex flex-col gap-5 items-center justify-center bg-gradient-to-b 
       ${theme === 'dark' ? 'from-indigo-950 to-bgdarkblue/80 to-90% text-neutral-200' 
-      : 'from-slate-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
+      : 'from-slate-300  via-slate-200 via-10% to-slate-100 to-100% text-stone-900'}  `}>
         
         <div id='área vazia espaço header' className='h-[80px]'></div>
 
@@ -38,13 +38,13 @@ export default function Home() {
             <NewestProducts/>
           </div>
                   
-          <div title="Pensou? Aqui tem." 
-          className={`flex justify-end mt-10 h-[250px] md:h-[50%] lg:h-[45%] lg:mr-[18vw] md:mr-5 w-[90%] col-span-3 row-span-5  rounded-lg sm:w-[60%] md:w-[100%]  md:col-span-2 md:mt-32
-          ${theme=='dark'?'border-t border-slate-300 md:border-transparent md:from-transparent bg-gradient-to-b from-violet-700/90 via-transparent via-80% '
-          :'bg-gradient-to-b from-cyan-600/45 via-transparent via-80% md:from-transparent'}`}>
+          <div title="dá pra imaginar?" 
+          className={`flex justify-end mt-10   lg:h-[50%] md:mr-5 col-span-3 row-span-5 rounded-lg md:col-span-2 md:mt-32
+          ${theme=='dark'?' md:border-transparent md:from-transparent '
+          :''}`}>
             <div className="mt-5 mr-[3vw]  h-full">
-              {theme === 'dark' ? <img className='h-full' src='assets/pensou-white4.png'></img> 
-              : <img className='h-full' src='assets/pensou-white3.png'></img>}
+              {theme === 'dark' ? <img className='h-full' src='assets/imaginar-white-green.png'></img> 
+              : <img className='h-full' src='assets/imaginar-white-blue.png'></img>}
             </div>
           </div>          
           
