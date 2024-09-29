@@ -39,7 +39,7 @@ export default function Home() {
           </div>
                   
           <div title="Pensou? Aqui tem." 
-          className={`flex justify-end mt-10 h-[250px] md:h-[50%] lg:h-[60%] lg:mr-[10vw] md:mr-5 w-[90%] col-span-3 row-span-5  rounded-lg sm:w-[60%] md:w-[100%]  md:col-span-2 md:mt-32
+          className={`flex justify-end mt-10 h-[250px] md:h-[50%] lg:h-[45%] lg:mr-[18vw] md:mr-5 w-[90%] col-span-3 row-span-5  rounded-lg sm:w-[60%] md:w-[100%]  md:col-span-2 md:mt-32
           ${theme=='dark'?'border-t border-slate-300 md:border-transparent md:from-transparent bg-gradient-to-b from-violet-700/90 via-transparent via-80% '
           :'bg-gradient-to-b from-cyan-600/45 via-transparent via-80% md:from-transparent'}`}>
             <div className="mt-5 mr-[3vw]  h-full">
