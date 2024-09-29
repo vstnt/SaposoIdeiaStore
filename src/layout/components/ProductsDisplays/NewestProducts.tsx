@@ -137,8 +137,8 @@ export default function NewestProducts () {
                     <div title='preço e ver mais' className='lg:hidden flex justify-between items-end h-[8%]  px-3'>
                       <div id='price' className={` ${theme == 'dark'? 'text-slate-300':''}`}>R$ {product.price}</div>
                       <div id='botao ver mais' className={` p-1 px-2    hover:underline text-[15px] 
-                        ${theme == 'dark'? 'rounded bg-emerald-400/60 border border-gray-300'
-                        :'rounded-sm border border-slate-700/70 bg-emerald-200/40'}`}>
+                        ${theme == 'dark'? 'rounded bg-emerald-400/80 border border-gray-700 text-black'
+                        :'rounded-sm border border-slate-700/80 bg-emerald-200/90 text-slate-700'}`}>
                           <Link to={`/product/${product.id}`} className=' border-black'>ver mais</Link>
                       </div>
                     </div>
