@@ -79,7 +79,7 @@ export default function Home() {
         </div>
 
 
-        <div id="big saposo" className=" -mt-[53px] md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[100%] md:w-[60%]"></img></div>
+        <div id="big saposo" className=" -mt-[53px] md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[80%] md:w-[50%]"></img></div>
         
         <div id="caixa do aviso misterioso" 
         className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
