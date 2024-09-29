@@ -39,7 +39,7 @@ export default function Home() {
           </div>
                   
           <div title="dá pra imaginar?" 
-          className={`flex justify-end mt-10 ml-10 md:ml-0 lg:h-[50%] md:mr-5 col-span-3 row-span-5 rounded-lg md:col-span-2 md:mt-32
+          className={`flex mt-10  -mr-3 ml-3 lg:h-[50%] md:mr-5 col-span-3 row-span-5 rounded-lg md:col-span-2 md:mt-32
           ${theme=='dark'?' md:border-transparent md:from-transparent '
           :''}`}>
             <div className="mt-5 mr-[3vw]  h-full">
