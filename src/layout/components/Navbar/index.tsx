@@ -224,7 +224,7 @@ export default function Navbar() {
 
       <div title="página menu mobile" id="sideMenu" 
       style={{ transition: 'left 0.3s' }} 
-      className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-full bg-gray-500 visible pointer-events-auto 
+      className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-screen bg-gray-500 visible pointer-events-auto 
       ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr from-indigo-950 to-indigo-600 to-90% text-neutral-200 md:bg-gradient-to-r' 
       : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
         
