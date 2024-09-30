@@ -43,8 +43,8 @@ export default function Home() {
           ${theme=='dark'?' md:border-transparent md:from-transparent '
           :''}`}>
             <div className="mt-5 mr-[3vw]  h-full">
-              {theme === 'dark' ? <img className='h-full' src='assets/imaginar-white-green.png'></img> 
-              : <img className='h-full' src='assets/imaginar-white-blue.png'></img>}
+              {theme === 'dark' ? <img className='h-full' src='assets/imaginar-white-green2.png'></img> 
+              : <img className='h-full' src='assets/imaginar-white-blue2.png'></img>}
             </div>
           </div>          
           

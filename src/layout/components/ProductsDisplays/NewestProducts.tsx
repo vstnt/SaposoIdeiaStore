@@ -120,9 +120,10 @@ export default function NewestProducts () {
 
 
                     
-                    <div className='lg:hidden mt-2 h-[45%] bg-slate-300/30 rounded-3xl w-[85%] sm:w-[60%] self-center'>
+                    <div className={`lg:hidden mt-2 h-[45%]  rounded-3xl w-[85%] sm:w-[60%] self-center
+                      ${theme=='dark'?'bg-slate-300/30':'bg-slate-600/40'}`}>
                       <div className=' py-4 flex justify-center h-full '>
-                        <img id='imagem produto' className='lg:hidden object-contain max-h-full max-w-[75%]' src={product.imageUrl} alt={product.name} />
+                        <img id='imagem produto' className='lg:hidden rounded object-contain max-h-full max-w-[75%]' src={product.imageUrl} alt={product.name} />
                       </div>
                     </div>
 
