@@ -48,7 +48,7 @@ export default function Products() {
 
             <div>páginas. 1, 2, 3 ... </div>
             
-            <div id="carrossel novidades" className="col-span-3 w-full h-40 mt-8 mb-8"><NewestProducts/></div>
+            <div id="carrossel novidades" className="mt-5 col-span-3 w-full h-[60vh] lg:h-40"><NewestProducts/></div>
           
           </div>
         </div>
