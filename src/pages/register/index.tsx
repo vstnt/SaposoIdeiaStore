@@ -68,8 +68,13 @@ export default function Register() {
         const isRegistered = await auth.register('uid', 'backend', email, name, password)
         if (isRegistered) {
           showToast('default', 'Registro bem sucedido', '🐸 ✅', theme, {})
-          navigate('/')
-          window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+          const isLogged = await auth.signin(email, password);
+          if(isLogged) {
+            navigate('/');
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+          } else {
+          showToast('default', 'Registro funcionou, mas não conseguimos realizar o login. Por favor, procure ajuda imediatamente!', '🐸 🚷', theme, {})
+          }
         } else {
           showToast('default', 'Registro falhou. Por favor, insira um email, seu nome e uma senha válidos e tente novamente.', '🐸 🚷', theme, {})
         }
