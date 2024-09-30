@@ -131,7 +131,7 @@ export default function Navbar() {
         <div title='parte à direita do header, sem botão hamburguer' 
         className="basis-1/3 h-full flex justify-end items-start relative">
 
-          {!auth.user && // CASO usuário não logado
+          {!auth.user &&
             <div id="botões login, crie sua conta"
             className="hidden
             md:flex text-sm gap-3 self-end justify-items-end mb-2 -mr-8
@@ -157,7 +157,7 @@ export default function Navbar() {
             </div>
           }
           
-          {auth.user && // CASO usuário logado
+          {auth.user &&
             <div id="Menu da direita, primeira parte"
             className="hidden 
             md:grid text-sm h-full gap-1 justify-items-end mr-2
@@ -172,6 +172,19 @@ export default function Navbar() {
               
               <div id="parte inferior. minha conta, sair" className="flex mb-1 items-end gap-3 justify-end -mr-10">
                 
+
+
+                <div title="carrinho">
+                  <Link to={'/cart'} onClick={handlePageChanger}
+                  className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
+                  ${theme === 'dark' ? `border-stone-900  hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md
+                    ${location.pathname.startsWith('/cart') ? 'bg-zinc-100/50 shadow-black shadow-md':''}` 
+                  : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
+                  ${location.pathname.startsWith('/cart') ? 'bg-zinc-800 text-emerald-100 shadow-sm shadow-lime-500':''}`} `}>
+                  Carrinho 🛒
+                  </Link>
+                </div>
+
                 <div id="minha conta">
                   <Link to={'/userpreferences'} onClick={handlePageChanger}
                   className={`px-2 pb-0.5 pt-1 rounded-sm border-t transition-all duration-500  
@@ -352,7 +365,7 @@ export default function Navbar() {
                     ${theme === 'dark' ? 
                     ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
                     : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}`}>
-                      Meu carrinho 🛒
+                      Carrinho 🛒
                     </button>
                 </Link>
               </li>
