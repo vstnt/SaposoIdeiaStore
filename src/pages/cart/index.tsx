@@ -32,13 +32,14 @@ a primeira abordagem pode ser mais adequada."
   return (
     <>
         <div id='bg' className={`pb-24 pt-32 md:pt-44 bg-gradient-to-b px-5 min-h-[80vh] flex justify-center
-        ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
-        : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>        
+        ${theme === 'dark' ? 'from-indigo-950 to-bgdarkblue/80 to-90% text-neutral-200' 
+      : 'from-slate-300  via-slate-200 via-10% to-slate-100 to-100% text-stone-900'}  `}>        
         
             <div id='espaço contendo os elementos da página' className='w-11/12 '>
-                <h2 className="text-lg font-mono  md:text-2xl font-semibold mb-6 md:mb-4  md:ml-14">
-					Seu carrinho de compras
+                <h2 className="text-lg font-mono md:text-2xl font-semibold mb-6 ">
+					Seu carrinho de compras 🛒
 				</h2>
+				
                 
                 {cart?.items.length === 0 ? (
                     
@@ -51,55 +52,61 @@ a primeira abordagem pode ser mais adequada."
                 ) : (
 
                     <>
-                        <div className='flex flex-col gap-3'>
+                        <div className='flex flex-col gap-3  place-items-center'>
 							<ul id='lista itens carrinho' className="space-y-4"> {cart?.items.sort((a, b) => a.createdAt - b.createdAt).map((item) => (
 									
 									<li key={item.productId} 
-									className={`flex flex-col md:flex-row  rounded-lg h-44 md:h-fit
+									className={`relative flex flex-col rounded-lg h-36 w-[80vw] max-w-[600px]
 									${theme === 'dark' ? 'border-2  bg-black/30 border-slate-400 text-neutral-200' 
-									: 'bg-slate-100/90 border-2 border-slate-400'}`}>
+									: 'bg-slate-400/50 border-2 border-slate-400'}`}>
 										
-										<div id='imagem e nome' className='h-1/2 md:basis-7/12 md:h-full  '>
-										<ProductDisplayCart productId={item.productId} />
+										<button title='X' 
+											onClick={() => removeItem(item.productId)} 
+											className={`absolute right-0 w-7 text-center  rounded border-b border-l transition-all duration-300 h-fit 
+											${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
+											: 'border-slate-900 bg-slate-100/50 hover:bg-slate-300/90 hover:shadow hover:shadow-lime-500'}`}>
+											X
+										</button>
+
+										<div id='imagem e nome' className='h-fit'>
+											<ProductDisplayCart productId={item.productId} />
 										</div>
 
-										<div className='relative flex-col justify-end h-1/2 md:h-auto md:basis-5/12 flex md:flex-row md:justify-start  overflow-hidden'>
+										<div className='h-full relative flex justify-between overflow-hidden'>
 											
-											<div id='quantidade' className="-mb-4 md:mb-0 flex ml-1 md:basis-3/6 md:self-center text-xs md:text-sm  ">
-												<div className='self-center'>Quantidade :</div> 
-												<div className='ml-1 md:ml-3 px-3 md:px-6 py-1 self-center border rounded-sm text-black bg-slate-100'> {item.quantity}</div>
-
-												<div id='+ e -' className='ml-3 self-center flex flex-col gap-1 md:gap-3  place-content-center'>
-													<button onClick={() => updateItem(item.productId, 1)} 
-													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
-													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
-													: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
-														+</button>
+											<div id='área quantidade' className=" flex flex-col justify-end ml-4 mb-2 text-xs">
+												
+												<div className='mb-2'>Quantidade :</div> 
+												
+												<div title='unidades, botões + -' className='flex gap-2'>
+														
 													<button onClick={() => updateItem(item.productId, -1)}
 													className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
-													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
+													${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-600 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
 													: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
-														-</button>
+														-
+													</button>
+
+													<div title='qtd' className='w-9 px-3 py-1 border rounded-sm text-black bg-slate-100'> {item.quantity}</div>
+													
+													<button onClick={() => updateItem(item.productId, 1)} 
+														className={`border font-bold rounded-full w-6 h-6 leading-none transition-all duration-300
+														${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-600 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-sm' 
+														: 'border-stone-500 text-stone-600 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
+														+
+													</button>
+
 												</div>
+
 											</div>
 
-											<div id='valor produto' className='hidden basis-2/6 md:flex flex-col justify-center place-items-end gap-1 '>
-												<div className='text-xs'>${item.price}</div>
-												<div className='text-xl text-emerald-300'>${(item.price * item.quantity).toFixed(2)}</div>
-											</div>
 
-											<div title='botão X e valor-mobile' className='  basis-1/6 flex justify-between items-end md:justify-end md:items-start'>
-												<button 
-												onClick={() => removeItem(item.productId)} 
-												className={`px-3 py-0.5 rounded border-b border-l transition-all duration-300 h-fit 
-												${theme === 'dark' ? 'text-neutral-100 border-stone-900 bg-zinc-100/20 hover:bg-zinc-100/50 hover:shadow-black hover:shadow-md' 
-												: 'border-stone-900 bg-slate-100/90 hover:bg-slate-300/90 hover:shadow-sm hover:shadow-lime-500'}`}>
-												X
-												</button>
 
-												<div title='valores mobile' className='mr-1 md:mr-0 md:hidden basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
+											<div title='valor mobile' className=' basis-1/6 flex justify-end items-end'>
+												<div className=' m-2 basis-2/6 flex flex-col justify-center place-items-end gap-1 '>
 													<div className='text-xs'>${item.price}</div>
-													<div className='text-xl text-emerald-300'>${(item.price * item.quantity).toFixed(2)}</div>
+													<div className={`text-lg 
+														${theme=='dark'? 'text-emerald-300':'text-slate-500'}`}>${(item.price * item.quantity).toFixed(2)}</div>
 												</div>
 											</div>
 
@@ -109,9 +116,9 @@ a primeira abordagem pode ser mais adequada."
 							
 							))}</ul>
 							
-							<div className='self-end mr-[70px] mt-4 flex gap-3'>
+							<div title='total' className='self-end md:mr-[20vw] mt-4 flex gap-3'>
 								<div className='self-end'>total: </div>
-								<div className=' text-3xl text-emerald-300'>${Number(cart.total).toFixed(2)}</div>
+								<div className=' text-2xl text-[28px] text-emerald-400'>${Number(cart.total).toFixed(2)}</div>
 							</div>
 
 							<div id='botões limpar carrinho e finalizar compra' className="mt-8 flex gap-5 justify-center">
@@ -125,7 +132,7 @@ a primeira abordagem pode ser mais adequada."
 								<Link to={'/purchasecompleted'} onClick={handlePageChangerSmooth} >
 									<button
 									onClick={clearCart}
-									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300 text-center md:h-14
+									className={`px-5 pb-0.5 pt-1 rounded border-2 transition-all duration-300 text-center 
 									${theme === 'dark' ? 'text-slate-800 border-stone-700 bg-emerald-400/90 hover:bg-emerald-300 hover:shadow-black hover:shadow-md' 
 									: 'border-2 border-slate-400 bg-emerald-300 hover:bg-green-200 hover: hover:shadow-sm hover:shadow-lime-500'}`}>
 									Finalizar compra
