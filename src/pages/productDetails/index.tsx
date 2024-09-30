@@ -88,8 +88,8 @@ export default function ProductDetails() {
     <>
       <div id="bg" 
       className={` pb-24 pt-24 md:pt-44 bg-gradient-to-b px-5
-      ${theme === 'dark' ? 'from-bgdarkpurple to-bgdarkblue/80 to-70% text-neutral-200' 
-      : 'from-emerald-300 via-gray-100 via-[6%] to-white to-100% text-stone-900'}  `}>
+      ${theme === 'dark' ? 'from-indigo-950 to-indigo-500/80 to-90% text-neutral-200' 
+      : 'from-slate-300  via-slate-200 via-10% to-slate-100 to-100% text-stone-900'}  `}>
         
         <div id="flex com tudo dessa página" 
         className="flex flex-col md:flex-row gap-5 mt-7">
@@ -152,9 +152,9 @@ export default function ProductDetails() {
               <button id="botão adicionar ao carrinho"
               onClick={ product == null ? () => {} : () => handleAddToCart(product.id, quantity)}
               className={`mt-3 shadow-inner px-3 py-1 text-sm text-green-900 italic duration-300 rounded
-              ${theme === 'dark' ? 'border border-zinc-800 bg-slate-500/50 hover:bg-slate-500/80 text-white shadow-green-400/20 hover:shadow-green-400/5' 
-              : 'bg-slate-200 text-black hover:bg-gray-300 ' }`}>
-                {product ? 'Adicionar ao carrinho' : 'Botão quebrado'}
+              ${theme === 'dark' ? 'border border-zinc-800 bg-emerald-400/90 hover:bg-emerald-500/80 text-white shadow-green-400/20 hover:shadow-green-400/5' 
+              : 'bg-emerald-300/90 hover:bg-emerald-400/80 text-black  ' }`}>
+                {product ? 'Adicionar ao carrinho 🛒' : 'Botão quebrado'}
               </button>
               
             </div>       

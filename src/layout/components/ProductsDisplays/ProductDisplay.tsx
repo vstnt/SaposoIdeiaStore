@@ -72,9 +72,9 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
         <div id="preço" className="mt-2 font-semibold flex w-20">R$ {product.price}</div> 
         <button id="botão ver mais" 
         onClick={() => redirect()} 
-          className={` rounded px-1 py-1 shadow-lg hover:underline
-          ${theme === 'dark' ? 'bg-slate-500/50 text-white ' 
-          : ' text-black bg-slate-200'}`}>
+          className={`bg-slate-400/70 rounded m-[2px] px-1 py-1 shadow-lg hover:underline
+          ${theme === 'dark' ? 'bg-emerald-400/50 text-white ' 
+          : ' text-black bg-emerald-200'}`}>
           ver mais
         </button>
       </div>
