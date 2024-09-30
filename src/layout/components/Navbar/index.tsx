@@ -222,11 +222,11 @@ export default function Navbar() {
 
 
 
-      <div title="página menu mobile" id="sideMenu" 
+      <div title="sideMenu" id="sideMenu" 
       style={{ transition: 'left 0.3s' }} 
       className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-screen bg-gray-500 visible pointer-events-auto 
-      ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr from-indigo-950 to-indigo-600 to-90% text-neutral-200 md:bg-gradient-to-r' 
-      : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
+      ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr from-indigo-900 to-indigo-700 to-80% text-neutral-200' 
+      : 'bg-gradient-to-bl from-slate-400 via-20% via-slate-300  to-slate-200 to-100% border-b border-gray-500'} `}>
         
         <div id="flex base elementos" className="flex justify-between">
           
@@ -288,8 +288,8 @@ export default function Navbar() {
                   <button onClick={handlePageChanger}
                   className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
                     Buscar produtos
                   </button>
               </Link>
@@ -303,8 +303,8 @@ export default function Navbar() {
                     <button onClick={handlePageChanger}
                     className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                     ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm shadow-black shadow-md'}   `}>
                       Login
                     </button>
                 </Link>
@@ -319,8 +319,8 @@ export default function Navbar() {
                     <button onClick={handlePageChanger}
                     className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                     ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
                       Registro
                     </button>
                 </Link>
@@ -334,8 +334,8 @@ export default function Navbar() {
                     <button onClick={handlePageChanger}
                     className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                     ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
                       Minha Conta
                     </button>
                 </Link>
@@ -350,8 +350,8 @@ export default function Navbar() {
                     <button onClick={handlePageChanger}
                     className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
                     ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}`}>
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}`}>
                       Meu carrinho 🛒
                     </button>
                 </Link>
@@ -366,8 +366,8 @@ export default function Navbar() {
                   <button onClick={handlePageChangerSmooth}
                   className={`italic pb-1 pt-0.5 px-3 w-[50%] max-w-[150px]  tracking-tight rounded border-t transition-all duration-300
                   ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                  ' text-black border-black bg-zinc-100/70 shadow-red-600 shadow-md'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-red-600 shadow-md'}   `}>
                     Sair
                   </button>
               </Link>
