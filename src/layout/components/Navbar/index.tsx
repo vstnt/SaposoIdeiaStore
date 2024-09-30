@@ -263,8 +263,8 @@ export default function Navbar() {
           <div id="leave-menu" className="flex flex-col items-end">
             
             <button id="leaveMenu-Button" onClick={toggleMenu} 
-            className={` border text-3xl  m-5 px-2  self h-fit  rounded-lg bg-slate-300/65 mr-[3vw]
-            ${theme === 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-400/80 shadow shadow-black' : 'border-slate-500 shadow shadow-black text-slate-600'}`}>
+            className={` border text-4xl text-[36px] m-5 px-2  self h-fit  rounded-lg shadow bg-slate-300/65 mr-[3vw]
+            ${theme === 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-400/80  shadow-black' : 'border-slate-500  shadow-black text-slate-600'}`}>
               X
             </button>
 
