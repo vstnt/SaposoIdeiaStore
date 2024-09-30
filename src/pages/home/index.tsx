@@ -52,18 +52,18 @@ export default function Home() {
             <div id="caixa mais vendidos" 
             className={`min-h-80 min-w-60 flex font-mono text-xl shadow-md justify-center border row-span-5 w-full h-full rounded mt-14 py-5
             ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
-            : 'bg-white/30 border-zinc-500'} `}>
+            : 'bg-slate-300 border-zinc-500'} `}>
               
               <div id="caixinha mais vendidos superior" 
                 className={`text-sm absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
                 ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
-        : 'bg-zinc-100 text-stone-900 border border-zinc-500'} `}>
+        : 'bg-slate-200 text-stone-900 border border-zinc-500'} `}>
                 mais vendidos</div>
 
               <div id="caixinha mais vendidos inferior" 
                 className={`text-sm absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
                 ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
-        : 'bg-zinc-100 text-stone-900 border border-zinc-500'} `}>
+        : 'bg-slate-200 text-stone-900 border border-zinc-500'} `}>
                 mais vendidos</div>
 
               <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
