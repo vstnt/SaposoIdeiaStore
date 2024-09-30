@@ -252,10 +252,6 @@ export default function Navbar() {
               </div>
             }               
             </div>
-
-            
-
-            
                   
           </div>
 
@@ -301,49 +297,65 @@ export default function Navbar() {
 
             {!auth.user &&
               <li>
-              <Link id='botão login' 
-              to={'/login'}
-                className="w-full ">
-                  <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                  ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
-                    Login
-                  </button>
-              </Link>
-            </li>
+                <Link id='botão login' 
+                to={'/login'}
+                  className="w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                      Login
+                    </button>
+                </Link>
+              </li>
             }
             
             {!auth.user &&
               <li>
-              <Link id='botão registro' 
-              to={'/register'}
-                className=" w-full ">
-                  <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                  ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
-                    Registro
-                  </button>
-              </Link>
-            </li>
+                <Link id='botão registro' 
+                to={'/register'}
+                  className=" w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                      Registro
+                    </button>
+                </Link>
+              </li>
             }
             {auth.user &&
               <li>
-              <Link id='botão minha conta' 
-              to={'/userpreferences'}
-                className="w-full ">
-                  <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                  ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-black shadow'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
-                    Minha Conta
-                  </button>
-              </Link>
-            </li>
+                <Link id='botão minha conta' 
+                to={'/userpreferences'}
+                  className="w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}   `}>
+                      Minha Conta
+                    </button>
+                </Link>
+              </li>
+            }
+
+            {auth.user &&
+              <li>
+                <Link id='botão carrinho' 
+                to={'/cart'}
+                  className="w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm '}`}>
+                      Meu carrinho 🛒
+                    </button>
+                </Link>
+              </li>
             }
             
             {auth.user &&
