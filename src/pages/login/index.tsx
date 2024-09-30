@@ -84,9 +84,9 @@ export default function Login() {
 
   return (
     <>
-      <div id='bg' className={`pt-32 md:min-h-[550px] md:min-w-[600px] pb-14 w-full h-full flex items-center justify-center bg-gradient-to-r 
-      ${theme === 'dark' ? 'from-violet-500 via-violet-900 via-25% to-violet-400 to-95%' 
-      : 'from-slate-300 via-gray-100 via-[3%] to-white to-100% text-stone-900'}  `}> 
+      <div id='bg' className={`pt-32 md:min-h-[550px] md:min-w-[600px] pb-14 w-full h-full flex items-center justify-center bg-gradient-to-b 
+      ${theme === 'dark' ? 'from-indigo-950 to-indigo-500/80 to-100% text-neutral-200' 
+      : 'md:from-slate-300  md:via-slate-300 md:via-10% md:to-slate-400 md:to-100% text-stone-900 from-slate-200  via-slate-400 via-30% to-slate-200 to-70%'}  `}> 
         
         <div title='conteiner completo, bg-img + formulário' 
         className={` w-10/12 flex flex-col justify-center rounded-lg overflow-hidden md:w-8/12 md:h-96 md:min-h-[550px] md:min-w-[560px] md:flex-row 
