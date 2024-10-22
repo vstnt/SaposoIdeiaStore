@@ -82,15 +82,12 @@ export default function Home() {
         <div id="big saposo" className=" -mt-7 md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[85%] md:w-[50%]"></img></div>
         
         <div id="caixa do aviso misterioso" 
-        className={` mb-10 flex flex-col items-center gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
+        className={` mb-10 flex gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
         ${theme === 'dark' ? 'bg-[#1d1d1d]' 
         : 'bg-slate-400/30 shadow-inner border-b border-[6px]'}`}>
           
-          <div id="grande sapo de chapéu" className="mx-6 mt-14 mb-4">o grande sapo te viu</div>
-          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
-          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
-          <div id="grande sapo de chapéu" className="mb-4">o grande sapo</div>
-          <div id="grande sapo de chapéu" className="mb-10">.</div>
+          <div id="grande sapo de chapéu" className="mx-6 mt-5 mb-8">o sapo te viu</div>
+
 
         </div>
 

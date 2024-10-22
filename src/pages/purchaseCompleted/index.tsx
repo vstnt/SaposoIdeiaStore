@@ -36,14 +36,8 @@ export default function PurchaseCompleted() {
         ${theme === 'dark' ? 'bg-[#1d1d1d]' 
         : 'bg-slate-400/30 shadow-inner border-b border-[6px]'}`}>
           
-          <div id="grande sapo de chapéu" className="mx-20 mt-14 mb-4">onde</div>
-          <div id="grande sapo de chapéu" className="mb-4">onde será</div>
-          <div id="grande sapo de chapéu" className="mb-4">que tais coisas,</div>
-          <div id="grande sapo de chapéu" className="mb-4">ideias,</div>
-          <div id="grande sapo de chapéu" className="mb-4">poderiam</div>
-          <div id="grande sapo de chapéu" className="mb-4">nos levar</div>
-          <div id="grande sapo de chapéu" className="mb-10">?</div>
-
+          <div id="grande sapo de chapéu" className="mx-20 mt-14 mb-4">onde será que as ideias</div>
+          <div id="grande sapo de chapéu" className="mb-10">poderiam nos levar?</div>
         </div>
 
       </div>
