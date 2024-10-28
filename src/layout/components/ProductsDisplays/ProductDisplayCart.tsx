@@ -35,7 +35,7 @@ const ProductDisplayCart: React.FC<ProductDisplayProps> = ({ productId }) => {
       className={` rounded p-[3px] ml-2 flex items-center justify-center max-h-14 w-[35%] max-w-[120px]  
         ${theme=='dark'? 'bg-slate-900/70 ':'bg-slate-100/60'}`}>
         {product?.id == null ? 
-            <img id='img not found' className="cursor-pointer max-w-full max-h-full rounded-md" src='/assets/notFound.jpg'></img>
+            <img id='img not found' className="cursor-pointer max-h-12 rounded-md" src='/assets/notFound.jpg'></img>
           : <img id='img produto' className="cursor-pointer max-h-12 rounded-md" src={product.imageUrl} onClick={() => redirect()}></img> 
         }
       </div>
