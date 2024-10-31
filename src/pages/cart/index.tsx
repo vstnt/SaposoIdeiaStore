@@ -46,7 +46,7 @@ a primeira abordagem pode ser mais adequada."
                     <div className={`flex justify-center items-center h-32 w-full rounded-lg
 					${theme === 'dark' ? 'bg-slate-500/30 border-2 border-gray-400' 
 					: 'bg-slate-500/30 border-2 border-slate-400'}`}>
-                    	<p className="text-lg ">Algum erro ocorreu...</p>
+                    	<p className="text-lg ">Aguarde...</p>
                     </div> ) : (
 						cart?.items.length === 0 ? (
 							
