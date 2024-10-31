@@ -41,7 +41,7 @@ a primeira abordagem pode ser mais adequada."
 				</h2>
 				
                 
-				{!cart.items || !cart.items.length ? (
+				{!cart.items ? (
                     
                     <div className={`flex justify-center items-center h-32 w-full rounded-lg
 					${theme === 'dark' ? 'bg-slate-500/30 border-2 border-gray-400' 
