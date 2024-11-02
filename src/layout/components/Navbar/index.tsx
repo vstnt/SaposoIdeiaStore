@@ -74,62 +74,56 @@ export default function Navbar() {
       
       <div id='header' 
       style={{ transition: 'opacity 0.3s' }} 
-      className={`transition-all duration-500 z-[987] fixed flex items-center border-b h-[80px] w-full text-[16px] text-neutral-900 font-mono 
+      className={`transition-all duration-500 z-[987] fixed flex justify-between  h-[45px] w-full text-[16px] text-neutral-900 font-mono 
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
       ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r md:from-violet-900 md:from-5% md:via-violet-400 md:to-violet-300' 
-      : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 border-b border-gray-500'} `}>
+      : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
         
-        <div id='Menudaesquerda' className="h-full sm:basis-1/3 md:basis-1/3 flex items-start gap-5">
-          
-          <div id='imgsaposo'>
-            <Link to={'/'} onClick={handlePageChangerSmooth}>
-              <img 
-              className={` hidden sm:block ml-[2vw] shadow w-[4.5rem] min-h-12 min-w-12 rounded-b-xl border-b-4 border-r-2 transition-all duration-300
-              ${theme === 'dark' ? 'shadow-black/35 border-teal-300/50 bg-indigo-300/60 hover:bg-indigo-300/90' 
-              : 'hover:shadow-black/80 shadow-violet-900/40 border-stone-800/70 bg-black/10'}`
-              } 
-              src='/assets/sapososemfundo.png'></img>
-            </Link>
-          </div>
-          
-          <div id='botão buscar produtos' 
-          className="hidden 
-          md:block ml-[1vw] italic text-sm mb-2 self-end
-          lg:text-base ">
-            <Link to={'/products'} onClick={handlePageChanger}
-            className={` px-[1vw] pb-1 pt-0.5 tracking-tight  rounded-sm border-t transition-all duration-300
-            ${theme === 'dark' ? 
-            `border-neutral-300/80  hover:text-black hover:border-black hover:bg-zinc-100/70 hover:shadow-black hover:shadow
-            ${location.pathname.startsWith('/product') ?  'text-black  border-black bg-zinc-100/70 shadow shadow-black' : 'text-neutral-300'}   `
-            : `border-stone-900 hover:bg-zinc-800 hover:text-emerald-100 hover:shadow-sm hover:shadow-lime-500
-            ${location.pathname.startsWith('/product') ? 'bg-zinc-800/100 text-emerald-100 shadow-sm shadow-lime-500' : ''}   `}
-            `}>
-            Buscar produtos
-            </Link>
-          </div>
 
-        </div>
+
+        <button title="hamburguer menu button" onClick={toggleMenu} className={`pl-4 basis-1/5
+          ${ theme == 'dark' ? ' text-gray-300 ' : ' text-slate-600'} `}>
+                <img src='/assets/menu.png' className='h-[43%] '></img>
+        </button>
 
         <Link title="logo-saposoideiastore" 
         to={'/'} onClick={handlePageChangerSmooth} 
-        className="ml-3 h-full flex justify-center py-[5px] md:basis-4/12 md:ml-0 lg:basis-1/3 ">
+        className=" h-full flex justify-center py-[8px]  basis-3/5">
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-          className={`w-[75vw] max-w-[300px] sm:w-fit h-full flex items-center justify-center rounded-lg transition-[400]
-          ${theme == 'dark' ? ' hover:bg-slate-800/50 bg-slate-800/70 border border-slate-300/60 shadow-inner shadow-black' 
-          :' bg-cyan-800/70 hover:bg-cyan-800  border border-black/40 shadow-inner shadow-gray-800 '}`}> 
+          className={`sm:w-fit h-full flex items-center justify-center  transition-[400]
+          ${theme == 'dark' ? '  ' 
+          :'  '}`}> 
             <div title="conteiner p/ modulação da imagem" 
-            className="flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto mb-5 md:mb-9 ">
+            className="mt-1 flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto  md:mb-9 ">
               <div title="imagem em si">
                 {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%] md:h-[150%] "></img> 
-                : <img src='/assets/saposoideiastore2.png' className=' h-[130%] md:h-[150%] '></img>}
+                : <img src='/assets/printArtStoreBlack.png' className=' h-[93%] md:h-[150%] '></img>}
               </div>
             </div>
           </div>
         </Link>
 
+        <div className="flex justify-end h-full basis-1/5 ">
+          
+          <div title='botão pesquisar' className="flex items-center h-full mr-2">
+            <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
+              <img src='/assets/search.png' className='h-[40%]' />
+            </Link>
+          </div>
+
+          <div title='carrinho' className="flex items-center h-full mr-2">
+              <Link to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
+                <img src='/assets/shopping bag.png' className='h-[40%] '></img>
+              </Link>
+          </div>
+          
+        </div>
+
+
+
   
         <div title='parte à direita do header, sem botão hamburguer' 
-        className="basis-1/3 h-full flex justify-end items-start relative">
+        className="basis-1/3 h-full flex justify-end items-start relative hidden">
 
           {!auth.user &&
             <div id="botões login, crie sua conta"
@@ -221,12 +215,6 @@ export default function Navbar() {
               </div>
           </button>
         </div>
-
-
-        <button id="menuButton" onClick={toggleMenu} className={`md:hidden border px-1 mr-[3vw] text-4xl rounded-lg
-          ${ theme == 'dark' ? 'bg-slate-800/50 text-gray-300 border-gray-400/80 shadow shadow-black' : 'border-slate-500 shadow shadow-black text-slate-600'} `}>
-          &#9776;
-        </button>
 
       </div>
 

@@ -15,7 +15,7 @@ export const useTheme = () => {
 
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
  
 
   // Para carregar o tema do localStorage
