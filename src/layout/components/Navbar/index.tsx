@@ -105,13 +105,13 @@ export default function Navbar() {
 
         <div className="flex justify-end h-full basis-1/5 ">
           
-          <div title='botão pesquisar' className="flex items-center h-full mr-2">
+          <div title='botão pesquisar' className="flex items-center h-full mr-4">
             <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
               <img src='/assets/search.png' className='h-[40%]' />
             </Link>
           </div>
 
-          <div title='carrinho' className="flex items-center h-full mr-2">
+          <div title='carrinho' className="flex items-center h-full mr-3">
               <Link to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
                 <img src='/assets/shopping bag.png' className='h-[40%] '></img>
               </Link>
