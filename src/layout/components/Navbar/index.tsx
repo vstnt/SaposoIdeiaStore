@@ -80,13 +80,13 @@ export default function Navbar() {
       : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
         
 
-        <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-1/2 flex items-center gap-8">
+        <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-1/2 flex items-center gap-x-16">
 
           <button title="hamburguer menu button" onClick={toggleMenu} className="h-full">
             <img src='/assets/menu.png' className='h-[43%] '></img>
           </button>
 
-          <Link title="md logo print art store" 
+          <Link title="md logo sphera" 
           to={'/'} onClick={handlePageChangerSmooth} 
           className=" h-full justify-center py-[8px] hidden md:flex">
             <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
@@ -97,7 +97,7 @@ export default function Navbar() {
               className="mt-1 flex justify-center h-full w-[100%] ">
                <div title="imagem em si">
                 {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
-                : <img src='/assets/printArtStoreBlack.png' className=' h-[88%]'></img>}
+                : <img src='/assets/sphera3.png' className=' h-[88%]'></img>}
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function Navbar() {
 
         <div title='Parte à direita' className="md:gap-28 flex justify-end items-center h-full basis-1/5 md:basis-1/2 font-sans">
           
-          <div title='botão pesquisar' className="flex items-center h-full mr-4 md:hidden">
+          <div title='botão pesquisar' className="flex items-center h-full mr-6 md:hidden">
             <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
               <img src='/assets/search.png' className='h-[40%]' />
             </Link>
@@ -150,7 +150,7 @@ export default function Navbar() {
 
           <div className="hidden md:block">Favoritos</div>
 
-          <div title='sacola' className="flex gap-2 items-center h-full mr-3">
+          <div title='sacola' className="flex gap-2 items-center h-full mr-4 mb-1">
               <Link to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
                 <img src='/assets/shopping bag.png' className='h-[40%] '></img>
               </Link>
