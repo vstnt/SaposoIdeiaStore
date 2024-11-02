@@ -74,48 +74,90 @@ export default function Navbar() {
       
       <div id='header' 
       style={{ transition: 'opacity 0.3s' }} 
-      className={`transition-all duration-500 z-[987] fixed flex justify-between  h-[45px] w-full text-[16px] text-neutral-900 font-mono 
+      className={`transition-all duration-500 z-[987] fixed flex justify-between h-[45px] md:h-[53px] w-full text-[16px] text-neutral-900 font-mono 
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
       ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r md:from-violet-900 md:from-5% md:via-violet-400 md:to-violet-300' 
       : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
         
 
+        <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-1/2 flex items-center gap-8">
 
-        <button title="hamburguer menu button" onClick={toggleMenu} className={`pl-4 basis-1/5
-          ${ theme == 'dark' ? ' text-gray-300 ' : ' text-slate-600'} `}>
-                <img src='/assets/menu.png' className='h-[43%] '></img>
-        </button>
+          <button title="hamburguer menu button" onClick={toggleMenu} className="h-full">
+            <img src='/assets/menu.png' className='h-[43%] '></img>
+          </button>
 
-        <Link title="logo-saposoideiastore" 
+          <Link title="md logo print art store" 
+          to={'/'} onClick={handlePageChangerSmooth} 
+          className=" h-full justify-center py-[8px] hidden md:flex">
+            <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
+            className={`h-full flex items-center justify-center
+            ${theme == 'dark' ? '  ' 
+            :'  '}`}> 
+              <div title="conteiner p/ modulação da imagem" 
+              className="mt-1 flex justify-center h-full w-[100%] ">
+               <div title="imagem em si">
+                {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
+                : <img src='/assets/printArtStoreBlack.png' className=' h-[88%]'></img>}
+                </div>
+              </div>
+            </div>
+          </Link>
+          
+          <div title='md searchbox' className="hidden md:block w-[50%] relative ">
+            
+            <input type="search" 
+            className={`bg-white w-full pr-7 rounded border border-slate-400/70 shadow-inner
+            ${theme === 'dark' ? '' : ''}`} 
+              placeholder="">  
+            </input>
+
+            <div title='botão pesquisar' className="flex items-center h-full  absolute right-3 top-0">
+              <img src='/assets/search.png' className='h-[70%]' />
+            </div>
+            
+          </div>
+
+        </div>
+
+
+
+        <Link title="mobile logo-saposoideiastore" 
         to={'/'} onClick={handlePageChangerSmooth} 
-        className=" h-full flex justify-center py-[8px]  basis-3/5">
+        className=" h-full flex justify-center py-[8px]  basis-3/5 md:hidden">
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-          className={`sm:w-fit h-full flex items-center justify-center  transition-[400]
+          className={`h-full flex items-center justify-center
           ${theme == 'dark' ? '  ' 
           :'  '}`}> 
             <div title="conteiner p/ modulação da imagem" 
-            className="mt-1 flex justify-center h-full sm:w-[100%] w-[100%] md:w-auto  md:mb-9 ">
+            className="mt-1 flex justify-center h-full w-[100%] ">
               <div title="imagem em si">
-                {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%] md:h-[150%] "></img> 
-                : <img src='/assets/printArtStoreBlack.png' className=' h-[93%] md:h-[150%] '></img>}
+                {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
+                : <img src='/assets/printArtStoreBlack.png' className=' h-[93%]'></img>}
               </div>
             </div>
           </div>
         </Link>
 
-        <div className="flex justify-end h-full basis-1/5 ">
+
+
+        <div title='Parte à direita' className="md:gap-28 flex justify-end items-center h-full basis-1/5 md:basis-1/2 font-sans">
           
-          <div title='botão pesquisar' className="flex items-center h-full mr-4">
+          <div title='botão pesquisar' className="flex items-center h-full mr-4 md:hidden">
             <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
               <img src='/assets/search.png' className='h-[40%]' />
             </Link>
           </div>
 
-          <div title='carrinho' className="flex items-center h-full mr-3">
+          <div className="hidden md:block">Favoritos</div>
+
+          <div title='sacola' className="flex gap-2 items-center h-full mr-3">
               <Link to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
                 <img src='/assets/shopping bag.png' className='h-[40%] '></img>
               </Link>
+              <div className="hidden md:block">Sacola</div>
           </div>
+
+          <div className="hidden md:block w-10 h-10 mr-5 rounded-3xl bg-black"></div>
           
         </div>
 
@@ -217,11 +259,6 @@ export default function Navbar() {
         </div>
 
       </div>
-
-
-
-
-
 
       <div title="sideMenu" id="sideMenu" 
       style={{ transition: 'left 0.3s' }} 
