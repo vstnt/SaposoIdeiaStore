@@ -130,9 +130,9 @@ export default function Navbar() {
           :'  '}`}> 
             <div title="conteiner p/ modulação da imagem" 
             className="mt-1 flex justify-center h-full w-[100%] ">
-              <div title="imagem em si">
+              <div title="imagem em si" className="flex items-center">
                 {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
-                : <img src='/assets/printArtStoreBlack.png' className=' h-[93%]'></img>}
+                : <img src='/assets/sphera3.png' className=' h-[75%]'></img>}
               </div>
             </div>
           </div>
