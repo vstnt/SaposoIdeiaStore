@@ -80,7 +80,7 @@ export default function Navbar() {
       : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
         
 
-        <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-1/2 flex items-center gap-x-16">
+        <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
           <button title="hamburguer menu button" onClick={toggleMenu} className="h-full">
             <img src='/assets/menu.png' className='h-[43%] '></img>
@@ -88,7 +88,7 @@ export default function Navbar() {
 
           <Link title="md logo sphera" 
           to={'/'} onClick={handlePageChangerSmooth} 
-          className=" h-full justify-center py-[8px] hidden md:flex">
+          className=" h-full justify-center py-[8px] hidden md:flex ">
             <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
             className={`h-full flex items-center justify-center
             ${theme == 'dark' ? '  ' 
@@ -102,20 +102,26 @@ export default function Navbar() {
               </div>
             </div>
           </Link>
-          
-          <div title='md searchbox' className="hidden md:block w-[50%] relative ">
-            
+
+
+
+          <div title='md searchbox' className="hidden md:flex basis-3/6 items-center justify-start">
+          <div className="relative w-full">
             <input type="search" 
-            className={`bg-white w-full pr-7 rounded border border-slate-400/70 shadow-inner
+            className={`bg-white pr-7 rounded border border-slate-400/70 shadow-inner w-full
             ${theme === 'dark' ? '' : ''}`} 
               placeholder="">  
             </input>
 
             <div title='botão pesquisar' className="flex items-center h-full  absolute right-3 top-0">
-              <img src='/assets/search.png' className='h-[70%]' />
+              <img src='/assets/search.png' className='h-[60%]' />
             </div>
+          </div> 
+
             
-          </div>
+        </div>
+
+          
 
         </div>
 
@@ -140,7 +146,9 @@ export default function Navbar() {
 
 
 
-        <div title='Parte à direita' className="md:gap-28 flex justify-end items-center h-full basis-1/5 md:basis-1/2 font-sans">
+
+
+        <div title='Parte à direita' className="md:gap-9 flex justify-end items-center h-full basis-1/5 md:basis-1/3 font-sans mr-4">
           
           <div title='botão pesquisar' className="flex items-center h-full mr-6 md:hidden">
             <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
@@ -148,16 +156,14 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:block">Favoritos</div>
-
-          <div title='sacola' className="flex gap-2 items-center h-full mr-4 mb-1">
-              <Link to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
-                <img src='/assets/shopping bag.png' className='h-[40%] '></img>
-              </Link>
-              <div className="hidden md:block">Sacola</div>
-          </div>
-
-          <div className="hidden md:block w-10 h-10 mr-5 rounded-3xl bg-black"></div>
+          <Link title="sacola" to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
+            <img src='/assets/shopping bag.png' className='h-[40%] '></img>
+          </Link>
+          
+ 
+            <Link title="avatar usuário" to={'/login'} onClick={handlePageChanger} className="items-center h-full hidden md:flex mr-36">
+                <img src='/assets/user.png' className='h-[37%] '></img>
+            </Link>
           
         </div>
 
