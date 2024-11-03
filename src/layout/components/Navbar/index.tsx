@@ -148,7 +148,7 @@ export default function Navbar() {
 
 
 
-        <div title='Parte à direita' className="md:gap-9 flex justify-end items-center h-full basis-1/5 md:basis-1/3 font-sans mr-4">
+        <div title='Parte à direita' className="md:gap-9 flex justify-end items-center h-full basis-1/5 md:basis-1/3 font-sans">
           
           <div title='botão pesquisar' className="flex items-center h-full mr-6 md:hidden">
             <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
@@ -156,7 +156,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <Link title="sacola" to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full">
+          <Link title="sacola" to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full mr-4 md:mr-0">
             <img src='/assets/shopping bag.png' className='h-[40%] '></img>
           </Link>
           
