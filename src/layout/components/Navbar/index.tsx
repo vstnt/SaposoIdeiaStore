@@ -138,7 +138,7 @@ export default function Navbar() {
             className="mt-1 flex justify-center h-full w-[100%] ">
               <div title="imagem em si" className="flex items-center">
                 {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
-                : <img src='/assets/sphera3.png' className=' h-[75%]'></img>}
+                : <img src='/assets/sphera3.png' className=' h-[80%]'></img>}
               </div>
             </div>
           </div>
