@@ -34,7 +34,7 @@ export default function Footer() {
                 </Link>       
             </div>
 
-            <div className="w-[30rem] h-8 flex items-center justify-center text-xs bg-[#C4C4C4]/30">Ricardo Mass, 2024</div>
+            <div className="md:w-[30rem] w-full h-8 flex items-center justify-center text-xs bg-[#C4C4C4]/30">Ricardo Mass, 2024</div>
             
         </div>
     )
