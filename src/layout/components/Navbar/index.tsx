@@ -170,7 +170,7 @@ export default function Navbar() {
 
 
   
-        <div title='parte à direita do header, sem botão hamburguer' 
+        <div title='DEPRECATED parte à direita do header, sem botão hamburguer' 
         className="basis-1/3 h-full flex justify-end items-start relative hidden">
 
           {!auth.user &&

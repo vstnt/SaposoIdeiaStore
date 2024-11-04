@@ -1,20 +1,41 @@
 import { Link } from "react-router-dom"
-import { useTheme } from "../../../context/Theme/ThemeContext"
+//import { useTheme } from "../../../context/Theme/ThemeContext"
 
 export default function Footer() {
-    const { theme } = useTheme()    
+    //const { theme } = useTheme()    
 
     return (
-        <div className={`px-12 grid grid-cols-1 md:grid-cols-4 justify-items-center items-center h-60 border-t absolute bottom-auto w-full
-        ${theme === 'dark' ? 'bg-[#0a0b25] border-indigo-500' 
-        : 'bg-gradient-to-b from-slate-200 from-65% to-violet-200 text-black border-t-[2px] border-indigo-300'}`}>
+        <div className={`h-[22rem] md:h[20rem] w-full flex flex-col gap-6 justify-end items-center bg-white text-black font-mono pb-7 md:pb-0`}>
             
-            <div className="font-mono text-lg">SapoSaposo</div>
-            <div className="font-mono text-lg">SapoSaposo</div>
-            <div className="font-mono text-lg">SapoSaposo</div>
-            <div className="font-mono text-lg underline underline-offset-4"><Link to={'https://wa.me/message/B6TFIBMN7YE2H1'}>Contato dev Ricardo Mass</Link></div>
+            <div title='icones redes sociais' className="flex justify-between gap-10  h-6 ">
+                <img src='/assets/linkedin.png' className='h-full'></img>
+                <img src='/assets/github.png' className='h-full'></img>
+                <img src='/assets/whatsapp.png' className='h-full'></img>
+            </div>
 
+            <img title='separador' src="/assets/separador2.png" className="w-[8rem] "></img>
 
+            <div className="flex flex-col items-end gap-1">
+                <div>ricardoaraujomass@gmail.com</div>
+                <div>+55 41 99293 0654</div>
+            </div>
+
+            <img title='separador' src="/assets/separador2.png" className="w-[8rem]"></img>
+
+            <div className="flex gap-8 justify-end ">
+                <Link title="currículo" to={'/sla'} className="">
+                    Currículo
+                </Link>       
+                <Link title="Portfólio" to={'/portfólio'} className="">
+                    Portfólio
+                </Link>       
+                <Link title="Whatsapp" to={'https://wa.me/message/B6TFIBMN7YE2H1'} className=" ">
+                    Whatsapp
+                </Link>       
+            </div>
+
+            <div className="w-[30rem] h-8 flex items-center justify-center text-xs bg-[#C4C4C4]/30">Ricardo Mass, 2024</div>
+            
         </div>
     )
 }
