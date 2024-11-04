@@ -58,8 +58,8 @@ export default function Navbar() {
   const toggleMenu = () => {
     const sideMenu = document.getElementById('sideMenu');
     if (sideMenu) {
-      const isMenuVisible = sideMenu.style.left === '0%';
-      sideMenu.style.left = isMenuVisible ? '-100%' : '0%'; // Alterna entre mostrar e esconder o menu
+      const isMenuVisible = sideMenu.style.top === '0%';
+      sideMenu.style.top = isMenuVisible ? '-100%' : '0%'; // Alterna entre mostrar e esconder o menu
     }    
   }
 
@@ -267,6 +267,152 @@ export default function Navbar() {
       </div>
 
       <div title="sideMenu" id="sideMenu" 
+      style={{ transition: 'top 0.3s' }} 
+      className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] md:mt-[53px]  bg-slate-300 flex flex-col visible pointer-events-auto border-b border-r border-black text-black`}>
+
+        <button className="w-full h-14 border-b border-black flex items-center pl-10">Login</button>
+        <button className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</button>
+        <button className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</button>
+        <button className="w-full h-14 border-b border-black flex items-center pl-10">Contato</button>
+        <button className="w-full h-14 border-b border-black flex items-center pl-10">Sobre</button>
+        <div className="w-full h-14 flex justify-center items-center gap-9">
+          <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className=" h-[35%]">
+            <img src='/assets/linkedin-black.png' className='h-full'></img>
+          </Link>                
+          <Link title="Github icon" to={'https://github.com/vstnt'} className="h-[35%]">
+            <img src='/assets/github-black.png' className='h-full'></img>
+          </Link>                
+          <Link title="Whatsapp icon" to={'https://wa.me/message/B6TFIBMN7YE2H1'} className="h-[35%]">
+              <img src='/assets/whatsapp-black.png' className='h-full'></img>
+          </Link>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div id="flex base elementos" className="absolute flex flex-col hidden">
+          
+          
+
+
+
+          <ul id="buttons-list" className=" flex flex-col text-center gap-6 text-2xl w-[65vw] ">
+            
+            <li className="w-full border border-black">
+              <div className="">
+
+              </div>
+            </li>
+
+            <li>
+              <Link id='botão buscar produtos' 
+              to={'/products'}
+                className="w-full ">
+                  <button onClick={handlePageChanger}
+                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
+                    Buscar produtos
+                  </button>
+              </Link>
+            </li>
+
+            {!auth.user &&
+              <li>
+                <Link id='botão login' 
+                to={'/login'}
+                  className="w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm shadow-black shadow-md'}   `}>
+                      Login
+                    </button>
+                </Link>
+              </li>
+            }
+            
+            {!auth.user &&
+              <li>
+                <Link id='botão registro' 
+                to={'/register'}
+                  className=" w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
+                      Registro
+                    </button>
+                </Link>
+              </li>
+            }
+            {auth.user &&
+              <li>
+                <Link id='botão minha conta' 
+                to={'/userpreferences'}
+                  className="w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
+                      Minha Conta
+                    </button>
+                </Link>
+              </li>
+            }
+
+            {auth.user &&
+              <li>
+                <Link id='botão carrinho' 
+                to={'/cart'}
+                  className="w-full ">
+                    <button onClick={handlePageChanger}
+                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
+                    ${theme === 'dark' ? 
+                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
+                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}`}>
+                      Carrinho 🛒
+                    </button>
+                </Link>
+              </li>
+            }
+            
+            {auth.user &&
+              <li>
+              <Link id='botão logout' 
+              onClick={handleLogout} to={''}
+                className="w-full ">
+                  <button onClick={handlePageChangerSmooth}
+                  className={`italic pb-1 pt-0.5 px-3 w-[50%] max-w-[150px]  tracking-tight rounded border-t transition-all duration-300
+                  ${theme === 'dark' ? 
+                  ' text-black border-black bg-zinc-100/70 shadow-red-600 shadow-md'
+                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-red-600 shadow-md'}   `}>
+                    Sair
+                  </button>
+              </Link>
+            </li>
+            }
+
+            
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div title="sideMenuu" id="sideMenuu" 
       style={{ transition: 'left 0.3s' }} 
       className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-screen bg-gray-500 visible pointer-events-auto 
       ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr from-indigo-900 to-indigo-700 to-80% text-neutral-200' 
