@@ -5,12 +5,18 @@ export default function Footer() {
     //const { theme } = useTheme()    
 
     return (
-        <div className={`h-[22rem] md:h-[20rem] w-full flex flex-col gap-6 justify-end items-center bg-white text-black font-mono `}>
+        <div className={`h-[23rem] md:h-[23rem] w-full flex flex-col gap-8 justify-end items-center bg-white text-black font-mono `}>
             
             <div title='icones redes sociais' className="flex justify-between gap-10  h-6 ">
-                <img src='/assets/linkedin.png' className='h-full'></img>
-                <img src='/assets/github.png' className='h-full'></img>
-                <img src='/assets/whatsapp.png' className='h-full'></img>
+                <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className=" h-full">
+                    <img src='/assets/linkedin.png' className='h-full'></img>
+                </Link>                
+                <Link title="Github icon" to={'https://github.com/vstnt'} className="h-full">
+                    <img src='/assets/github.png' className='h-full'></img>
+                </Link>                
+                <Link title="Whatsapp icon" to={'https://wa.me/message/B6TFIBMN7YE2H1'} className="h-full ">
+                    <img src='/assets/whatsapp.png' className='h-full'></img>
+                </Link>
             </div>
 
             <img title='separador' src="/assets/separador2.png" className="w-[8rem] "></img>
@@ -31,11 +37,11 @@ export default function Footer() {
                 </Link>       
                 <Link title="Whatsapp" to={'https://wa.me/message/B6TFIBMN7YE2H1'} className=" ">
                     Whatsapp
-                </Link>       
+                </Link>
             </div>
 
             <div className="md:w-[30rem] w-full h-8 flex items-center justify-center text-xs bg-[#C4C4C4]/30">Ricardo Mass, 2024</div>
             
         </div>
     )
-}
+}       
