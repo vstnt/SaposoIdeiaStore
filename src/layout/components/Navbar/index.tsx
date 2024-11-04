@@ -97,9 +97,9 @@ export default function Navbar() {
         <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
         <div className=" cursor-pointer flex flex-col gap-[5px]" onClick={toggleMenu}>
-          <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-300 "></div>
-          <div id="bar2" className="w-[13px] h-[1px] bg-gray-800  transition-all duration-300"></div>
-          <div id="bar3" className="w-[19px] h-[1px] bg-gray-800  transition-all duration-300"></div>
+          <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
+          <div id="bar2" className="w-[13px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
+          <div id="bar3" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
         </div>
 
         <Link title="md logo sphera" 
@@ -282,7 +282,7 @@ export default function Navbar() {
       </div>
 
       <div title="sideMenu" id="sideMenu" 
-      style={{ transition: 'top 0.3s, opacity 0.3s'   }} 
+      style={{ transition: 'top 0.4s, opacity 0.3s'   }} 
       className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] md:mt-[53px]  bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r border-black text-black
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
       `}>
