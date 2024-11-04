@@ -5,7 +5,7 @@ export default function Footer() {
     //const { theme } = useTheme()    
 
     return (
-        <div className={`h-[23rem] md:h-[23rem] w-full flex flex-col gap-8 justify-end items-center bg-white text-black font-mono `}>
+        <div className={`h-[22rem] w-full flex flex-col gap-8 justify-end items-center bg-white text-black font-mono text-sm`}>
             
             <div title='icones redes sociais' className="flex justify-between gap-10  h-6 ">
                 <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className=" h-full">
@@ -40,7 +40,7 @@ export default function Footer() {
                 </Link>
             </div>
 
-            <div className="md:w-[30rem] w-full h-8 flex items-center justify-center text-xs bg-[#C4C4C4]/30">Ricardo Mass, 2024</div>
+            <div className="md:w-[27rem] w-full h-8 flex items-center justify-center text-xs bg-[#C4C4C4]/30">Ricardo Mass, 2024</div>
             
         </div>
     )
