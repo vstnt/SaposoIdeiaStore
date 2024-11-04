@@ -96,7 +96,7 @@ export default function Navbar() {
 
         <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
-        <div className=" cursor-pointer flex flex-col gap-[5px]" onClick={toggleMenu}>
+        <div className=" cursor-pointer flex flex-col justify-center gap-[5px] p-2 -mx-2" onClick={toggleMenu}>
           <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
           <div id="bar2" className="w-[13px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
           <div id="bar3" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
