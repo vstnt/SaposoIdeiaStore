@@ -60,6 +60,20 @@ export default function Navbar() {
     if (sideMenu) {
       const isMenuVisible = sideMenu.style.top === '0%';
       sideMenu.style.top = isMenuVisible ? '-100%' : '0%'; // Alterna entre mostrar e esconder o menu
+
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+
+      if (!isMenuVisible) {
+        bar1?.classList.add("-rotate-45", "translate-y-1");
+        bar2?.classList.add("opacity-0");
+        bar3?.classList.add("rotate-45", "-translate-y-2");
+      } else {
+        bar1?.classList.remove("-rotate-45", "translate-y-1");
+        bar2?.classList.remove("opacity-0");
+        bar3?.classList.remove("rotate-45", "-translate-y-2");
+      }
     }    
   }
 
@@ -82,26 +96,28 @@ export default function Navbar() {
 
         <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
-          <button title="hamburguer menu button" onClick={toggleMenu} className="h-full">
-            <img src='/assets/menu.png' className='h-[43%] '></img>
-          </button>
+        <div className=" cursor-pointer flex flex-col gap-[5px]" onClick={toggleMenu}>
+          <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-300 "></div>
+          <div id="bar2" className="w-[13px] h-[1px] bg-gray-800  transition-all duration-300"></div>
+          <div id="bar3" className="w-[19px] h-[1px] bg-gray-800  transition-all duration-300"></div>
+        </div>
 
-          <Link title="md logo sphera" 
-          to={'/'} onClick={handlePageChangerSmooth} 
-          className=" h-full justify-center py-[8px] hidden md:flex ">
-            <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-            className={`h-full flex items-center justify-center
-            ${theme == 'dark' ? '  ' 
-            :'  '}`}> 
-              <div title="conteiner p/ modulação da imagem" 
-              className="mt-1 flex justify-center h-full w-[100%] ">
-               <div title="imagem em si">
-                {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
-                : <img src='/assets/sphera3.png' className=' h-[88%]'></img>}
-                </div>
+        <Link title="md logo sphera" 
+        to={'/'} onClick={handlePageChangerSmooth} 
+        className=" h-full justify-center py-[8px] hidden md:flex ">
+          <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
+          className={`h-full flex items-center justify-center
+          ${theme == 'dark' ? '  ' 
+          :'  '}`}> 
+            <div title="conteiner p/ modulação da imagem" 
+            className="mt-1 flex justify-center h-full w-[100%] ">
+              <div title="imagem em si">
+              {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
+              : <img src='/assets/sphera3.png' className=' h-[88%]'></img>}
               </div>
             </div>
-          </Link>
+          </div>
+        </Link>
 
 
 
@@ -166,7 +182,6 @@ export default function Navbar() {
             </Link>
           
         </div>
-
 
 
   
@@ -267,10 +282,13 @@ export default function Navbar() {
       </div>
 
       <div title="sideMenu" id="sideMenu" 
-      style={{ transition: 'top 0.3s' }} 
-      className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] md:mt-[53px]  bg-slate-300 flex flex-col visible pointer-events-auto border-b border-r border-black text-black`}>
+      style={{ transition: 'top 0.3s, opacity 0.3s'   }} 
+      className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] md:mt-[53px]  bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r border-black text-black
+      ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
+      `}>
+        
 
-        <button className="w-full h-14 border-b border-black flex items-center pl-10">Login</button>
+        <button className="w-full h-14 border-b border-t border-black flex items-center pl-10">Login</button>
         <button className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</button>
         <button className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</button>
         <button className="w-full h-14 border-b border-black flex items-center pl-10">Contato</button>
@@ -286,12 +304,6 @@ export default function Navbar() {
               <img src='/assets/whatsapp-black.png' className='h-full'></img>
           </Link>
         </div>
-
-
-
-
-
-
 
 
 
