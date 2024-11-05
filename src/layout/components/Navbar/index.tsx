@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../../context/Theme/ThemeContext";
 import { useAuth } from "../../../context/Auth/AuthContext";
 
@@ -9,33 +9,30 @@ export default function Navbar() {
   const auth = useAuth()
   const navigate = useNavigate();
   const location = useLocation();
+  const menuRef = useRef(null);
+  const [menuVisible, setMenuVisible] = useState(false)
 
 
   const handleLogout = async () => {
     auth.signout();
     navigate('/');
+    if (menuVisible) {
+      toggleMenu();
+    }
   }
 
   const handlePageChanger = () => {
     window.scrollTo({top: 0, left: 0})
-    const menu = document.getElementById('menu');
-    if (menu) {
-      const isMenuVisible = menu.style.top === '0%';
-      if (isMenuVisible) {
-        toggleMenu();
-      }    
+    if (menuVisible) {
+      toggleMenu();
     } 
   }
 
   const handlePageChangerSmooth = () => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-    const menu = document.getElementById('menu');
-    if (menu) {
-      const isMenuVisible = menu.style.top === '0%';
-      if (isMenuVisible) {
-        toggleMenu();
-      }
-    } 
+    if (menuVisible) {
+      toggleMenu();
+    }
   }
 
   // Visibilidade do cabeçalho
@@ -60,28 +57,26 @@ export default function Navbar() {
   mas ta funcionando bem assim... ) */
 
   const toggleMenu = () => {
-    const menu = document.getElementById('menu');
-    if (menu) {
-      
-      // Alternancia mostrar-esconder menu
-      const isMenuVisible = menu.style.top === '0%';
-      menu.style.top = isMenuVisible ? '-100%' : '0%';
+    setMenuVisible(!menuVisible);
 
-      // Botão - efeito toggle
-      const bar1 = document.getElementById('bar1');
-      const bar2 = document.getElementById('bar2');
-      const bar3 = document.getElementById('bar3');
-      if (!isMenuVisible) {
-        bar1?.classList.add("-rotate-45", "translate-y-1");
-        bar2?.classList.add("opacity-0");
-        bar3?.classList.add("rotate-45", "-translate-y-2");
-      } else {
-        bar1?.classList.remove("-rotate-45", "translate-y-1");
-        bar2?.classList.remove("opacity-0");
-        bar3?.classList.remove("rotate-45", "-translate-y-2");
-      }
+    // Alternancia mostrar-esconder menu
+    //const isMenuVisible = menu.style.top === '0%';
+    //menu.style.top = isMenuVisible ? '-100%' : '0%';
 
-    }  
+    // Botão - efeito toggle
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    if (!menuVisible) {
+      bar1?.classList.add("-rotate-45", "translate-y-1");
+      bar2?.classList.add("opacity-0");
+      bar3?.classList.add("rotate-45", "-translate-y-2");
+    } else {
+      bar1?.classList.remove("-rotate-45", "translate-y-1");
+      bar2?.classList.remove("opacity-0");
+      bar3?.classList.remove("rotate-45", "-translate-y-2");
+    }
+
   }
 
   // OLD
@@ -274,18 +269,19 @@ export default function Navbar() {
 
       </div>
 
-      <div title="Menu em lista" id="menu" 
+      <div title="Menu em lista" id="menu" ref={menuRef} 
       style={{transition: 'top 0.4s, opacity 0.3s'}} 
-      className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r
+      className={`fixed ${menuVisible ? 'top-0' : 'top-[-100%]'} 
+      z-[986] left-0 w-[18rem]  mt-[45px] bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r 
       border-black text-black
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} `}>
         
         <div title='lista itens do menu, menos icones do final' className="flex flex-col">
-          <Link to={'/login'} className="w-full h-14 border-b shadow-inner border-black flex items-center pl-10">Login</Link>
-          <Link to={'/register'} className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</Link>
-          <Link to={'/products'} className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</Link>
-          <Link to={'/'} className="w-full h-14 border-b border-black flex items-center pl-10">Contato</Link>
-          <Link to={'/'} className="w-full h-14 border-b border-black flex items-center pl-10">Sobre</Link>
+          <Link to={'/login'} onClick={handlePageChangerSmooth} className=" w-full h-14 border-b shadow-inner border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Login</Link>
+          <Link to={'/register'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Crie sua conta</Link>
+          <Link to={'/products'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Encontre seu print</Link>
+          <Link to={'/'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Contato</Link>
+          <Link to={'/'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Sobre</Link>
         </div>
         
         <div title='fileira de icones, linkedin, github, wpp' className="w-full h-14 flex justify-center items-center gap-6">
