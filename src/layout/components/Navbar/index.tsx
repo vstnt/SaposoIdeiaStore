@@ -20,7 +20,10 @@ export default function Navbar() {
     window.scrollTo({top: 0, left: 0})
     const menu = document.getElementById('menu');
     if (menu) {
-      menu.style.top = '-100%'; 
+      const isMenuVisible = menu.style.top === '0%';
+      if (isMenuVisible) {
+        toggleMenu();
+      }    
     } 
   }
 
@@ -28,7 +31,10 @@ export default function Navbar() {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     const menu = document.getElementById('menu');
     if (menu) {
-      menu.style.top = '-100%';
+      const isMenuVisible = menu.style.top === '0%';
+      if (isMenuVisible) {
+        toggleMenu();
+      }
     } 
   }
 
@@ -276,133 +282,29 @@ export default function Navbar() {
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} `}>
         
         <div title='lista itens do menu, menos icones do final' className="flex flex-col">
-          <button className="w-full h-14 border-b shadow-inner border-black flex items-center pl-10">Login</button>
-          <button className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</button>
-          <button className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</button>
-          <button className="w-full h-14 border-b border-black flex items-center pl-10">Contato</button>
-          <button className="w-full h-14 border-b border-black flex items-center pl-10">Sobre</button>
+          <Link to={'/login'} className="w-full h-14 border-b shadow-inner border-black flex items-center pl-10">Login</Link>
+          <Link to={'/register'} className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</Link>
+          <Link to={'/products'} className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</Link>
+          <Link to={'/'} className="w-full h-14 border-b border-black flex items-center pl-10">Contato</Link>
+          <Link to={'/'} className="w-full h-14 border-b border-black flex items-center pl-10">Sobre</Link>
         </div>
         
-        <div title='fila de icones, linkedin, github, wpp' className="w-full h-14 flex justify-center items-center gap-9">
-          <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className=" h-[35%]">
-            <img src='/assets/linkedin-black.png' className='h-full'></img>
+        <div title='fileira de icones, linkedin, github, wpp' className="w-full h-14 flex justify-center items-center gap-6">
+          <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className="h-8 w-8 flex justify-center items-center">
+            <div className="h-[55%] flex justify-center">
+              <img src='/assets/linkedin-black.png'></img>
+            </div>
           </Link>                
-          <Link title="Github icon" to={'https://github.com/vstnt'} className="h-[35%]">
-            <img src='/assets/github-black.png' className='h-full'></img>
-          </Link>                
-          <Link title="Whatsapp icon" to={'https://wa.me/message/B6TFIBMN7YE2H1'} className="h-[35%]">
-              <img src='/assets/whatsapp-black.png' className='h-full'></img>
-          </Link>
-        </div>
-
-
-        <div id="flex base elementos" className="absolute  flex-col hidden">
-
-          <ul id="buttons-list" className=" flex flex-col text-center gap-6 text-2xl w-[65vw] ">
-            
-            <li className="w-full border border-black">
-              <div className="">
-
+          <Link title="Github icon" to={'https://github.com/vstnt'} className="h-8 w-8 flex justify-center items-center">
+            <div className="h-[55%] flex justify-center">
+              <img src='/assets/github-black.png'></img>
+            </div>
+          </Link> 
+          <Link title="Whatsapp icon" to={'https://wa.me/message/B6TFIBMN7YE2H1'} className="h-8 w-8 flex justify-center items-center">
+              <div className="h-[55%] flex justify-center">
+                <img src='/assets/whatsapp-black.png'></img> 
               </div>
-            </li>
-
-            <li>
-              <Link id='botão buscar produtos' 
-              to={'/products'}
-                className="w-full ">
-                  <button onClick={handlePageChanger}
-                  className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                  ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
-                    Buscar produtos
-                  </button>
-              </Link>
-            </li>
-
-            {!auth.user &&
-              <li>
-                <Link id='botão login' 
-                to={'/login'}
-                  className="w-full ">
-                    <button onClick={handlePageChanger}
-                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                    ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 hover:shadow-sm shadow-black shadow-md'}   `}>
-                      Login
-                    </button>
-                </Link>
-              </li>
-            }
-            
-            {!auth.user &&
-              <li>
-                <Link id='botão registro' 
-                to={'/register'}
-                  className=" w-full ">
-                    <button onClick={handlePageChanger}
-                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                    ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
-                      Registro
-                    </button>
-                </Link>
-              </li>
-            }
-            {auth.user &&
-              <li>
-                <Link id='botão minha conta' 
-                to={'/userpreferences'}
-                  className="w-full ">
-                    <button onClick={handlePageChanger}
-                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                    ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}   `}>
-                      Minha Conta
-                    </button>
-                </Link>
-              </li>
-            }
-
-            {auth.user &&
-              <li>
-                <Link id='botão carrinho' 
-                to={'/cart'}
-                  className="w-full ">
-                    <button onClick={handlePageChanger}
-                    className={`italic pb-1 pt-0.5 px-3 w-[100%] max-w-[300px] tracking-tight rounded border-t transition-all duration-300
-                    ${theme === 'dark' ? 
-                    ' text-black border-black bg-zinc-100/70 shadow-black shadow-md'
-                    : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-black shadow-md'}`}>
-                      Carrinho 🛒
-                    </button>
-                </Link>
-              </li>
-            }
-            
-            {auth.user &&
-              <li>
-              <Link id='botão logout' 
-              onClick={handleLogout} to={''}
-                className="w-full ">
-                  <button onClick={handlePageChangerSmooth}
-                  className={`italic pb-1 pt-0.5 px-3 w-[50%] max-w-[150px]  tracking-tight rounded border-t transition-all duration-300
-                  ${theme === 'dark' ? 
-                  ' text-black border-black bg-zinc-100/70 shadow-red-600 shadow-md'
-                  : 'border-stone-900 text-emerald-50 bg-zinc-800/80 shadow-red-600 shadow-md'}   `}>
-                    Sair
-                  </button>
-              </Link>
-            </li>
-            }
-
-            
-
-          </ul>
-
+          </Link>
         </div>
 
       </div>
