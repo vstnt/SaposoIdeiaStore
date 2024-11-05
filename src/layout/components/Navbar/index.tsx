@@ -18,19 +18,17 @@ export default function Navbar() {
 
   const handlePageChanger = () => {
     window.scrollTo({top: 0, left: 0})
-    const sideMenu = document.getElementById('sideMenu');
-    if (sideMenu) {
-      const isMenuVisible = sideMenu.style.left === '0%';
-      sideMenu.style.left = isMenuVisible ? '-100%' : '-100%'; // Alterna entre mostrar e esconder o menu
+    const menu = document.getElementById('menu');
+    if (menu) {
+      menu.style.top = '-100%'; 
     } 
   }
 
   const handlePageChangerSmooth = () => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-    const sideMenu = document.getElementById('sideMenu');
-    if (sideMenu) {
-      const isMenuVisible = sideMenu.style.left === '0%';
-      sideMenu.style.left = isMenuVisible ? '-100%' : '-100%'; // Alterna entre mostrar e esconder o menu
+    const menu = document.getElementById('menu');
+    if (menu) {
+      menu.style.top = '-100%';
     } 
   }
 
@@ -57,12 +55,12 @@ export default function Navbar() {
 
 
   const toggleMenu = () => {
-    const sideMenu = document.getElementById('sideMenu');
-    if (sideMenu) {
+    const menu = document.getElementById('menu');
+    if (menu) {
       
       // Alternancia mostrar-esconder menu
-      const isMenuVisible = sideMenu.style.top === '0%';
-      sideMenu.style.top = isMenuVisible ? '-100%' : '0%';
+      const isMenuVisible = menu.style.top === '0%';
+      menu.style.top = isMenuVisible ? '-100%' : '0%';
 
       // Botão - efeito toggle
       const bar1 = document.getElementById('bar1');
@@ -81,6 +79,7 @@ export default function Navbar() {
     }  
   }
 
+  // OLD
   const handleMobileThemeButtonClick = () => {
     toggleTheme();
     toggleMenu();
@@ -270,7 +269,7 @@ export default function Navbar() {
 
       </div>
 
-      <div title="Menu em lista" id="sideMenu" 
+      <div title="Menu em lista" id="menu" 
       style={{transition: 'top 0.4s, opacity 0.3s'}} 
       className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r
       border-black text-black
