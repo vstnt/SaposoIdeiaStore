@@ -9,17 +9,9 @@ export default function Navbar() {
   const auth = useAuth()
   const navigate = useNavigate();
   const location = useLocation();
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const [menuVisible, setMenuVisible] = useState(false)
-
-
-  const handleLogout = async () => {
-    auth.signout();
-    navigate('/');
-    if (menuVisible) {
-      toggleMenu();
-    }
-  }
 
   const handlePageChanger = () => {
     window.scrollTo({top: 0, left: 0})
@@ -35,7 +27,8 @@ export default function Navbar() {
     }
   }
 
-  // Visibilidade do cabeçalho
+  /* Visibilidade do cabeçalho; 
+  Não entendo 100% o ciclo de execução do useEffect... (gpt fala pra deixar lastScrollY como dependência... mas ta funcionando bem assim... */
   const [headerVisible,  setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
   useEffect(() => { 
@@ -53,8 +46,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     };
-  })   /* Não entendo 100% o ciclo de execução do useEffect... (gpt fala pra deixar lastScrollY como dependência... 
-  mas ta funcionando bem assim... ) */
+  })  
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
@@ -79,17 +71,46 @@ export default function Navbar() {
 
   }
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target as Node) &&
+      headerRef.current &&
+      !headerRef.current.contains(event.target as Node)
+    ) {
+      toggleMenu(); // Fecha o menu se o clique for fora
+    }
+  };
+  useEffect(() => {
+    if (menuVisible) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuVisible]);
+
+  
   // OLD
   const handleMobileThemeButtonClick = () => {
     toggleTheme();
     toggleMenu();
   };
+  const handleLogout = async () => {
+    auth.signout();
+    navigate('/');
+    if (menuVisible) {
+      toggleMenu();
+    }
+  }
 
 
   return (
     <div title='Header & Menu em lista'>
       
-      <div title='Header' 
+      <div title='Header' ref={headerRef} 
       style={{ transition: 'opacity 0.3s' }} 
       className={`h-[45px] transition-all duration-500 z-[987] fixed flex justify-between w-full text-[16px] text-neutral-900 font-mono 
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
@@ -97,7 +118,7 @@ export default function Navbar() {
         
         <div title='hamburguer, md:logo,searchbox' className=" pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
-          <div title="menu" className="cursor-pointer flex flex-col justify-center gap-[5px] p-2 -mx-2" onClick={toggleMenu}>
+          <div title="hamburguer" id="hamburguer" className="cursor-pointer flex flex-col justify-center gap-[5px] p-2 -mx-2" onClick={toggleMenu}>
             <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
             <div id="bar2" className="w-[13px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
             <div id="bar3" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
