@@ -56,9 +56,8 @@ export default function Navbar() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     };
-  }) /* Não entendo 100% o ciclo de execução do useEffect... (gpt fala pra deixar lastScrollY como dependência... 
-    mas ta funcionando bem assim... ) */
-
+  })   /* Não entendo 100% o ciclo de execução do useEffect... (gpt fala pra deixar lastScrollY como dependência... 
+  mas ta funcionando bem assim... ) */
 
   const toggleMenu = () => {
     const menu = document.getElementById('menu');
