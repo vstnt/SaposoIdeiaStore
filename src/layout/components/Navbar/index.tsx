@@ -34,7 +34,7 @@ export default function Navbar() {
     } 
   }
 
-  // visibilidade do cabeçalho
+  // Visibilidade do cabeçalho
   const [headerVisible,  setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
   useEffect(() => { 
@@ -52,19 +52,22 @@ export default function Navbar() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     };
-  }) /* gpt fala pra deixar lastScrollY como dependência... mas ta funcionando bem assim... Não entendo 100% o ciclo de execução do useEffect... */
+  }) /* Não entendo 100% o ciclo de execução do useEffect... (gpt fala pra deixar lastScrollY como dependência... 
+    mas ta funcionando bem assim... ) */
 
 
   const toggleMenu = () => {
     const sideMenu = document.getElementById('sideMenu');
     if (sideMenu) {
+      
+      // Alternancia mostrar-esconder menu
       const isMenuVisible = sideMenu.style.top === '0%';
-      sideMenu.style.top = isMenuVisible ? '-100%' : '0%'; // Alterna entre mostrar e esconder o menu
+      sideMenu.style.top = isMenuVisible ? '-100%' : '0%';
 
+      // Botão - efeito toggle
       const bar1 = document.getElementById('bar1');
       const bar2 = document.getElementById('bar2');
       const bar3 = document.getElementById('bar3');
-
       if (!isMenuVisible) {
         bar1?.classList.add("-rotate-45", "translate-y-1");
         bar2?.classList.add("opacity-0");
@@ -74,7 +77,8 @@ export default function Navbar() {
         bar2?.classList.remove("opacity-0");
         bar3?.classList.remove("rotate-45", "-translate-y-2");
       }
-    }    
+
+    }  
   }
 
   const handleMobileThemeButtonClick = () => {
@@ -84,44 +88,40 @@ export default function Navbar() {
 
 
   return (
-    <div id='header-and-sideMenu'>
+    <div title='Header & Menu em lista'>
       
-      <div id='header' 
+      <div title='Header' 
       style={{ transition: 'opacity 0.3s' }} 
-      className={`transition-all duration-500 z-[987] fixed flex justify-between h-[45px] md:h-[53px] w-full text-[16px] text-neutral-900 font-mono 
+      className={`h-[45px] transition-all duration-500 z-[987] fixed flex justify-between w-full text-[16px] text-neutral-900 font-mono 
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
-      ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr to-violet-900 from-10% from-violet-500 md:bg-gradient-to-r md:from-violet-900 md:from-5% md:via-violet-400 md:to-violet-300' 
-      : 'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
+      ${ theme === 'dark' ? '':'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
         
+        <div title='hamburguer, md:logo,searchbox' className=" pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
-        <div title='parte à esquerda' className="pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
+          <div title="menu" className="cursor-pointer flex flex-col justify-center gap-[5px] p-2 -mx-2" onClick={toggleMenu}>
+            <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
+            <div id="bar2" className="w-[13px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
+            <div id="bar3" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
+          </div>
 
-        <div className=" cursor-pointer flex flex-col justify-center gap-[5px] p-2 -mx-2" onClick={toggleMenu}>
-          <div id="bar1" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
-          <div id="bar2" className="w-[13px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
-          <div id="bar3" className="w-[19px] h-[1px] bg-gray-800 transition-all duration-[400ms]"></div>
-        </div>
-
-        <Link title="md logo sphera" 
-        to={'/'} onClick={handlePageChangerSmooth} 
-        className=" h-full justify-center py-[8px] hidden md:flex ">
-          <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
-          className={`h-full flex items-center justify-center
-          ${theme == 'dark' ? '  ' 
-          :'  '}`}> 
-            <div title="conteiner p/ modulação da imagem" 
-            className="mt-1 flex justify-center h-full w-[100%] ">
-              <div title="imagem em si">
-              {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
-              : <img src='/assets/sphera3.png' className=' h-[88%]'></img>}
+          <Link title="logo-md" 
+          to={'/'} onClick={handlePageChangerSmooth} 
+          className=" h-full justify-center py-[8px] hidden md:flex">
+            <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
+            className={`h-full flex items-center justify-center
+            ${theme == 'dark' ? '  ' 
+            :'  '}`}> 
+              <div title="conteiner p/ modulação da imagem" 
+              className="mt-1 flex justify-center h-full w-[100%] ">
+                <div title="imagem em si">
+                {theme === 'dark' ? <img src='/assets/saposoideiastore2.png' className=" h-[130%]"></img> 
+                : <img src='/assets/sphera3.png' className=' h-[88%]'></img>}
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
 
-
-
-          <div title='md searchbox' className="hidden md:flex basis-3/6 items-center justify-start">
+          <div title='searchbox-md' className="hidden md:flex basis-3/6 items-center justify-start">
           <div className="relative w-full">
             <input type="search" 
             className={`bg-white pr-7 rounded border border-slate-400/70 shadow-inner w-full
@@ -134,16 +134,12 @@ export default function Navbar() {
             </div>
           </div> 
 
-            
-        </div>
-
-          
+              
+          </div>
 
         </div>
 
-
-
-        <Link title="mobile logo-saposoideiastore" 
+        <Link title="sm:logo" 
         to={'/'} onClick={handlePageChangerSmooth} 
         className=" h-full flex justify-center py-[8px]  basis-3/5 md:hidden">
           <div title="conteiner total, com a borda, w-dependente dos elementos internos" 
@@ -160,13 +156,9 @@ export default function Navbar() {
           </div>
         </Link>
 
-
-
-
-
-        <div title='Parte à direita' className="md:gap-9 flex justify-end items-center h-full basis-1/5 md:basis-1/3 font-sans">
+        <div title='sacola, sm:botãoPesquisar, md:avatarUsuário' className="md:gap-9 flex justify-end items-center h-full basis-1/5 md:basis-1/3 font-sans">
           
-          <div title='botão pesquisar' className="flex items-center h-full mr-6 md:hidden">
+          <div title='botãoPesquisar' className="flex items-center h-full mr-6 md:hidden">
             <Link to={'/products'} onClick={handlePageChanger} className="flex items-center h-full">
               <img src='/assets/search.png' className='h-[40%]' />
             </Link>
@@ -174,18 +166,15 @@ export default function Navbar() {
 
           <Link title="sacola" to={'/cart'} onClick={handlePageChanger} className="flex items-center h-full mr-4 md:mr-0">
             <img src='/assets/shopping bag.png' className='h-[40%] '></img>
-          </Link>
-          
+          </Link> 
  
-            <Link title="avatar usuário" to={'/login'} onClick={handlePageChanger} className="items-center h-full hidden md:flex mr-36">
-                <img src='/assets/user.png' className='h-[37%] '></img>
-            </Link>
+          <Link title="avatarUsuário" to={'/login'} onClick={handlePageChanger} className="items-center h-full hidden md:flex mr-36">
+              <img src='/assets/user.png' className='h-[37%] '></img>
+          </Link>
           
         </div>
 
-
-  
-        <div title='DEPRECATED parte à direita do header, sem botão hamburguer' 
+        <div title='OLD parte à direita do header, sem botão hamburguer' 
         className="basis-1/3 h-full flex justify-end items-start relative hidden">
 
           {!auth.user &&
@@ -281,19 +270,21 @@ export default function Navbar() {
 
       </div>
 
-      <div title="sideMenu" id="sideMenu" 
-      style={{ transition: 'top 0.4s, opacity 0.3s'   }} 
-      className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] md:mt-[53px]  bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r border-black text-black
-      ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
-      `}>
+      <div title="Menu em lista" id="sideMenu" 
+      style={{transition: 'top 0.4s, opacity 0.3s'}} 
+      className={`fixed top-[-100%] z-[986] left-0 w-[18rem]  mt-[45px] bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r
+      border-black text-black
+      ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} `}>
         
-
-        <button className="w-full h-14 border-b border-t border-black flex items-center pl-10">Login</button>
-        <button className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</button>
-        <button className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</button>
-        <button className="w-full h-14 border-b border-black flex items-center pl-10">Contato</button>
-        <button className="w-full h-14 border-b border-black flex items-center pl-10">Sobre</button>
-        <div className="w-full h-14 flex justify-center items-center gap-9">
+        <div title='lista itens do menu, menos icones do final' className="flex flex-col">
+          <button className="w-full h-14 border-b shadow-inner border-black flex items-center pl-10">Login</button>
+          <button className="w-full h-14 border-b border-black flex items-center pl-10">Crie sua conta</button>
+          <button className="w-full h-14 border-b border-black flex items-center pl-10">Encontre seu print</button>
+          <button className="w-full h-14 border-b border-black flex items-center pl-10">Contato</button>
+          <button className="w-full h-14 border-b border-black flex items-center pl-10">Sobre</button>
+        </div>
+        
+        <div title='fila de icones, linkedin, github, wpp' className="w-full h-14 flex justify-center items-center gap-9">
           <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className=" h-[35%]">
             <img src='/assets/linkedin-black.png' className='h-full'></img>
           </Link>                
@@ -306,14 +297,7 @@ export default function Navbar() {
         </div>
 
 
-
-
-
-        <div id="flex base elementos" className="absolute flex flex-col hidden">
-          
-          
-
-
+        <div id="flex base elementos" className="absolute  flex-col hidden">
 
           <ul id="buttons-list" className=" flex flex-col text-center gap-6 text-2xl w-[65vw] ">
             
@@ -424,18 +408,18 @@ export default function Navbar() {
 
       </div>
 
-      <div title="sideMenuu" id="sideMenuu" 
-      style={{ transition: 'left 0.3s' }} 
-      className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-screen bg-gray-500 visible pointer-events-auto 
+
+      <div title="OLD - SideMenu saposo antigo, que era apenas para mobile" 
+      style={{ transition: 'left 0.3s' }} className={`md:hidden fixed top-0 z-[990] left-[-100%] w-full h-screen bg-gray-500 
+      visible pointer-events-auto 
       ${ theme === 'dark' ? 'border-indigo-300 bg-gradient-to-tr from-indigo-900 to-indigo-700 to-80% text-neutral-200' 
       : 'bg-gradient-to-bl from-slate-400 via-20% via-slate-300  to-slate-200 to-100% border-b border-gray-500'} `}>
-        
-        <div id="flex base elementos" className="flex justify-between">
+        <div id="todos os elementos" className="flex justify-between">
           
-          <div title='saposo-home and theme-button, oi usuário' className="flex items-start">
-            
-            <div id="saposo-home" className="flex flex-col items-center">
-              <Link to={'/'} onClick={handlePageChangerSmooth}>
+          <div title='saposo-home and theme-button, oi usuário' className="flex items-start"> 
+            <div className="flex flex-col items-center">
+              
+              <Link title='Sapo-home' to={'/'} onClick={handlePageChangerSmooth}>
                 <img 
                   className={`ml-[2vw] shadow w-[6rem] min-h-12 min-w-12 rounded-b-xl border-b-4  border-r-2 transition-all duration-300
                 ${theme === 'dark' ? 'shadow-black/35 border-teal-300/50 bg-indigo-300/60 hover:bg-indigo-300/90' 
@@ -443,22 +427,22 @@ export default function Navbar() {
                   src='/assets/sapososemfundo.png'>
                 </img>
               </Link>
-              <div className={`font-mono ${theme === 'dark' ? 'text-xs mb-5' : 'text-black text-xs mb-5'}`}>--&gt; Home</div> 
+
+              <div title="txt home" className={`font-mono ${theme === 'dark' ? 'text-xs mb-5' : 'text-black text-xs mb-5'}`}>--&gt; Home</div> 
               
               {auth.user &&
-              <div id="parte superior. Oi, Usuário" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+              <div title="Oi, Usuário" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
               className={`bg-gray-400 self-start ml-3 border flex items-center  py-3 mt-14 rounded h-fit text-xs mr-3
               ${theme === 'dark' ? 'border-gray-300' 
                 : 'border-gray-800'} `}>
                 Oi, {auth.user.name}!
               </div>
-            }               
-            </div>
-                  
+              } 
+
+            </div>         
           </div>
 
-
-          <div id="leave-menu" className="flex flex-col items-end">
+          <div title="leave-menu" className="flex flex-col items-end">
             
             <button id="leaveMenu-Button" onClick={toggleMenu} 
             className={` border text-4xl text-[36px] m-5 px-2  self h-fit  rounded-lg shadow bg-slate-300/65 mr-[3vw]
@@ -481,7 +465,7 @@ export default function Navbar() {
 
           </div>
           
-          <ul id="buttons-list" className="absolute right-0 mt-[180px] mr-5 flex flex-col text-center gap-6 text-2xl w-[65vw] ">
+          <ul title="buttons-list" className="absolute right-0 mt-[180px] mr-5 flex flex-col text-center gap-6 text-2xl w-[65vw] ">
 
             <li>
               <Link id='botão buscar produtos' 
@@ -581,7 +565,6 @@ export default function Navbar() {
           </ul>
 
         </div>
-
       </div>
 
     </div>
