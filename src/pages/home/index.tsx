@@ -71,7 +71,7 @@ export default function Home() {
         
         
         <div id="sliderNovidades, imgDáPraImaginar?, md:maisVendidos" 
-        className="mt-[5vw] gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 ">
+        className="hidden mt-[5vw] gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 ">
 
           <div id="sliderNovidades" className="col-span-3 w-full h-[60vh] lg:h-40 ">
             <NewestProducts/>
@@ -116,10 +116,10 @@ export default function Home() {
 
         </div>
 
-        <div id="big saposo" className=" -mt-7 md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[85%] md:w-[50%]"></img></div>
+        <div id="big saposo" className="hidden -mt-7 md:-mt-[15vh] flex justify-center"><img src="assets/saposobig.png" className="w-[85%] md:w-[50%]"></img></div>
         
         <div id="caixa do aviso misterioso" 
-        className={` mb-10 flex gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
+        className={`hidden mb-10 flex gap-6 shadow-lg shadow-[#874e96] rounded-t-md rounded-bl-[100px] border-t border-r border-[#73ff00] 
         ${theme === 'dark' ? 'bg-[#1d1d1d]' 
         : 'bg-slate-400/30 shadow-inner border-b border-[6px]'}`}>
           
