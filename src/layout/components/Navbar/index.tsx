@@ -195,7 +195,7 @@ export default function Navbar() {
         </div>
 
         <div title='OLD parte à direita do header, sem botão hamburguer' 
-        className="basis-1/3 h-full flex justify-end items-start relative hidden">
+        className="basis-1/3 h-full /flex justify-end items-start relative hidden">
 
           {!auth.user &&
             <div id="botões login, crie sua conta"
