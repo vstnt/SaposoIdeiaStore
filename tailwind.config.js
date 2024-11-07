@@ -11,6 +11,9 @@ module.exports = {
         'bgdarkgray': '#dddbe7',
         'bgdarkblue': '#5f64a7',
         'bgdarkpurple': '#371555',
+      },
+      fontFamily: {
+        tenorsans: ['TenorSans']
       }
     },
   },

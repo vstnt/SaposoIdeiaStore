@@ -22,6 +22,11 @@
   height: 100hz
 }
 
+@font-face {
+  font-family: 'TenorSans';
+  src: url('../assets/fonts/TenorSans-Regular.ttf');
+}
+
 
 /* abaixo vou deixar pra que fique registrado uma forma de uso de classe criada. Se tornaram inuteis
  quando as passei para uso direto no arquivo das páginas de login e de registro.
