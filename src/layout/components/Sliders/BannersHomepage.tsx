@@ -48,9 +48,9 @@ export default function BannersHomepage () {
       <div className={`w-full h-full`}>
 
         <Link title='botão ver coleção' to={'/products'} 
-        className={`absolute z-50 px-6 pt-1 pb-1 rounded-2xl bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap tracking-wider font-tenorsans   transition-colors duration-300  text-white bg-black/40
+        className={`absolute z-50 px-6 py-2 rounded-3xl bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap tracking-wider font-tenorsans   transition-colors duration-300  text-white bg-black/40
         `}>
-          EXPLORE A COLEÇÃO
+          EXPLORE A COLEÇÂO
         </Link>
 
         <Swiper
