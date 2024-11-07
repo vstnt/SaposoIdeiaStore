@@ -31,7 +31,7 @@ export default function Home() {
       : 'from-slate-300  via-slate-200 via-10% to-slate-100 to-100% text-stone-900'}  `}>
         <div id='área vazia espaço header' className='h-[40px]'></div>
 
-        <div title="sliderBanners" className="w-full h-[75vh]">
+        <div title="sliderBanners" className="w-full h-[80vh]">
             <BannersHomepage/>
         </div>
         
