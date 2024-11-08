@@ -44,10 +44,27 @@ export default function Home() {
 
         </div>
         
-        <div title='sessão novos produtos' className='flex flex-col items-center gap-3'>
 
-          <div title='texto novidades.nouvelles' className=' mt-10 text-lg text-center'>NOVIDADES.NOUVELLES</div>
-          <img src='/assets/separador.png' className="w-[8rem]"></img>
+
+
+
+
+        <div title='sessão Novos Produtos' className='flex flex-col items-center gap-3 w-full mb-40'>
+          
+          <div title='nome sessão + separador' className='flex flex-col items-center md:self-start md:ml-10'>
+            <div title='texto novidades.nouvelles' className='mt-10 text-lg'>NOVIDADES.NOUVELLES</div>
+            <img src='/assets/separador.png' className="w-[8rem]"></img>
+          </div>
+      
+        </div>
+
+
+        <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full mb-40'>
+
+          <div title='nome sessão + separador' className='flex flex-col items-center md:self-start md:ml-10'>
+            <div title='texto Pra Você' className='mt-10 text-lg'>PRA VOCÊ</div>
+            <img src='/assets/separador.png' className="w-[8rem]"></img>
+          </div>
         
         </div>
 
@@ -57,8 +74,7 @@ export default function Home() {
 
 
 
-
-        <div title='faixa explicações' className='w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[29rem] md:h-[19rem]'>
+        <div title='faixa explicações' className='mt-24 w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[29rem] md:h-[19rem]'>
           
           <div title='print.art.store' className='text-center text-lg'>
             PRINT.ART.STORE
