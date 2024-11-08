@@ -27,9 +27,7 @@ export default function Home() {
   return (
     <>
       <div id='background' 
-      className={` min-h-[550px] w-full flex flex-col bg-gradient-to-b 
-      ${theme === 'dark' ? 'from-indigo-950 to-indigo-500/80 to-90% text-neutral-200' 
-      : 'from-slate-300  via-slate-200 via-10% to-slate-100 to-100% text-stone-900'}  `}>
+      className={` min-h-[550px] w-full flex flex-col bg-white text-black font-tenorsans`}>
         <div id='área vazia espaço header' className='h-[40px]'></div>
 
         <div title="sliderBanners" className="w-full h-[80vh] md:hidden">
@@ -48,9 +46,56 @@ export default function Home() {
         
         <div title='sessão novos produtos' className='flex flex-col items-center gap-3'>
 
-          <div title='texto novidades.nouvelles' className='font-tenorsans mt-10 text-lg text-center'>NOVIDADES.NOUVELLES</div>
+          <div title='texto novidades.nouvelles' className=' mt-10 text-lg text-center'>NOVIDADES.NOUVELLES</div>
           <img src='/assets/separador.png' className="w-[8rem]"></img>
         
+        </div>
+
+
+
+
+
+
+
+
+        <div title='faixa explicações' className='w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[28rem] md:h-[19rem]'>
+          
+          <div title='print.art.store' className='text-center text-lg'>
+            PRINT.ART.STORE
+          </div>
+          
+          <div title='texto' className='text-center w-[85%] text-xs text-cinzatexto mt-2'>
+            A criação, edição e preparação de obras de arte, pra que você as tenha em sua casa, é nossa motivação diária.
+          </div>
+
+          <img src='/assets/separador.png' className="w-[8rem] md:mb-3"></img>
+
+          <div title='grid elementos' className='grid grid-cols-2 gap-y-6 md:gap-x-7 p-1 md:flex text-xs text-center items-center justify-items-center'>
+            
+            <div className='flex flex-col items-center gap-2 max-w-40'>
+              <img src='/assets/envio rápido.png' className='h-10 md:h-8'></img>
+              <div>Envio rápido. Grátis para pedidos acima de R$ 100.</div>
+            </div>
+
+            <div className='flex flex-col items-center gap-2 max-w-40'>
+              <img src='/assets/processo sustentável.png' className='h-10 md:h-8'></img>
+              <div>Processo sustentável, do início ao fim.</div>
+            </div>
+
+            <div className='flex flex-col items-center gap-2 max-w-40' >
+              <img src='/assets/design único.png' className='h-10 md:h-8'></img>
+              <div className=''>Design único, e materiais de alta qualidade.</div>
+            </div>
+
+            <div className='flex flex-col items-center gap-2 max-w-40'>
+              <img src='/assets/curadoria especializada.png' className='h-10 md:h-8'></img>
+              <div>Curadoria especializada. Feita de coração.</div>
+            </div>
+
+          </div>
+
+          <img src='/assets/rashura.png' className="w-[4.5rem] object-scale-down mt-4"></img>
+
         </div>
         
         
