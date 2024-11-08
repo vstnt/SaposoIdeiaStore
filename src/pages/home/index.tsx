@@ -58,7 +58,7 @@ export default function Home() {
 
 
 
-        <div title='faixa explicações' className='w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[28rem] md:h-[19rem]'>
+        <div title='faixa explicações' className='w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[29rem] md:h-[19rem]'>
           
           <div title='print.art.store' className='text-center text-lg'>
             PRINT.ART.STORE
@@ -68,7 +68,7 @@ export default function Home() {
             A criação, edição e preparação de obras de arte, pra que você as tenha em sua casa, é nossa motivação diária.
           </div>
 
-          <img src='/assets/separador.png' className="w-[8rem] md:mb-3"></img>
+          <img title='separador' src='/assets/separador.png' className="w-[8rem] mb-3"></img>
 
           <div title='grid elementos' className='grid grid-cols-2 gap-y-6 md:gap-x-7 p-1 md:flex text-xs text-center items-center justify-items-center'>
             
