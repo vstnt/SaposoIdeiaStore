@@ -112,9 +112,8 @@ export default function Navbar() {
       
       <div title='Header' ref={headerRef} 
       style={{ transition: 'opacity 0.3s' }} 
-      className={`h-[45px] transition-all duration-500 z-[987] fixed flex justify-between w-full text-[16px] text-neutral-900 font-mono 
-      ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
-      ${ theme === 'dark' ? '':'bg-gradient-to-b from-gray-100 from-30% to-gray-200 '} `}>
+      className={`h-[45px] transition-all duration-500 z-[987] fixed flex justify-between w-full text-[16px] bg-cinza text-neutral-900 font-mono 
+      ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}>
         
         <div title='hamburguer, md:logo,searchbox' className=" pl-4 basis-1/5 md:pl-7 md:basis-7/12 lg:basis-6/12 flex items-center justify-between">
 
@@ -293,7 +292,7 @@ export default function Navbar() {
       <div title="Menu em lista" id="menu" ref={menuRef} 
       style={{transition: 'top 0.4s, opacity 0.3s'}} 
       className={`fixed ${menuVisible ? 'top-0' : 'top-[-100%]'} 
-      z-[986] left-0 w-[18rem]  mt-[45px] bg-gray-200 flex flex-col visible pointer-events-auto border-b border-r 
+      z-[986] left-0 w-[18rem]  mt-[45px] bg-cinza flex flex-col visible pointer-events-auto border-b border-r font-tenorsans
       border-black text-black
       ${ headerVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} `}>
         

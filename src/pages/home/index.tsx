@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
 import BannersHomepage from '../../layout/components/Sliders/BannersHomepage';
+import { Link } from 'react-router-dom';
 
 
 
@@ -26,16 +27,31 @@ export default function Home() {
   return (
     <>
       <div id='background' 
-      className={` min-h-[550px] w-full flex flex-col items-center justify-center bg-gradient-to-b 
+      className={` min-h-[550px] w-full flex flex-col bg-gradient-to-b 
       ${theme === 'dark' ? 'from-indigo-950 to-indigo-500/80 to-90% text-neutral-200' 
       : 'from-slate-300  via-slate-200 via-10% to-slate-100 to-100% text-stone-900'}  `}>
         <div id='área vazia espaço header' className='h-[40px]'></div>
 
-        <div title="sliderBanners" className="w-full h-[80vh]">
+        <div title="sliderBanners" className="w-full h-[80vh] md:hidden">
             <BannersHomepage/>
         </div>
+
+        <div title='logo desktop' className='hidden md:block w-full h-[20rem] bg-slate-900 relative'>
+          
+          <img  src='/assets/grandCanal.jpg' className='h-full w-full'></img>
+          
+          <Link to={'/products'} title='Botão Explore nossa coleção' className='font-tenorsans absolute right-[15vw] bottom-[20vh]'>
+            <img src='/assets/explore nossa coleção.png' className='h-20'></img>
+          </Link>
+
+        </div>
         
+        <div title='sessão novos produtos' className='flex flex-col items-center gap-3'>
+
+          <div title='texto novidades.nouvelles' className='font-tenorsans mt-10 text-lg text-center'>NOVIDADES.NOUVELLES</div>
+          <img src='/assets/separador.png' className="w-[8rem]"></img>
         
+        </div>
         
         
         

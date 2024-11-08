@@ -19,14 +19,14 @@ export default function Footer() {
                 </Link>
             </div>
 
-            <img title='separador' src="/assets/separador2.png" className="w-[8rem] "></img>
+            <img title='separador' src="/assets/separador.png" className="w-[8rem] "></img>
 
             <div className="flex flex-col items-end gap-1">
                 <div>ricardoaraujomass@gmail.com</div>
                 <div>+55 41 99293 0654</div>
             </div>
 
-            <img title='separador' src="/assets/separador2.png" className="w-[8rem]"></img>
+            <img title='separador' src="/assets/separador.png" className="w-[8rem]"></img>
 
             <div className="flex gap-8 justify-end ">
                 <Link title="currículo" to={'/sla'} className="">

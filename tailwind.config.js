@@ -11,6 +11,7 @@ module.exports = {
         'bgdarkgray': '#dddbe7',
         'bgdarkblue': '#5f64a7',
         'bgdarkpurple': '#371555',
+        'cinza': '#f3f4f6'
       },
       fontFamily: {
         tenorsans: ['TenorSans']
