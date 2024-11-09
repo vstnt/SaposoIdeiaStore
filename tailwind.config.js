@@ -13,7 +13,9 @@ module.exports = {
         'bgdarkpurple': '#371555',
         
         'cinza': '#f3f4f6',
-        'cinzatexto': '#555555'
+        'cinzatexto': '#555555',
+        'cinzahover':'#555555',
+        'laranjapreços': '#DD8560'
       },
       fontFamily: {
         tenorsans: ['TenorSans']

@@ -1,11 +1,12 @@
 import { useTheme } from '../../context/Theme/ThemeContext';
 import ProductDisplay from "../../layout/components/ProductsDisplays/ProductDisplay";
-import NewestProducts from "../../layout/components/ProductsDisplays/NewestProducts";
+import NewestProducts from "../../layout/components/ProductsDisplays/OLD - NewestProducts";
 import { useState, useEffect } from "react";
 import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
 import BannersHomepage from '../../layout/components/Sliders/BannersHomepage';
 import { Link } from 'react-router-dom';
+import ForYou from '../../layout/components/Sliders/ForYou';
 
 
 
@@ -30,11 +31,11 @@ export default function Home() {
       className={` min-h-[550px] w-full flex flex-col bg-white text-black font-tenorsans`}>
         <div id='área vazia espaço header' className='h-[40px]'></div>
 
-        <div title="sliderBanners" className="w-full h-[80vh] md:hidden">
+        <div title="sliderBanners mobile" className="w-full h-[80vh] md:hidden">
             <BannersHomepage/>
         </div>
 
-        <div title='logo desktop' className='hidden md:block w-full h-[20rem] bg-slate-900 relative'>
+        <div title='banner desktop' className='hidden md:block w-full h-[20rem] bg-slate-900 relative'>
           
           <img  src='/assets/grandCanal.jpg' className='h-full w-full'></img>
           
@@ -44,19 +45,40 @@ export default function Home() {
 
         </div>
         
-
-
-
-
-
-        <div title='sessão Novos Produtos' className='flex flex-col items-center gap-3 w-full mb-40'>
+        <div title='sessão Novos Produtos' className='flex flex-col gap-1 items-center w-full mb-5'>
           
-          <div title='nome sessão + separador' className='flex flex-col items-center md:self-start md:ml-10'>
-            <div title='texto novidades.nouvelles' className='mt-10 text-lg'>NOVIDADES.NOUVELLES</div>
+          <div title='novelties + separador' className='flex flex-col items-center md:self-start md:ml-10 '>
+            <div title='texto novidades.nouvelles' className='mt-10 text-lg'>NOVELTIES.NOUVELLES</div>
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
+
+          <div title='fila novos produtos' className='flex h-[25rem] md:h-[15rem] w-full '>
+            
+            <div title='mobile' className='md:hidden grid grid-cols-2 gap-x-8 gap-y-1 p-5 items-center justify-items-center  w-full h-full'>
+              {products.slice(0, 4).map(product => (
+                <div key={product.id} className="w-[7.5rem] h-[12rem]"><ProductDisplay productId={product.id}/></div>
+              ))}
+            </div>
+            
+            <div title='desktop' className='hidden w-full h-full md:flex gap-[5vw] justify-center'>
+              {products.slice(0, 5).map(product => (
+                <div key={product.id} className="w-[10rem] h-[15rem] relative "><ProductDisplay productId={product.id}/></div>
+              ))}
+            </div>
+              
+          </div>
+
+          <Link title='Explore ->' to={'/products'} className='flex flex-col items-center md:self-end md:mr-28 mt-8 md:mt-0 p-1 px-2 rounded hover:bg-cinzahover/10 transition-colors duration-[320ms]'>
+              <div title='texto novidades.nouvelles' className='text-xs'>Explore &rarr;</div>
+              <img src='/assets/separador.png' className="w-[8rem]"></img>
+          </Link>
       
         </div>
+
+
+
+
+
 
 
         <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full mb-40'>
@@ -65,9 +87,12 @@ export default function Home() {
             <div title='texto Pra Você' className='mt-10 text-lg'>PRA VOCÊ</div>
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
+
+          <div title="sliderBanners mobile" className="w-full h-[80vh] md:hidden">
+            <ForYou/>
+          </div>
         
         </div>
-
 
 
 
@@ -148,7 +173,7 @@ export default function Home() {
         
         
         <div id="sliderNovidades, imgDáPraImaginar?, md:maisVendidos" 
-        className="hidden mt-[5vw] gap-5 grid grid-cols-3 justify-items-center items-start w-11/12 ">
+        className="hidden mt-[5vw] gap-5 /grid grid-cols-3 justify-items-center items-start w-11/12 ">
 
           <div id="sliderNovidades" className="col-span-3 w-full h-[60vh] lg:h-40 ">
             <NewestProducts/>
@@ -169,19 +194,19 @@ export default function Home() {
             ${theme === 'dark' ? 'bg-black/30  border-slate-500' 
             : 'bg-slate-300 border-zinc-500'} `}>
               
-              <div id="caixinha mais vendidos superior" 
+              <div id="texto na caixinha superior, mais vendidos" 
                 className={`text-sm absolute z-50 right-8 -mt-7 flex items-center rounded px-4 h-6 transition-colors duration-300 
                 ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
         : 'bg-slate-200 text-stone-900 border border-zinc-500'} `}>
                 mais vendidos</div>
 
-              <div id="caixinha mais vendidos inferior" 
+              <div id="texto na caixinha inferior, mais vendidos" 
                 className={`text-sm absolute z-50 right-8 bottom-0 -mb-3 flex items-center rounded px-4 h-6 transition-colors duration-300 
                 ${theme === 'dark' ? ' bg-zinc-900/60 border border-emerald-400/70' 
         : 'bg-slate-200 text-stone-900 border border-zinc-500'} `}>
                 mais vendidos</div>
 
-              <div id="lista mais vendidos" className=" col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
+              <div id="lista mais vendidos" className="col-start-3 container rounded-lg flex flex-col gap-4 mx-4 my-4 w-full h-full">
                 {products.slice(0, 5).map(product => (
                   <div key={product.id} className=""><ProductDisplay productId={product.id}/></div>
                 ))}

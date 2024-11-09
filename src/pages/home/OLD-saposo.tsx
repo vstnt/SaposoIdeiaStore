@@ -3,7 +3,7 @@
 
 import { useTheme } from '../../context/Theme/ThemeContext';
 import ProductDisplay from "../../layout/components/ProductsDisplays/ProductDisplay";
-import NewestProducts from "../../layout/components/ProductsDisplays/NewestProducts";
+import NewestProducts from "../../layout/components/ProductsDisplays/OLD - NewestProducts";
 import { useState, useEffect } from "react";
 import axiosClient from "../../axiosClient";
 import { Product } from "../../types/Product";
