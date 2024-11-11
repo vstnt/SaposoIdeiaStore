@@ -76,7 +76,7 @@ export default function Home() {
 
         <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full mb-40 '>
 
-          <div title='nome sessão + separador' className='flex flex-col items-center self-start ml-10 mb-5'>
+          <div title='nome sessão + separador' className='flex flex-col items-center self-start ml-[5vw] md:ml-10 mb-5'>
             <div title='texto Pra Você' className='mt-10 text-lg'>PRA VOCÊ</div>
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>

@@ -52,10 +52,8 @@ export default function ForYou () {
       centeredSlides={true}
       width={210}
       style={{ height: '100%' }}
+      slidesOffsetBefore={100}    
     >
-      <SwiperSlide style={{ maxWidth: '18%' }}>
-        <div></div>
-      </SwiperSlide>
       {products.map(product => (
           <SwiperSlide key={product.id}>
            <ProductDisplay productId={product.id}/>
