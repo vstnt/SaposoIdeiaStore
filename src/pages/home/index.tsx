@@ -51,9 +51,9 @@ export default function Home() {
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
 
-          <div title='fila novos produtos' className='flex h-[30rem] md:h-[15rem] w-full '>
+          <div title='novos produtos' className='flex h-[30rem] md:h-[15rem] w-full '>
             
-            <div title='mobile' className='md:hidden grid grid-cols-2 gap-x-3 gap-y-1 p-5 items-center justify-items-center  w-full h-full'>
+            <div title='mobile' className='md:hidden grid grid-cols-2 gap-x-3 gap-y-3 p-5 items-center justify-items-center  w-full h-full'>
               {products.slice(0, 4).map(product => (
                 <div key={product.id} className="w-[9rem] h-[15rem]"><ProductDisplay productId={product.id}/></div>
               ))}
