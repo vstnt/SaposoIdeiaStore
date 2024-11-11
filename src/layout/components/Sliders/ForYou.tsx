@@ -52,7 +52,7 @@ export default function ForYou () {
       centeredSlides={true}
       width={210}
       style={{ height: '100%' }}
-      slidesOffsetBefore={100}    
+      slidesOffsetBefore={50}    
     >
       {products.map(product => (
           <SwiperSlide key={product.id}>
