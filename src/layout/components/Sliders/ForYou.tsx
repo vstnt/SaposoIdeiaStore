@@ -48,23 +48,10 @@ export default function ForYou () {
   return (
     <Swiper
       onSwiper={setSwiperRef} // Atribui a referência do Swiper
-      spaceBetween={10}
+      spaceBetween={30}
       centeredSlides={true}
-      autoplay={{
-        delay: 4000,
-        //delay: 100,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      slidesPerView={1.5}
-      
+      width={190}
       style={{ height: '100%' }}
-      pagination={{ clickable: true }}
-      navigation={{
-        nextEl: '.custom-next',
-        prevEl: '.custom-prev',
-      }}
-      modules={[Autoplay, Pagination, Navigation]}
       className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
     >
       {products.map(product => (
