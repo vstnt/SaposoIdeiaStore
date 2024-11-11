@@ -81,7 +81,7 @@ export default function Home() {
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
 
-          <div title="sliderBanners mobile" className="w-full h-[20rem] md:hidden bg-slate-400">
+          <div title="sliderBanners mobile" className="w-full h-[20rem] md:hidden ">
             <ForYou/>
           </div>
         
