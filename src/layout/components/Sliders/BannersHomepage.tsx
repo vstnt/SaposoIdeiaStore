@@ -47,7 +47,7 @@ export default function BannersHomepage () {
           spaceBetween={10}
           centeredSlides={true}
           autoplay={{
-            delay: 2000,
+            delay: 3000,
             //delay: 100,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
