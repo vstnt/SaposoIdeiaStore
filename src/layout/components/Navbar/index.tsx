@@ -27,6 +27,13 @@ export default function Navbar() {
     }
   }
 
+  const goBottom = () => {
+    window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})
+    if (menuVisible) {
+      toggleMenu();
+    }
+  }
+
   /* Visibilidade do cabeçalho; 
   Não entendo 100% o ciclo de execução do useEffect... (gpt fala pra deixar lastScrollY como dependência... mas ta funcionando bem assim... */
   const [headerVisible,  setHeaderVisible] = useState(true);
@@ -300,7 +307,7 @@ export default function Navbar() {
           <Link to={'/login'} onClick={handlePageChangerSmooth} className=" w-full h-14 border-b shadow-inner border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Login</Link>
           <Link to={'/register'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Crie sua conta</Link>
           <Link to={'/products'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Encontre seu print</Link>
-          <Link to={'/'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Contato</Link>
+          <div onClick={goBottom} className="hover:cursor-pointer w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Contato</div>
           <Link to={'/'} onClick={handlePageChangerSmooth} className="w-full h-14 border-b border-black flex items-center pl-10 hover:bg-gray-300 transition-all duration-300">Sobre</Link>
         </div>
         
