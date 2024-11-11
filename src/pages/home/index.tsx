@@ -30,7 +30,7 @@ export default function Home() {
       className={` min-h-[550px] w-full flex flex-col bg-white text-black font-tenorsans`}>
         <div id='área vazia espaço header' className='h-[40px]'></div>
 
-        <div title="sliderBanners mobile" className="w-full h-[80vh] md:hidden">
+        <div title="sliderBanners mobile" className="w-full h-[75vh] md:hidden">
             <BannersHomepage/>
         </div>
 
@@ -44,7 +44,7 @@ export default function Home() {
 
         </div>
         
-        <div title='sessão Novos Produtos' className='flex flex-col gap-1 items-center w-full mb-5'>
+        <div title='sessão Novos Produtos' className='flex flex-col gap-2 items-center w-full mb-5 mt-5'>
           
           <div title='novelties + separador' className='flex flex-col items-center md:self-start md:ml-10 '>
             <div title='texto novidades.nouvelles' className='mt-10 text-lg'>NOVELTIES.NOUVELLES</div>
@@ -69,14 +69,14 @@ export default function Home() {
 
           <Link title='Explore ->' to={'/products'} className='flex flex-col items-center md:self-end md:mr-28 mt-8 md:mt-0 p-1 px-2 rounded hover:bg-cinzahover/10 transition-colors duration-[320ms]'>
               <div title='texto novidades.nouvelles' className='text-xs'>Explore &rarr;</div>
-              <img src='/assets/separador.png' className="w-[8rem]"></img>
+              <img src='/assets/separador.png' className="hidden md:block w-[8rem]"></img>
           </Link>
       
         </div>
 
         <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full mb-40 '>
 
-          <div title='nome sessão + separador' className='flex flex-col items-center md:self-start md:ml-10 mb-5'>
+          <div title='nome sessão + separador' className='flex flex-col items-center self-start ml-10 mb-5'>
             <div title='texto Pra Você' className='mt-10 text-lg'>PRA VOCÊ</div>
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
