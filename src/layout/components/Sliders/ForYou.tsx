@@ -2,21 +2,21 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { Product } from "../../../types/Product";
 import axiosClient from '../../../axiosClient';
 //import { Link } from "react-router-dom";
-import { useTheme } from '../../../context/Theme/ThemeContext';
+//import { useTheme } from '../../../context/Theme/ThemeContext';
 //import { truncateCharacters } from '../../../helpers/truncate';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+//import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Swiper as SwiperInstance } from 'swiper/types';
 import '../../../styles/swiper.css';
 import ProductDisplay from '../ProductsDisplays/ProductDisplay';
 
 
 export default function ForYou () {
-  const { theme } = useTheme()
+  //const { theme } = useTheme()
   const [products, setProducts] = useState<Product[]>([])
 
   // Recuperar produtos
@@ -52,7 +52,7 @@ export default function ForYou () {
       centeredSlides={true}
       width={190}
       style={{ height: '100%' }}
-      className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
+      //className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
     >
       {products.map(product => (
           <SwiperSlide key={product.id}>
