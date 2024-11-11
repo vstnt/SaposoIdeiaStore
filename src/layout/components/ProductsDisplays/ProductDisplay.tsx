@@ -45,8 +45,8 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
 
       <div className="hidden md:block absolute w-full h-full hover:bg-cinzahover/10 transition-colors duration-[320ms]"></div>
       
-      <div title="img" className="h-[80%] max-h-[80%] w-[99%]">
-        <img src={product.imageUrl} className="h-full w-full max-w-full max-h-full object-contain"></img>
+      <div title="img" className="h-[80%] max-h-[80%] w-[99%] bg-slate-200 rounded">
+        <img src={product.imageUrl} className="h-full w-full max-w-full max-h-full object-cover object-top"></img>
       </div>
 
       <div title="nome e valor" className="text-xs text-center">
