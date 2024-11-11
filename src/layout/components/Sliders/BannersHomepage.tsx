@@ -1,6 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { Product } from "../../../types/Product";
-import axiosClient from '../../../axiosClient';
+import { useEffect, useRef, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import { useTheme } from '../../../context/Theme/ThemeContext';
 
@@ -15,14 +13,6 @@ import '../../../styles/swiper.css';
 
 export default function BannersHomepage () {
   const { theme } = useTheme()
-  const [products, setProducts] = useState<Product[]>([])
-
-  // recuperar produtos
-  useEffect(() => {
-    axiosClient.get('/api/products/newest')
-    .then(response => setProducts(response.data))
-    .catch(error => console.error('Error fetching products:', error));
-  }, []);
 
   //Daqui pra baixo é a lógica pra conseguir fazer o swiper iniciar sempre que montamos o componente.
   // Cria uma referência com o tipo do swiper ou null. O novo Ref tem um .current que pode ser atualizado..
@@ -39,13 +29,12 @@ export default function BannersHomepage () {
       swiperRef.current.slideToLoop(0, 0);
       swiperRef.current.autoplay.resume;
     }
-  }, [products]);
+  }, []);
 
 
    
   return (
     <div id='caixa completa' className='relative w-full h-full flex'>
-      <div className={`w-full h-full`}>
 
         <Link title='botão ver coleção' to={'/products'} 
         className={`absolute z-50 px-6 py-2 rounded-3xl bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap tracking-wider font-tenorsans   transition-colors duration-300  text-white bg-black/40
@@ -58,16 +47,16 @@ export default function BannersHomepage () {
           spaceBetween={10}
           centeredSlides={true}
           autoplay={{
-            delay: 4000,
+            delay: 2000,
             //delay: 100,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          
+          initialSlide={3}
           slidesPerView={1}
-          loop
+          loop={false}
           style={{ height: '100%' }}
-          pagination={{ clickable: true }}
+          pagination={false}
           navigation={{
             nextEl: '.custom-next',
             prevEl: '.custom-prev',
@@ -76,17 +65,49 @@ export default function BannersHomepage () {
           className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
         >
          
-          <SwiperSlide>
+          <SwiperSlide key="slide-1">
             <div id='slide' className='h-full w-full bg-slate-600'>
               <img src='/assets/Banner.jpg' className='h-full w-full'></img>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide key="slide-2">
             <div id='slide' className='h-full w-full bg-slate-600'>
               <img src='/assets/Banner2.jpg' className='h-full w-full'></img>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide key="slide-3">
+            <div id='slide' className='h-full w-full bg-slate-600'>
+              <img src='/assets/Banner3.jpg' className='h-full w-full'></img>
+            </div>
+          </SwiperSlide> 
+
+          <SwiperSlide key="slide-4">
+            <div id='slide' className='h-full w-full bg-slate-600'>
+              <img src='/assets/Banner.jpg' className='h-full w-full'></img>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key="slide-5">
+            <div id='slide' className='h-full w-full bg-slate-600'>
+              <img src='/assets/Banner2.jpg' className='h-full w-full'></img>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key="slide-6">
+            <div id='slide' className='h-full w-full bg-slate-600'>
+              <img src='/assets/Banner3.jpg' className='h-full w-full'></img>
+            </div>
+          </SwiperSlide> 
+
+          <SwiperSlide key="slide-7">
+            <div id='slide' className='h-full w-full bg-slate-600'>
+              <img src='/assets/Banner.jpg' className='h-full w-full'></img>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key="slide-8">
+            <div id='slide' className='h-full w-full bg-slate-600'>
+              <img src='/assets/Banner2.jpg' className='h-full w-full'></img>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide key="slide-9">
             <div id='slide' className='h-full w-full bg-slate-600'>
               <img src='/assets/Banner3.jpg' className='h-full w-full'></img>
             </div>
@@ -94,11 +115,6 @@ export default function BannersHomepage () {
              
         </Swiper>
 
-        {/*botões para passar slides*/}    
-        <div className={`custom-prev ${theme === 'dark' ? 'dark-theme' : 'light-theme'} `}>&lt;</div>
-        <div className={`custom-next ${theme === 'dark' ? 'dark-theme' : 'light-theme'} `}>&gt;</div>
-
-      </div>
     </div>  
   );
 }
