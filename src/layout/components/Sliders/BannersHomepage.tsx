@@ -63,6 +63,7 @@ export default function BannersHomepage () {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
+          
           slidesPerView={1}
           loop
           style={{ height: '100%' }}

@@ -54,6 +54,9 @@ export default function ForYou () {
       style={{ height: '100%' }}
       //className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
     >
+      <SwiperSlide style={{ maxWidth: '5rem' }}>
+        <div ></div>
+      </SwiperSlide>
       {products.map(product => (
           <SwiperSlide key={product.id}>
            <ProductDisplay productId={product.id}/>
