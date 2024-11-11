@@ -41,8 +41,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ productId }) => {
   }
 
   return (
-    <div id="caixa completa" onClick={() => redirect()} className={`h-full w-full `}>
-
+    <div id="caixa completa" onClick={() => redirect()} className={`h-full w-full flex flex-col gap-1`}>
       <div className="hidden md:block absolute w-full h-full hover:bg-cinzahover/10 transition-colors duration-[320ms]"></div>
       
       <div title="img" className="h-[80%] max-h-[80%] w-[99%] bg-slate-200 rounded">
