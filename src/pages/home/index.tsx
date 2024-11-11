@@ -74,7 +74,7 @@ export default function Home() {
       
         </div>
 
-        <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full mb-40 '>
+        <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full '>
 
           <div title='nome sessão + separador' className='flex flex-col items-center self-start ml-[5vw] md:ml-10 mb-5'>
             <div title='texto Pra Você' className='mt-10 text-lg'>PRA VOCÊ</div>
@@ -87,7 +87,7 @@ export default function Home() {
         
         </div>
 
-        <div title='faixa explicações' className='mt-24 w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[29rem] md:h-[19rem]'>
+        <div title='faixa explicações' className='mt-5 w-full  flex flex-col items-center justify-center gap-4  bg-cinza h-[29rem] md:h-[19rem]'>
           
           <div title='print.art.store' className='text-center text-lg'>
             PRINT.ART.STORE
