@@ -5,7 +5,7 @@ export default function Footer() {
     //const { theme } = useTheme()    
 
     return (
-        <div className={`h-[22rem] w-full flex flex-col gap-8 justify-end items-center bg-white text-black font-mono text-sm`}>
+        <div className={`h-[22rem] w-full flex flex-col gap-7 justify-end items-center bg-white text-black font-mono text-sm`}>
             
             <div title='icones redes sociais' className="flex justify-between gap-10  h-6 ">
                 <Link title="Linkedin icon" to={'https://www.linkedin.com/in/ricardo-mass/'} className=" h-full">

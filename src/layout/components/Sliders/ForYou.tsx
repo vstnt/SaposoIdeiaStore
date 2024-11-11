@@ -21,7 +21,7 @@ export default function ForYou () {
 
   // Recuperar produtos
   useEffect(() => {
-    axiosClient.get('/api/products/newest')
+    axiosClient.get('/api/products')
     .then(response => setProducts(response.data))
     .catch(error => console.error('Error fetching products:', error));
   }, []);
@@ -54,7 +54,7 @@ export default function ForYou () {
       style={{ height: '100%' }}
       slidesOffsetBefore={50}    
     >
-      {products.map(product => (
+      {products.slice(3,8).reverse().map(product => (
           <SwiperSlide key={product.id}>
            <ProductDisplay productId={product.id}/>
           </SwiperSlide> 

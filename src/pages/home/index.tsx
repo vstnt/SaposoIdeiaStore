@@ -15,6 +15,13 @@ export default function Home() {
   /* Para recuperar os produtos.
   essa recuperação simples da lista de produtos teria de ser substituida por uma que obtivesse apenas o id
   dos produtos mais vendidos, quando essa função for implementada na api. */
+  const [newproducts, setNewProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    axiosClient.get('/api/products/newest')
+    .then(response => setNewProducts(response.data))
+    .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     axiosClient.get('/api/products')
@@ -54,13 +61,13 @@ export default function Home() {
           <div title='novos produtos' className='flex h-[30rem] md:h-[15rem] w-full '>
             
             <div title='mobile' className='md:hidden grid grid-cols-2 gap-x-3 gap-y-3 p-5 items-center justify-items-center  w-full h-full'>
-              {products.slice(0, 4).map(product => (
+              {newproducts.slice(0, 4).map(product => (
                 <div key={product.id} className="w-[9rem] h-[15rem]"><ProductDisplay productId={product.id}/></div>
               ))}
             </div>
             
             <div title='desktop' className='hidden w-full h-full md:flex gap-[5vw] justify-center'>
-              {products.slice(0, 5).map(product => (
+              {newproducts.slice(0, 5).map(product => (
                 <div key={product.id} className="w-[10rem] h-[15rem] relative "><ProductDisplay productId={product.id}/></div>
               ))}
             </div>
@@ -83,6 +90,12 @@ export default function Home() {
 
           <div title="sliderBanners mobile" className="w-full h-[23rem] md:hidden ">
             <ForYou/>
+          </div>
+
+          <div title="fila produtos desktop" className="w-full h-[18rem] hidden md:flex gap-[3vw] justify-center">
+            {products.slice(3,8).reverse().map(product => (
+              <div key={product.id} className="w-[12rem] h-[full] relative "><ProductDisplay productId={product.id}/></div>
+            ))}
           </div>
         
         </div>
