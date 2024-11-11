@@ -50,7 +50,7 @@ export default function ForYou () {
       onSwiper={setSwiperRef} // Atribui a referência do Swiper
       spaceBetween={30}
       centeredSlides={true}
-      width={190}
+      width={210}
       style={{ height: '100%' }}
     >
       <SwiperSlide style={{ maxWidth: '18%' }}>

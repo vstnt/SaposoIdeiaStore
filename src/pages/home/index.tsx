@@ -51,11 +51,11 @@ export default function Home() {
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
 
-          <div title='fila novos produtos' className='flex h-[25rem] md:h-[15rem] w-full '>
+          <div title='fila novos produtos' className='flex h-[30rem] md:h-[15rem] w-full '>
             
-            <div title='mobile' className='md:hidden grid grid-cols-2 gap-x-8 gap-y-1 p-5 items-center justify-items-center  w-full h-full'>
+            <div title='mobile' className='md:hidden grid grid-cols-2 gap-x-3 gap-y-1 p-5 items-center justify-items-center  w-full h-full'>
               {products.slice(0, 4).map(product => (
-                <div key={product.id} className="w-[7.5rem] h-[12rem]"><ProductDisplay productId={product.id}/></div>
+                <div key={product.id} className="w-[9rem] h-[15rem]"><ProductDisplay productId={product.id}/></div>
               ))}
             </div>
             
@@ -76,12 +76,12 @@ export default function Home() {
 
         <div title='sessão Pra Você' className='flex flex-col items-center gap-3 w-full mb-40 '>
 
-          <div title='nome sessão + separador' className='flex flex-col items-center md:self-start md:ml-10'>
+          <div title='nome sessão + separador' className='flex flex-col items-center md:self-start md:ml-10 mb-5'>
             <div title='texto Pra Você' className='mt-10 text-lg'>PRA VOCÊ</div>
             <img src='/assets/separador.png' className="w-[8rem]"></img>
           </div>
 
-          <div title="sliderBanners mobile" className="w-full h-[20rem] md:hidden ">
+          <div title="sliderBanners mobile" className="w-full h-[23rem] md:hidden ">
             <ForYou/>
           </div>
         
