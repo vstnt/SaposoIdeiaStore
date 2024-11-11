@@ -52,10 +52,9 @@ export default function ForYou () {
       centeredSlides={true}
       width={190}
       style={{ height: '100%' }}
-      //className={`mySwiper ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
     >
-      <SwiperSlide style={{ maxWidth: '5rem' }}>
-        <div ></div>
+      <SwiperSlide style={{ maxWidth: '18%' }}>
+        <div></div>
       </SwiperSlide>
       {products.map(product => (
           <SwiperSlide key={product.id}>
