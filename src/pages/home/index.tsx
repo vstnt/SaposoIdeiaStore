@@ -1,4 +1,4 @@
-import { useTheme } from '../../context/Theme/ThemeContext';
+//import { useTheme } from '../../context/Theme/ThemeContext';
 import ProductDisplay from "../../layout/components/ProductsDisplays/ProductDisplay";
 import { useState, useEffect } from "react";
 import axiosClient from "../../axiosClient";
